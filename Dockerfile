@@ -3,7 +3,7 @@ ENV GO111MODULE=on
 ADD . /go/src/app
 RUN  apk --update add git tzdata
 WORKDIR /go/src/app
-RUN go build -v -o /go/src/app/hcc cmd/main.go
+RUN go build -v -o /go/src/app/hcc main.go
 
 FROM alpine
 COPY --from=build-env /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

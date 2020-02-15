@@ -3,7 +3,9 @@ ENV GO111MODULE=on
 ADD . /go/src/app
 RUN  apk --update add git tzdata
 WORKDIR /go/src/app
-RUN go build -v -o /go/src/app/hcc main.go
+RUN go get github.com/GeertJohan/go.rice && \
+    go get github.com/GeertJohan/go.rice/rice
+RUN go build -v -o /go/src/app/hcc main.go && rice append --exec /go/src/app/hcc main.go
 
 FROM alpine
 COPY --from=build-env /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

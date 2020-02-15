@@ -11,6 +11,7 @@
         html, body {
             padding: 0;
             margin: 0;
+            width: 100%;
         }
 
         body {
@@ -56,12 +57,17 @@
             color: whitesmoke;
             margin-top: 30px;
         }
+        .title a {
+            color: whitesmoke;
+        }
     </style>
 </head>
 
 <body>
 <div id="app">
-    <h1 class="title">Hcomic Creator</h1>
+    <h1 class="title">
+        <a href="https://github.com/ystyle/hcc" target="_blank" title="查看源码">Hcomic Creator</a>
+    </h1>
     <Alert banner closable v-if="connectState == 'closed'" type="warning">
         与服务器断开连接, 等待重新连接, 请稍等...
     </Alert>
@@ -99,9 +105,8 @@
             </Timeline>
         </Drawer>
     </div>
-</div>
 
-<p id="output"></p>
+</div>
 
 <script>
     var loc = window.location;

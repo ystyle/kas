@@ -8,8 +8,12 @@ import (
 	"github.com/labstack/gommon/log"
 	"github.com/ystyle/hcc/core"
 	"github.com/ystyle/hcc/services"
+	"github.com/ystyle/hcc/util/hcomic"
 	"golang.org/x/net/websocket"
 	"net/http"
+	"os"
+	"path"
+	"runtime"
 	"time"
 )
 
@@ -44,15 +48,23 @@ func main() {
 
 	timer := time.NewTimer(time.Second * 5)
 	go func() {
+		i := 0
 		for {
 			select {
 			case <-timer.C:
 				timer.Reset(time.Second * 60)
 				clients := len(wm.GetClients())
-				fmt.Println("连接数为: ", clients)
+				if clients != i {
+					fmt.Println("连接数为: ", clients)
+				}
+				i = clients
 			}
 		}
 
 	}()
+	if runtime.GOOS == "windows" {
+		dir := path.Dir(os.Args[0])
+		hcomic.Run(dir, "cmd", "/c", "start", "http://127.0.0.1:1323")
+	}
 	e.Logger.Fatal(e.Start(":1323"))
 }

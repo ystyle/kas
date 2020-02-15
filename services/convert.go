@@ -35,7 +35,7 @@ func Submit(client *core.WsClient, message core.Message) {
 	imagesDir := path.Join(workdir, "html", "scaled-images")
 	bookName := fmt.Sprintf("%s.mobi", comicId)
 	bookFile := path.Join(workdir, bookName)
-	zipFile := path.Join("store", fmt.Sprintf("%s.zip", comicId))
+	zipFile := path.Join("storage", fmt.Sprintf("%s.zip", comicId))
 
 	// zip文件存在时直接下载
 	if ok, _ := zip.IsExists(zipFile); ok {
@@ -56,8 +56,8 @@ func Submit(client *core.WsClient, message core.Message) {
 	client.WsSend <- core.NewMessage("info", "创建缓存目录...")
 	err1 := os.RemoveAll(workdir)
 	err = os.MkdirAll(imagesDir, 0666)
-	err2 := os.MkdirAll(path.Join("store"), 0666)
-	if err != nil || err1 != nil|| err2 != nil {
+	err2 := os.MkdirAll(path.Join("storage"), 0666)
+	if err != nil || err1 != nil || err2 != nil {
 		client.WsSend <- core.NewMessage("Error", "服务错误: 没有写入失败")
 		return
 	}
@@ -124,7 +124,7 @@ func CompressZip(client *core.WsClient, filename, zipFile string) error {
 		return err
 	}
 	client.WsSend <- core.NewMessage("info", "压缩完成！")
-	return ioutil.WriteFile(zipFile,buff, 0666)
+	return ioutil.WriteFile(zipFile, buff, 0666)
 }
 
 func DownloadZip(client *core.WsClient, filename string) {

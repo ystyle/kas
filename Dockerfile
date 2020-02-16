@@ -7,7 +7,7 @@ RUN apk --update add git curl tzdata && \
     export GO111MODULE=off && \
     go get github.com/GeertJohan/go.rice && \
     go get github.com/GeertJohan/go.rice/rice && \
-    rice append --exec /go/src/app/hcc && \
+    rice append --exec hcc && \
     curl http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz | tar -zx
 
 FROM alpine

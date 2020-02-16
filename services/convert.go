@@ -135,6 +135,6 @@ func DownloadZip(client *core.WsClient, filename string) {
 		return
 	}
 	client.WsSend <- core.NewMessage("title", path.Base(filename))
-	client.WsSend <- core.NewMessage("info", "正在下载...")
+	client.WsSend <- core.NewMessage("info", fmt.Sprintf("文件大小: %s, 正在下载...", zip.FormatBytesLength(len(buff))))
 	client.WsSend <- core.NewMessage("download", buff)
 }

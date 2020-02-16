@@ -1,6 +1,6 @@
-### Hcomic Creator
+### [Hcomic Creator](https://hcc.ystyle.top)
 漫画生成器. 输入地址直接生成kindle的mobi漫画格式
-![](public/asset/screenshot.png)]
+[![](public/asset/screenshot.png)]](https://hcc.ystyle.top)
 
 ### 使用方法
 - [下载最新版本的hcc.zip](https://github.com/ystyle/hcc/releases/latest)

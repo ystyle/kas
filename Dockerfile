@@ -4,6 +4,7 @@ ADD . /go/src/app
 WORKDIR /go/src/app
 RUN apk --update add git tzdata && \
     go build -v -o /go/src/app/hcc main.go && \
+    export GO111MODULE=off && \
     go get github.com/GeertJohan/go.rice && \
     go get github.com/GeertJohan/go.rice/rice && \
     rice append --exec /go/src/app/hcc

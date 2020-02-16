@@ -25,7 +25,7 @@ const OPF = `<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-
         <dc:creator>{{ .author }}</dc:creator>
         <dc:publisher>hcc(hcomic creator)</dc:publisher>
         <meta content="portrait" name="orientation-lock"/>
-        <meta content="horizontal-rl" name="primary-writing-mode"/>
+        <meta content="horizontal-lr" name="primary-writing-mode"/>
         <meta content="800x1280" name="original-resolution"/>
         <meta content="false" name="region-mag"/>
         <meta content="cover-image" name="cover"/>

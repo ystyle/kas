@@ -12,6 +12,7 @@
             padding: 0;
             margin: 0;
             width: 100%;
+            font-size: 14px;
         }
 
         body {
@@ -53,13 +54,52 @@
         .title {
             position: absolute;
             margin-left: 1%;
-            font-size: 2.9em;
+            font-size: 2.9rem;
             color: whitesmoke;
             margin-top: 30px;
         }
 
         .title a {
             color: whitesmoke;
+        }
+
+        @media (orientation: portrait) {
+            body {
+                background: url(/asset/mobile-gb.jpg) center top;
+            }
+            #app {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .title {
+                position: unset;
+                margin-left: 6rem;
+                font-size: 6rem;
+            }
+            .title a {
+                color: darkgrey;
+            }
+
+            .container {
+                justify-content: center;
+                margin-top: 30rem;
+                margin-left: -5rem;
+            }
+
+            .ivu-form-item {
+                margin-bottom: 3rem;
+                font-size: 5.5rem;
+            }
+
+            .form {
+                width: 85%;
+            }
+
+            .ivu-btn, .ivu-input {
+                font-size: 2.5rem;
+                height: 4.5rem;
+            }
         }
     </style>
 </head>

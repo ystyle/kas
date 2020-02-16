@@ -21,8 +21,9 @@ func WS(c echo.Context) error {
 	websocket.Handler(func(ws *websocket.Conn) {
 		wm := core.GetWsManager()
 		wsClient := &core.WsClient{
-			WsConn: ws,
-			WsSend: make(chan core.Message, 10),
+			WsConn:      ws,
+			WsSend:      make(chan core.Message, 10),
+			HttpRequest: ws.Request(),
 		}
 		wm.Add(wsClient)
 	}).ServeHTTP(c.Response(), c.Request())
@@ -44,6 +45,7 @@ func main() {
 	assetHandler := http.FileServer(box.HTTPBox())
 	e.GET("/", echo.WrapHandler(assetHandler))
 	e.GET("/asset/*", echo.WrapHandler(assetHandler))
+	e.Static("/download", "storage")
 	e.GET("/ws", WS)
 
 	timer := time.NewTimer(time.Second * 5)

@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 )
 
 var client = &http.Client{}
@@ -50,4 +51,15 @@ func Download(url string, dir string) error {
 	}
 	_, _ = io.Copy(f, res.Body)
 	return nil
+}
+
+func IsMobile(useragent string) bool {
+	agents := []string{"Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"}
+	for _, agent := range agents {
+		if strings.Contains(useragent, agent) {
+			return true
+		}
+	}
+	return false
+
 }

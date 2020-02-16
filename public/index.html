@@ -57,6 +57,7 @@
             color: whitesmoke;
             margin-top: 30px;
         }
+
         .title a {
             color: whitesmoke;
         }
@@ -140,6 +141,14 @@
         computed: {
             sortedLogs: function () {
                 return [...this.logs].reverse()
+            },
+            zipFileName: function () {
+                // 生成下载链接
+                var zipfile = this.formItem.Title
+                if (!zipfile.includes('.zip')) {
+                    zipfile += '.zip'
+                }
+                return zipfile
             }
         },
         methods: {
@@ -170,14 +179,13 @@
                 } else if (msg.Type === "title") {
                     console.log(msg.Data)
                     this.formItem.Title = msg.Data
-                    this.logs.push({msg: '解析到文件名: ' + msg.Data,  type: 'primary'})
+                    this.logs.push({msg: '解析到文件名: ' + msg.Data, type: 'primary'})
+                } else if (msg.Type === "downloadURL") {
+                    console.log('从URL下载', msg.Data)
+                    downloadFile(msg.Data, this.zipFileName)
                 } else if (msg.Type === "download") {
-                    // 生成下载链接
-                    var zipfile = this.formItem.Title
-                    if(!zipfile.includes('.zip')) {
-                        zipfile += '.zip'
-                    }
-                    downloadFileByBase64(msg.Data, zipfile)
+                    console.log('从websocket下载')
+                    downloadFileByBase64(msg.Data, this.zipFileName)
                     this.$Message.success({content: '下载成功!'});
                     this.logs.push({msg: '下载成功!', type: 'success', duration: 0})
                     // 清理表单
@@ -228,18 +236,16 @@
     }
 
     function downloadFile(url, name = 'What\'s the fuvk') {
-        var a = document.createElement("a")
-        a.setAttribute("href", url)
-        a.setAttribute("download", name)
-        a.setAttribute("target", "_blank")
-        let clickEvent = document.createEvent("MouseEvents");
-        clickEvent.initEvent("click", true, true);
-        a.dispatchEvent(clickEvent);
+        var a = window.document.createElement('a')
+        a.href = url
+        a.download = name
+        a.click()
+        window.URL.revokeObjectURL(url)
     }
 
     function downloadFileByBase64(base64, name) {
         var myBlob = dataURLtoBlob(base64)
-        var myUrl = URL.createObjectURL(myBlob)
+        var myUrl = window.URL.createObjectURL(myBlob)
         downloadFile(myUrl, name)
     }
 </script>

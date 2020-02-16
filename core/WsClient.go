@@ -3,13 +3,15 @@ package core
 import (
 	"github.com/labstack/gommon/log"
 	"golang.org/x/net/websocket"
+	"net/http"
 	"strings"
 )
 
 type WsClient struct {
-	WsConn    *websocket.Conn
-	WsSend    chan Message
-	wsManager *WsManager
+	WsConn      *websocket.Conn
+	WsSend      chan Message
+	wsManager   *WsManager
+	HttpRequest *http.Request
 }
 
 func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
@@ -27,8 +29,7 @@ func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
 	}
 }
 
-
-func (client *WsClient) Remove (fn func(c *WsClient)) {
+func (client *WsClient) Remove(fn func(c *WsClient)) {
 	fn(client)
 }
 

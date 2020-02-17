@@ -1,43 +1,25 @@
 package hcomic
 
 import (
-	"fmt"
-	"github.com/ystyle/hcc/util/tpl"
+	"github.com/ystyle/kas/model"
+	"github.com/ystyle/kas/util/tpl"
 	"io"
 	"os"
-	"path"
 )
-import "github.com/satori/go.uuid"
 
-func GenDoc(title, author, url string, images []string) error {
-	comicId, _ := GetComicID(url)
-	workdir := path.Join("cache", comicId)
-	var imgList []map[string]string
-
-	for i, image := range images {
-		imgFilename := path.Base(image)
-		item := map[string]string{
-			"i":        fmt.Sprintf("%d", i+1),
-			"id":       fmt.Sprintf("%d", i),
-			"item":       fmt.Sprintf("%d", i+2),
-			"title":    fmt.Sprintf("%d", i),
-			"filename": fmt.Sprintf("html/Page-%d.html", i),
-			"image":    fmt.Sprintf("scaled-images/%s", imgFilename),
-		}
-		htmlfile := path.Join(workdir, "html", fmt.Sprintf("Page-%d.html", i))
-		err := tpl.Render(htmlfile, "page", item)
+func GenDoc(book model.HcomicInfo) error {
+	for i, section := range book.Sections {
+		err := tpl.Render(section.HtmlFile, "page", section)
 		if err != nil {
 			return err
 		}
 		if i == 0 {
 			// 生成封面
-			coverimage := path.Join(workdir, "cover-image.jpg")
-			first := path.Join(workdir, "html", "scaled-images", imgFilename)
-			source, err := os.Open(first)
+			source, err := os.Open(section.ImgFile)
 			if err != nil {
 				return err
 			}
-			destination, err := os.Create(coverimage)
+			destination, err := os.Create(book.CoverFile)
 			if err != nil {
 				return err
 			}
@@ -45,25 +27,17 @@ func GenDoc(title, author, url string, images []string) error {
 			source.Close()
 			destination.Close()
 			// 在第一个文件生成bom
-			file, _ := os.Open(htmlfile)
+			file, _ := os.Open(section.HtmlFile)
 			file.WriteString("\xEF\xBB\xBF")
 			file.Close()
 		}
-		imgList = append(imgList, item)
 	}
 
-	data := map[string]interface{}{
-		"id":     uuid.NewV4().String(),
-		"title":  title,
-		"author": author,
-		"images": imgList,
-	}
-
-	err := tpl.Render(path.Join(workdir, "content.opf"), "opf", data)
+	err := tpl.Render(book.OpfFile, "opf", book)
 	if err != nil {
 		return err
 	}
-	err = tpl.Render(path.Join(workdir, "toc.ncx"), "toc", data)
+	err = tpl.Render(book.NxcFile, "toc", book)
 	if err != nil {
 		return err
 	}

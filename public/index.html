@@ -107,7 +107,7 @@
 <body>
 <div id="app">
     <h1 class="title">
-        <a href="https://github.com/ystyle/hcc" target="_blank" title="查看源码">Hcomic Creator</a>
+        <a href="https://github.com/ystyle/kas" target="_blank" title="查看源码">Hcomic Creator</a>
     </h1>
     <Alert banner closable v-if="connectState == 'closed'" type="warning">
         与服务器断开连接, 等待重新连接, 请稍等...
@@ -121,7 +121,7 @@
                 <i-input v-model="formItem.Title" placeholder="漫画显示名称(默认为网页标题)"></i-input>
             </form-item>
             <form-item>
-                <i-input v-model="formItem.Author" placeholder="作者(默认hcc)"></i-input>
+                <i-input v-model="formItem.Author" placeholder="作者(默认kas)"></i-input>
             </form-item>
             <form-item>
                 <i-button

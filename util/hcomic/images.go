@@ -1,26 +1,31 @@
 package hcomic
 
 import (
-	"github.com/ystyle/hcc/util/web"
+	"github.com/ystyle/kas/model"
+	"github.com/ystyle/kas/util/web"
 	"net/url"
 	"path"
 	"strings"
 )
 
-func GetAllImages(url string) ([]string, string, error) {
-	html, err := web.GetContent(url)
+func GetAllImages(book *model.HcomicInfo) error {
+	html, err := web.GetContent(book.Url)
 	if err != nil {
-		return nil, "", err
+		return err
 	}
-	imgs := html.Find(".img_list li img")
-	title := html.Find(".page_tit .tit").Text()
-	var images []string
-	for i := range imgs.Nodes {
-		img := imgs.Eq(i)
-		url, _ := img.Attr("src")
-		images = append(images, url)
+	lis := html.Find(".img_list li")
+	if book.BookName == "" {
+		book.BookName = html.Find(".page_tit .tit").Text()
 	}
-	return images, title, nil
+	for i := range lis.Nodes {
+		li := lis.Eq(i)
+		url, _ := li.Find("img").First().Attr("src")
+		title := li.Find("label").Text()
+		if url != "" {
+			book.AddSection(title, GetHDImage(url))
+		}
+	}
+	return nil
 }
 
 func GetHDImage(url string) string {

@@ -3,16 +3,16 @@ package core
 import (
 	"fmt"
 	"github.com/labstack/gommon/log"
-	"github.com/ystyle/hcc/util"
-	"github.com/ystyle/hcc/util/env"
+	"github.com/ystyle/kas/util"
+	"github.com/ystyle/kas/util/env"
 )
 
 type Service func(client *WsClient, message Message)
 
 type WsManager struct {
-	clients     []*WsClient
-	MaxConnect  int
-	services    map[string]Service
+	clients    []*WsClient
+	MaxConnect int
+	services   map[string]Service
 }
 
 var wm = &WsManager{
@@ -30,6 +30,7 @@ func GetWsManager() *WsManager {
 }
 
 func (m *WsManager) Add(client *WsClient) {
+	log.Info("WSClient key: ", client.GetWSKey())
 	if len(m.clients) >= m.MaxConnect {
 		client.WsSend <- NewMessage("Error", "MaxConnect")
 		return
@@ -50,7 +51,7 @@ func (m *WsManager) GetClients() []*WsClient {
 	return m.clients
 }
 
-func (m *WsManager) Remove(client *WsClient)  {
+func (m *WsManager) Remove(client *WsClient) {
 	for i, wsClient := range m.clients {
 		if wsClient == client {
 			m.clients = append(m.clients[:i], m.clients[i+1:]...)

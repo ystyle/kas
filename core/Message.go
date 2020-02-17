@@ -2,9 +2,11 @@ package core
 
 import (
 	"encoding/json"
+	"time"
 )
 
 type Message struct {
+	Time time.Time
 	Type string      // messageType
 	Data interface{} // content
 }

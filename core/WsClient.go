@@ -5,13 +5,28 @@ import (
 	"golang.org/x/net/websocket"
 	"net/http"
 	"strings"
+	"time"
 )
 
 type WsClient struct {
 	WsConn      *websocket.Conn
-	WsSend      chan Message
-	wsManager   *WsManager
 	HttpRequest *http.Request
+	wsManager   *WsManager
+	WsSend      chan Message
+	Caches      map[string]interface{}
+}
+
+func NewWsClient(wsConn *websocket.Conn) *WsClient {
+	return &WsClient{
+		WsConn:      wsConn,
+		HttpRequest: wsConn.Request(),
+		WsSend:      make(chan Message, 10),
+		Caches:      make(map[string]interface{}),
+	}
+}
+
+func (client *WsClient) GetWSKey() string {
+	return client.HttpRequest.Header.Get("Sec-WebSocket-Key")
 }
 
 func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
@@ -25,6 +40,7 @@ func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
 			client.wsManager.Remove(client)
 			break
 		}
+		msg.Time = time.Now()
 		fn(client, msg)
 	}
 }
@@ -42,6 +58,7 @@ func (client *WsClient) WriteMsg() {
 				log.Error("close client")
 				return
 			}
+			msg.Time = time.Now()
 			websocket.JSON.Send(client.WsConn, msg)
 		}
 	}

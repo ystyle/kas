@@ -6,9 +6,11 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/labstack/gommon/log"
-	"github.com/ystyle/hcc/core"
-	"github.com/ystyle/hcc/services"
-	"github.com/ystyle/hcc/util/hcomic"
+	"github.com/ystyle/kas/core"
+	"github.com/ystyle/kas/services"
+	"github.com/ystyle/kas/util/config"
+	"github.com/ystyle/kas/util/hcomic"
+	"github.com/ystyle/kas/util/zip"
 	"golang.org/x/net/websocket"
 	"net/http"
 	"os"
@@ -20,26 +22,44 @@ import (
 func WS(c echo.Context) error {
 	websocket.Handler(func(ws *websocket.Conn) {
 		wm := core.GetWsManager()
-		wsClient := &core.WsClient{
-			WsConn:      ws,
-			WsSend:      make(chan core.Message, 10),
-			HttpRequest: ws.Request(),
-		}
-		wm.Add(wsClient)
+		wm.Add(core.NewWsClient(ws))
 	}).ServeHTTP(c.Response(), c.Request())
 	return nil
 }
 
+func createStoreDir() {
+	if ok, _ := zip.IsExists(path.Join(config.StoreDir)); !ok {
+		err := os.MkdirAll(path.Join(config.StoreDir), config.Perm)
+		if err != nil {
+			log.Fatal("服务启动失败: 没有写入权限")
+			return
+		}
+	}
+}
+
 func main() {
+	createStoreDir()
+
 	log.EnableColor()
-	log.SetLevel(log.DEBUG)
+	if os.Getenv("MODE") == "DEBUG" {
+		log.SetLevel(log.DEBUG)
+		log.Info("log level: Debug")
+	}
 
 	wm := core.GetWsManager()
+	// hcomic
 	wm.RegisterService("download", services.Submit)
+	// text to epub / mobi
+	wm.RegisterService("text:upload", services.TextUpload)
+	wm.RegisterService("text:preview", services.TextPreView)
+	wm.RegisterService("text:convert", services.TextConvert)
+	wm.RegisterService("text:download", services.TextDownload)
 
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.Use(middleware.RequestID())
+	e.Use(middleware.Gzip())
 
 	box := rice.MustFindBox("public")
 	assetHandler := http.FileServer(box.HTTPBox())
@@ -62,7 +82,6 @@ func main() {
 				i = clients
 			}
 		}
-
 	}()
 	if runtime.GOOS == "windows" {
 		dir := path.Dir(os.Args[0])

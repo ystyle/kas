@@ -9,7 +9,7 @@ import (
 )
 
 func GetAllImages(book *model.HcomicInfo) error {
-	html, err := web.GetContent(book.Url)
+	html, err := web.GetHtmlNode(book.Url)
 	if err != nil {
 		return err
 	}

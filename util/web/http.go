@@ -5,6 +5,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/labstack/gommon/log"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -23,7 +24,7 @@ func init() {
 	}
 }
 
-func GetContent(url string) (*goquery.Document, error) {
+func getResponse(url string) (*http.Response, error) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
@@ -33,11 +34,24 @@ func GetContent(url string) (*goquery.Document, error) {
 	req.Header.Set("Sec-Fetch-Dest", "document")
 	req.Header.Set("Upgrade-Insecure-Requests", "1")
 	req.Header.Set("DNT", "1")
-	res, err := client.Do(req)
+	return client.Do(req)
+}
+
+func GetHtmlNode(url string) (*goquery.Document, error) {
+	res, err := getResponse(url)
 	if err != nil {
 		return nil, fmt.Errorf("目标网站无法连接: %w", err)
 	}
 	return goquery.NewDocumentFromReader(res.Body)
+}
+
+func GetContent(url string) (string, error) {
+	res, err := getResponse(url)
+	if err != nil {
+		return "", fmt.Errorf("目标网站无法连接: %w", err)
+	}
+	buff, err := ioutil.ReadAll(res.Body)
+	return string(buff), err
 }
 
 func Download(url string, dir string) error {

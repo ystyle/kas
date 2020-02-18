@@ -9,24 +9,21 @@ import (
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/array"
 	"github.com/ystyle/kas/util/character"
-	"github.com/ystyle/kas/util/config"
+	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/kindlegen"
-	"github.com/ystyle/kas/util/zip"
 	"github.com/ystyle/kas/util/zlib"
 	"io"
 	"io/ioutil"
-	"os"
 	"path"
 	"regexp"
 	"strings"
 )
 
 const (
-	htmlPStart       = `<p  style="text-indent: %dem">`
-	htmlPEnd         = "</p>"
-	htmlTitleStart   = `<h3 style="text-align:%s">`
-	htmlTitleEnd     = "</h3>"
-	DefaultMatchTips = "自动匹配,可自定义"
+	htmlPStart     = `<p  style="text-indent: %dem">`
+	htmlPEnd       = "</p>"
+	htmlTitleStart = `<h3 style="text-align:%s">`
+	htmlTitleEnd   = "</h3>"
 )
 
 func TextUpload(client *core.WsClient, message core.Message) {
@@ -171,19 +168,11 @@ func TextCompressZip(client *core.WsClient, book model.TextInfo, format string) 
 	}
 	client.WsSend <- core.NewMessage("info", "正在压缩zip文件...")
 	dir := path.Dir(book.StoreEpub)
-	if ok, _ := zip.IsExists(dir); !ok {
-		os.MkdirAll(dir, config.Perm)
-	}
-	buff, err := zip.CompressZip(ebookFile)
+	file.CheckDir(dir)
+	err := file.CompressZipToFile(ebookFile, zipFile)
 	if err != nil {
 		log.Error(err)
-		client.WsSend <- core.NewMessage("Error", "服务错误: 压缩mobi失败")
-		return err
-	}
-	err = ioutil.WriteFile(zipFile, buff, config.Perm)
-	if err != nil {
-		log.Error(err)
-		client.WsSend <- core.NewMessage("Error", "服务错误: 压缩mobi失败")
+		client.WsSend <- core.NewMessage("Error", "服务错误: 压缩文件失败")
 		return err
 	}
 	client.WsSend <- core.NewMessage("info", "压缩完成！")
@@ -212,17 +201,12 @@ func bookDownload(client *core.WsClient, book model.TextInfo, format string) {
 	if format == "epub" {
 		filename = book.StoreEpub
 	}
-	client.WsSend <- core.NewMessage("info", fmt.Sprintf("正在下载: %s", path.Base(filename)))
 	buff, err := ioutil.ReadFile(filename)
 	readErr := fmt.Sprintf("读取文件失败: %s", path.Base(filename))
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", readErr)
 		return
 	}
-	bs, err := zlib.Encode(buff)
-	if err != nil {
-		client.WsSend <- core.NewMessage("Error", readErr)
-		return
-	}
-	client.WsSend <- core.NewMessage("text:download", bs)
+	client.WsSend <- core.NewMessage("info", fmt.Sprintf("正在下载: %s， 文件大小: %s", path.Base(filename), file.FormatBytesLength(len(buff))))
+	client.WsSend <- core.NewMessage("text:download", buff)
 }

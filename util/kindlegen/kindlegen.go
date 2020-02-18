@@ -1,8 +1,10 @@
 package kindlegen
 
 import (
+	"github.com/ystyle/kas/util/file"
 	"os"
 	"os/exec"
+	"path"
 	"runtime"
 )
 
@@ -23,5 +25,11 @@ func Conver(source string, bookname string) error {
 		return err
 	}
 	err = Run(kindlegen, "-c1", "-dont_append_source", source, "-o", bookname)
-	return err
+	if err != nil {
+		if ok, _ := file.IsExists(path.Join(path.Dir(source), bookname)); ok {
+			return nil
+		}
+		return err
+	}
+	return nil
 }

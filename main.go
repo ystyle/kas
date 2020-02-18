@@ -9,8 +9,8 @@ import (
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/services"
 	"github.com/ystyle/kas/util/config"
+	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/hcomic"
-	"github.com/ystyle/kas/util/zip"
 	"golang.org/x/net/websocket"
 	"net/http"
 	"os"
@@ -28,7 +28,7 @@ func WS(c echo.Context) error {
 }
 
 func createStoreDir() {
-	if ok, _ := zip.IsExists(path.Join(config.StoreDir)); !ok {
+	if ok, _ := file.IsExists(path.Join(config.StoreDir)); !ok {
 		err := os.MkdirAll(path.Join(config.StoreDir), config.Perm)
 		if err != nil {
 			log.Fatal("服务启动失败: 没有写入权限")
@@ -54,6 +54,8 @@ func main() {
 	wm.RegisterService("text:preview", services.TextPreView)
 	wm.RegisterService("text:convert", services.TextConvert)
 	wm.RegisterService("text:download", services.TextDownload)
+	// aricle
+	wm.RegisterService("article:submit", services.ArticleSubmit)
 
 	e := echo.New()
 	e.Use(middleware.Logger())
@@ -63,7 +65,7 @@ func main() {
 
 	box := rice.MustFindBox("public")
 	assetHandler := http.FileServer(box.HTTPBox())
-	e.GET("/", echo.WrapHandler(assetHandler))
+	e.GET("/*", echo.WrapHandler(assetHandler))
 	e.GET("/asset/*", echo.WrapHandler(assetHandler))
 	e.Static("/download", "storage")
 	e.GET("/ws", WS)

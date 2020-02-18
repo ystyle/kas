@@ -1,23 +1,12 @@
-package zip
+package file
 
 import (
 	"archive/zip"
 	"bytes"
+	"github.com/ystyle/kas/util/config"
 	"io/ioutil"
-	"os"
 	"path"
 )
-
-func IsExists(path string) (bool, error) {
-	_, err := os.Stat(path)
-	if err == nil {
-		return true, nil
-	}
-	if os.IsNotExist(err) {
-		return false, nil
-	}
-	return false, err
-}
 
 func CompressZip(filename string) ([]byte, error) {
 	bs, err := ioutil.ReadFile(filename)
@@ -43,4 +32,13 @@ func CompressZip(filename string) ([]byte, error) {
 		return nil, err
 	}
 	return buff.Bytes(), nil
+}
+
+func CompressZipToFile(source, zipfiename string) error {
+	buff, err := CompressZip(source)
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(zipfiename, buff, config.Perm)
+	return err
 }

@@ -6,10 +6,10 @@ import (
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/config"
+	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/hcomic"
 	"github.com/ystyle/kas/util/kindlegen"
 	"github.com/ystyle/kas/util/web"
-	"github.com/ystyle/kas/util/zip"
 	"io/ioutil"
 	"os"
 	"path"
@@ -34,7 +34,7 @@ func Submit(client *core.WsClient, message core.Message) {
 	book.SetDefault()
 
 	// zip文件存在时直接下载
-	if ok, _ := zip.IsExists(book.ZipFile); ok {
+	if ok, _ := file.IsExists(book.ZipFile); ok {
 		client.WsSend <- core.NewMessage("info", "文件存在，从缓存读取...")
 		DownloadZip(client, book.ZipFile)
 		return
@@ -108,16 +108,8 @@ func download(wg *sync.WaitGroup, client *core.WsClient, section *model.HcomicSe
 func CompressZip(client *core.WsClient, book model.HcomicInfo) error {
 	client.WsSend <- core.NewMessage("info", "正在压缩zip文件...")
 	dir := path.Dir(book.ZipFile)
-	if ok, _ := zip.IsExists(dir); !ok {
-		os.MkdirAll(dir, config.Perm)
-	}
-	buff, err := zip.CompressZip(book.MobiFile)
-	if err != nil {
-		log.Error(err)
-		client.WsSend <- core.NewMessage("Error", "服务错误: 压缩mobi失败")
-		return err
-	}
-	err = ioutil.WriteFile(book.ZipFile, buff, config.Perm)
+	file.CheckDir(dir)
+	err := file.CompressZipToFile(book.MobiFile, book.ZipFile)
 	if err != nil {
 		log.Error(err)
 		client.WsSend <- core.NewMessage("Error", "服务错误: 压缩mobi失败")
@@ -135,7 +127,7 @@ func DownloadZip(client *core.WsClient, filename string) {
 		return
 	}
 	client.WsSend <- core.NewMessage("title", path.Base(filename))
-	client.WsSend <- core.NewMessage("info", fmt.Sprintf("文件大小: %s, 正在下载...", zip.FormatBytesLength(len(buff))))
+	client.WsSend <- core.NewMessage("info", fmt.Sprintf("文件大小: %s, 正在下载...", file.FormatBytesLength(len(buff))))
 	if web.IsMobile(client.HttpRequest.UserAgent()) {
 		client.WsSend <- core.NewMessage("downloadURL", fmt.Sprintf("/download/%s", path.Base(filename)))
 	} else {

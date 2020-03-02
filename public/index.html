@@ -221,8 +221,8 @@
                 } else if (msg.Type === "hcomic:bookname") {
                     console.log(msg.Data)
                     this.formItem.Bookname = msg.Data
-                    this.logs.push({msg: '解析到文件名: ' + msg.Data, type: 'primary'})
-                } else if (msg.Type === "hcomic:id") {
+                    this.logs.push({msg: '标题: ' + msg.Data, type: 'primary'})
+                } else if (msg.Type === "hcomic:bookid") {
                     console.log(msg.Data)
                     this.bookid = msg.Data
                     this.logs.push({msg: '解析到ID: ' + msg.Data, type: 'primary'})

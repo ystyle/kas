@@ -1,9 +1,7 @@
 package site
 
 import (
-	"encoding/json"
 	"fmt"
-	rice "github.com/GeertJohan/go.rice"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/model"
@@ -16,15 +14,15 @@ import (
 var sites []model.SiteInfo
 
 func init() {
-	box := rice.MustFindBox("../../public")
-	buff, err := box.Bytes("asset/website_list.json")
-	if err != nil {
-		log.Error(err)
-	}
-	err = json.Unmarshal(buff, &sites)
-	if err != nil {
-		log.Error(err)
-	}
+	//box := rice.MustFindBox("public")
+	//buff, err := box.Bytes("asset/website_list.json")
+	//if err != nil {
+	//	log.Error(err)
+	//}
+	//err = json.Unmarshal(buff, &sites)
+	//if err != nil {
+	//	log.Error(err)
+	//}
 }
 
 func getConfig(url string) *model.SiteInfo {

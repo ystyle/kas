@@ -1,13 +1,13 @@
 FROM golang:alpine AS build-env
+ENV GO111MODULE=on
 ADD . /go/src/app
 WORKDIR /go/src/app
 RUN apk --update add git curl tzdata && \
+    go build -v -o /go/src/app/kas main.go && \
     export GO111MODULE=off && \
     go get github.com/GeertJohan/go.rice && \
     go get github.com/GeertJohan/go.rice/rice && \
-    rice embed-go && \
-    export GO111MODULE=on && \
-    go build -v -o /go/src/app/kas main.go && \
+    rice append --exec kas && \
     curl http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz | tar -zx
 
 FROM alpine

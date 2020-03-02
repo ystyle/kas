@@ -1,9 +1,12 @@
 FROM golang:alpine AS build-env
 ENV GO111MODULE=on
+ENV GOPROXY=https://goproxy.cn
 ADD . /go/src/app
 WORKDIR /go/src/app
-RUN apk --update add git curl tzdata && \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
+    apk --update add git curl tzdata && \
     go build -v -o /go/src/app/kas main.go && \
+    echo "done!" && \
     export GO111MODULE=off && \
     go get github.com/GeertJohan/go.rice && \
     go get github.com/GeertJohan/go.rice/rice && \

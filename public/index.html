@@ -118,7 +118,7 @@
                 <i-input v-model="formItem.Url" placeholder="https://c-upp.com/cn/s/xxxxxx/"></i-input>
             </form-item>
             <form-item>
-                <i-input v-model="formItem.Title" placeholder="漫画显示名称(默认为网页标题)"></i-input>
+                <i-input v-model="formItem.Bookname" placeholder="漫画显示名称(默认为网页标题)"></i-input>
             </form-item>
             <form-item>
                 <i-input v-model="formItem.Author" placeholder="作者(默认kas)"></i-input>
@@ -167,9 +167,10 @@
             loading: false,
             logLoading: false,
             logs: [],
+            bookid: '',
             formItem: {
                 Url: '',
-                Title: '',
+                Bookname: '',
                 Author: ''
             },
             ruleValidate: {
@@ -184,7 +185,7 @@
             },
             zipFileName: function () {
                 // 生成下载链接
-                var zipfile = this.formItem.Title
+                var zipfile = this.bookid
                 if (!zipfile.includes('.zip')) {
                     zipfile += '.zip'
                 }
@@ -197,8 +198,9 @@
                 this.drawer = true
                 this.logLoading = true
                 this.logs = []
+                this.formItem.Bookname = this.formItem.Bookname
                 this.ws.send(JSON.stringify({
-                    Type: "download",
+                    Type: "hcomic:submit",
                     Data: this.formItem
                 }))
             },
@@ -216,21 +218,25 @@
                     this.logs.push({msg: msg.Data, type: 'error'})
                     this.logLoading = false
                     this.loading = false
-                } else if (msg.Type === "title") {
+                } else if (msg.Type === "hcomic:bookname") {
                     console.log(msg.Data)
-                    this.formItem.Title = msg.Data
+                    this.formItem.Bookname = msg.Data
                     this.logs.push({msg: '解析到文件名: ' + msg.Data, type: 'primary'})
-                } else if (msg.Type === "downloadURL") {
+                } else if (msg.Type === "hcomic:id") {
+                    console.log(msg.Data)
+                    this.bookid = msg.Data
+                    this.logs.push({msg: '解析到ID: ' + msg.Data, type: 'primary'})
+                } else if (msg.Type === "hcomic:downloadURL") {
                     console.log('从URL下载', msg.Data)
                     downloadFile(msg.Data, this.zipFileName)
-                } else if (msg.Type === "download") {
+                } else if (msg.Type === "hcomic:download") {
                     console.log('从websocket下载')
                     downloadFileByBase64(msg.Data, this.zipFileName)
                     this.$Message.success({content: '下载成功!'});
                     this.logs.push({msg: '下载成功!', type: 'success', duration: 0})
                     // 清理表单
                     this.formItem.Url = ''
-                    this.formItem.Title = ''
+                    this.formItem.Bookname = ''
                     this.formItem.Author = ''
                     // 清理状态
                     this.drawer = false

@@ -50,7 +50,7 @@ func ArticleSubmit(client *core.WsClient, message core.Message) {
 		client.WsSend <- core.NewMessage("Error", "生成epub失败")
 		return
 	}
-	err = kindlegen.Conver(book.EpubFile, path.Base(book.MobiFile))
+	err = kindlegen.Conver(book.EpubFile, path.Base(book.MobiFile), false)
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", "生成mobi失败")
 		return

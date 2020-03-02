@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/GeertJohan/go.rice"
+	"github.com/gorilla/websocket"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/labstack/gommon/log"
@@ -11,7 +12,6 @@ import (
 	"github.com/ystyle/kas/util/config"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/hcomic"
-	"golang.org/x/net/websocket"
 	"net/http"
 	"os"
 	"path"
@@ -19,11 +19,15 @@ import (
 	"time"
 )
 
+var upgrader = websocket.Upgrader{}
+
 func WS(c echo.Context) error {
-	websocket.Handler(func(ws *websocket.Conn) {
-		wm := core.GetWsManager()
-		wm.Add(core.NewWsClient(ws))
-	}).ServeHTTP(c.Response(), c.Request())
+	ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
+	if err != nil {
+		return err
+	}
+	wm := core.GetWsManager()
+	wm.Add(core.NewWsClient(ws, c.Request()))
 	return nil
 }
 
@@ -48,7 +52,7 @@ func main() {
 
 	wm := core.GetWsManager()
 	// hcomic
-	wm.RegisterService("download", services.Submit)
+	wm.RegisterService("hcomic:submit", services.Submit)
 	// text to epub / mobi
 	wm.RegisterService("text:upload", services.TextUpload)
 	wm.RegisterService("text:preview", services.TextPreView)
@@ -56,6 +60,8 @@ func main() {
 	wm.RegisterService("text:download", services.TextDownload)
 	// aricle
 	wm.RegisterService("article:submit", services.ArticleSubmit)
+	// ping
+	wm.RegisterService("ping", services.Ping)
 
 	e := echo.New()
 	e.Use(middleware.Logger())
@@ -69,6 +75,7 @@ func main() {
 	e.GET("/asset/*", echo.WrapHandler(assetHandler))
 	e.Static("/download", "storage")
 	e.GET("/ws", WS)
+	e.GET("/ws#", WS)
 
 	timer := time.NewTimer(time.Second * 5)
 	go func() {

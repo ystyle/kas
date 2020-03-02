@@ -14,9 +14,11 @@ import (
 	"github.com/ystyle/kas/util/zlib"
 	"io"
 	"io/ioutil"
+	"os"
 	"path"
 	"regexp"
 	"strings"
+	"unicode/utf8"
 )
 
 const (
@@ -65,7 +67,7 @@ func TextUpload(client *core.WsClient, message core.Message) {
 			continue
 		}
 		// 处理标题
-		if len(line) <= bookinfo.MaxLen && reg.MatchString(line) {
+		if utf8.RuneCountInString(line) <= bookinfo.MaxLen && reg.MatchString(line) {
 			if title == "" {
 				title = "说明"
 			}
@@ -124,7 +126,8 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	for _, section := range book.Sections {
 		e.AddSection(section.Content, section.Title, "", "")
 	}
-	err := e.Write(book.CacheMobi)
+	file.CheckDir(path.Dir(book.CacheEpub))
+	err := e.Write(book.CacheEpub)
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", "生成epub文件错误")
 		return
@@ -144,7 +147,7 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	}
 	// 转换mobi文件
 	client.WsSend <- core.NewMessage("info", "正在生成生成mobi文件...")
-	err = kindlegen.Conver(book.CacheEpub, book.ID)
+	err = kindlegen.Conver(book.CacheEpub, path.Base(book.CacheMobi), book.OnlyKF8 == "1")
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", "生成mobi文件错误")
 		return
@@ -152,11 +155,15 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	// 复制到保存目录
 	err = TextCompressZip(client, book, "mobi")
 	if err != nil {
-		client.WsSend <- core.NewMessage("Error", "生成epub文件错误")
+		client.WsSend <- core.NewMessage("Error", "生成mobi文件错误")
 		return
 	}
 	// 下载mobi文件
 	bookDownload(client, book, "mobi")
+	os.Remove(book.CacheEpub)
+	os.Remove(book.CacheMobi)
+	os.Remove(book.StoreEpub)
+	os.Remove(book.StoreMobi)
 }
 
 func TextCompressZip(client *core.WsClient, book model.TextInfo, format string) error {

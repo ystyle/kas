@@ -16,6 +16,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 FROM alpine
 COPY --from=build-env /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY --from=build-env /go/src/app/kas /app/kas
+COPY --from=build-env /go/src/app/public /app/public
 COPY --from=build-env /go/src/app/kindlegen /bin/kindlegen
 WORKDIR /app
 VOLUME ["/app/storage"]

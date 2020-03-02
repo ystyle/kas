@@ -1,8 +1,10 @@
 package kindlegen
 
 import (
+	"github.com/ystyle/kas/util/file"
 	"os"
 	"os/exec"
+	"path"
 	"runtime"
 )
 
@@ -13,7 +15,7 @@ func Run(command string, args ...string) error {
 	return cmd.Run()
 }
 
-func Conver(source string, bookname string) error {
+func Conver(source string, bookname string, onlyKF8 bool) error {
 	command := "kindlegen"
 	if runtime.GOOS == "windows" {
 		command = "kindlegen.exe"
@@ -22,6 +24,16 @@ func Conver(source string, bookname string) error {
 	if err != nil {
 		return err
 	}
-	err = Run(kindlegen, "-c1", "-dont_append_source", source, "-o", bookname)
-	return err
+	if onlyKF8 {
+		err = Run(kindlegen, "-c1", "-dont_append_source", source, "-o", bookname)
+	} else {
+		err = Run(kindlegen, "-c1", source, "-o", bookname)
+	}
+	if err != nil {
+		if ok, _ := file.IsExists(path.Join(path.Dir(source), bookname)); ok {
+			return nil
+		}
+		return err
+	}
+	return nil
 }

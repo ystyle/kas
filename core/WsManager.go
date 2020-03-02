@@ -42,7 +42,7 @@ func (m *WsManager) Add(client *WsClient) {
 		if service, ok := m.services[message.Type]; ok {
 			service(c, message)
 		} else {
-			log.Warn("Message type: %s not have any service")
+			log.Warn("Message type: %s not have any service", message.Type)
 		}
 	})
 }

@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 	"github.com/GeertJohan/go.rice"
+	"github.com/gorilla/websocket"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/services"
 	"github.com/ystyle/kas/util/config"
+	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/hcomic"
-	"github.com/ystyle/kas/util/zip"
-	"golang.org/x/net/websocket"
 	"net/http"
 	"os"
 	"path"
@@ -19,16 +19,20 @@ import (
 	"time"
 )
 
+var upgrader = websocket.Upgrader{}
+
 func WS(c echo.Context) error {
-	websocket.Handler(func(ws *websocket.Conn) {
-		wm := core.GetWsManager()
-		wm.Add(core.NewWsClient(ws))
-	}).ServeHTTP(c.Response(), c.Request())
+	ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
+	if err != nil {
+		return err
+	}
+	wm := core.GetWsManager()
+	wm.Add(core.NewWsClient(ws, c.Request()))
 	return nil
 }
 
 func createStoreDir() {
-	if ok, _ := zip.IsExists(path.Join(config.StoreDir)); !ok {
+	if ok, _ := file.IsExists(path.Join(config.StoreDir)); !ok {
 		err := os.MkdirAll(path.Join(config.StoreDir), config.Perm)
 		if err != nil {
 			log.Fatal("服务启动失败: 没有写入权限")
@@ -48,12 +52,16 @@ func main() {
 
 	wm := core.GetWsManager()
 	// hcomic
-	wm.RegisterService("download", services.Submit)
+	wm.RegisterService("hcomic:submit", services.Submit)
 	// text to epub / mobi
 	wm.RegisterService("text:upload", services.TextUpload)
 	wm.RegisterService("text:preview", services.TextPreView)
 	wm.RegisterService("text:convert", services.TextConvert)
 	wm.RegisterService("text:download", services.TextDownload)
+	// aricle
+	wm.RegisterService("article:submit", services.ArticleSubmit)
+	// ping
+	wm.RegisterService("ping", services.Ping)
 
 	e := echo.New()
 	e.Use(middleware.Logger())
@@ -63,10 +71,11 @@ func main() {
 
 	box := rice.MustFindBox("public")
 	assetHandler := http.FileServer(box.HTTPBox())
-	e.GET("/", echo.WrapHandler(assetHandler))
+	e.GET("/*", echo.WrapHandler(assetHandler))
 	e.GET("/asset/*", echo.WrapHandler(assetHandler))
 	e.Static("/download", "storage")
 	e.GET("/ws", WS)
+	e.GET("/ws#", WS)
 
 	timer := time.NewTimer(time.Second * 5)
 	go func() {

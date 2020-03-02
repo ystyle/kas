@@ -1,0 +1,3228 @@
+[
+  {
+    "Name": "cnbeta.com",
+    "Url": "http(s)?:\\/\\/.*.cnbeta.com\\/articles\\/.*\\/.*",
+    "Title": "pipeline:selector:header.title h1|text",
+    "Desc": "pipeline:selector:.article-summary|text",
+    "Include": "selector:div.article-content",
+    "Exclude": [
+      "selector:div.clearfix",
+      "selector:div.rating_box",
+      "text:\u003cstrong\u003e[广告]活动入口:\u003c/strong\u003e",
+      "selector:div.article-relation"
+    ]
+  },
+  {
+    "Name": "m.qdaily.com",
+    "Url": "http(s)?:\\/\\/m.qdaily.com\\/mobile\\/articles\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "selector:div.excerpt",
+    "Include": "selector:div.detail",
+    "Exclude": [
+      "selector:div.author-share",
+      "selector:div.icon-pics",
+      "selector:div.embed-control"
+    ]
+  },
+  {
+    "Name": "qdaily.com",
+    "Url": "http:\\/\\/www.qdaily.com\\/articles\\/",
+    "Title": "selector:h2.title",
+    "Desc": "selector:p.excerpt",
+    "Include": "selector:div.article-detail-bd",
+    "Exclude": [
+      "selector:div.author-share",
+      "selector:div.embed-control"
+    ]
+  },
+  {
+    "Name": "topic.readhub.cn",
+    "Url": "https:\\/\\/readhub.cn\\/topic\\/.*",
+    "Title": "selector:h2.topicTitle___3DA7c",
+    "Desc": "",
+    "Include": "pipeline:selector:.content___2CL42|selector:.summary___3oqrM|parent|html",
+    "Exclude": null
+  },
+  {
+    "Name": "newsflashes.36kr.com",
+    "Url": "https:\\/\\/36kr.com\\/newsflashes\\/.*",
+    "Title": "selector:a.item-title",
+    "Desc": "",
+    "Include": "selector:pre.pre-item-des",
+    "Exclude": null
+  },
+  {
+    "Name": "36kr.com",
+    "Url": "http(s)?:\\/\\/36kr.com\\/p\\/",
+    "Title": "selector:title",
+    "Desc": "selector:div.summary",
+    "Include": "selector:div.articleDetailContent",
+    "Exclude": [
+      "selector:div.author-panel",
+      "selector:section.article-footer-label",
+      "selector:section.report-code-section",
+      "selector:section.single-post-tags",
+      "selector:div.share-nav"
+    ]
+  },
+  {
+    "Name": "s.pingwest.com",
+    "Url": "http(s)?:\\/\\/www.pingwest.com\\/s\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "pipeline:selector:section.content|index:1|html",
+    "Exclude": null
+  },
+  {
+    "Name": "wire.pingwest.com",
+    "Url": "http(s)?:\\/\\/www.pingwest.com\\/wire\\/",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div#sc-container",
+    "Exclude": [
+      "selector:p.post-footer-wx"
+    ]
+  },
+  {
+    "Name": "pingwest.com",
+    "Url": "http(s)?:\\/\\/www.pingwest.com\\/a\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:article.article-style",
+    "Exclude": [
+      "selector:p.post-footer-wx"
+    ]
+  },
+  {
+    "Name": "jiemian.com",
+    "Url": "http:\\/\\/www.jiemian.com\\/article\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-main",
+    "Exclude": [
+      "selector:div.share-view",
+      "selector:.article-btn",
+      "selector:div.article-footer",
+      "selector:p.report-view",
+      "selector:[src*=146241438767289600_a580xH]"
+    ]
+  },
+  {
+    "Name": "news.ifanr.com",
+    "Url": "http:\\/\\/www.ifanr.com\\/news\\/",
+    "Title": "selector:h1.c-single-normal__title",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": [
+      "selector:div.entry-header",
+      "selector:div.entry-meta",
+      "selector:a.entry-comment-number",
+      "selector:div.article-header",
+      "selector:div.article-jiong-banner",
+      "selector:div.popup",
+      "selector:div.article-sns-tool"
+    ]
+  },
+  {
+    "Name": "minapp.ifanr.com",
+    "Url": "http:\\/\\/www.ifanr.com\\/minapp\\/",
+    "Title": "selector:h1.c-single-normal__title",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": [
+      "text:\u003cspan\u003e本文由知晓程序授权转载\u003c/span\u003e",
+      "selector:[src*=new_zx-1]",
+      "selector:div.entry-header",
+      "selector:div.entry-meta",
+      "selector:a.entry-comment-number",
+      "selector:div.article-header",
+      "selector:div.article-jiong-banner",
+      "selector:div.popup",
+      "selector:div.article-sns-tool",
+      "selector:[src*=zxcx-qun-1]"
+    ]
+  },
+  {
+    "Name": "app.ifanr.com",
+    "Url": "http:\\/\\/www.ifanr.com\\/app\\/",
+    "Title": "selector:title",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "selector:article",
+    "Exclude": [
+      "selector:div.c-appso-download",
+      "text:\u003cstrong\u003e本文由让手机更好用\u003c/strong\u003e",
+      "selector:[src*=AppSo-qrcode-signature]",
+      "text:\u003cstrong\u003e▽\u003c/strong\u003e",
+      "selector:div.entry-header",
+      "selector:div.entry-meta",
+      "selector:a.entry-comment-number",
+      "selector:div.article-header",
+      "selector:div.article-jiong-banner",
+      "selector:div.popup",
+      "selector:div.article-sns-tool",
+      "selector:[src*=banner2]"
+    ]
+  },
+  {
+    "Name": "dasheng.ifanr.com",
+    "Url": "http:\\/\\/www.ifanr.com\\/dasheng\\/",
+    "Title": "selector:p.c-single-dasheng__content",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": null
+  },
+  {
+    "Name": "data.ifanr.com",
+    "Url": "http:\\/\\/www.ifanr.com\\/data\\/",
+    "Title": "selector:p.c-single-data__desc",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": null
+  },
+  {
+    "Name": "weizhizao.ifanr.com",
+    "Url": "http:\\/\\/www.ifanr.com\\/weizhizao\\/",
+    "Title": "selector:h1.c-single-normal__title",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": null
+  },
+  {
+    "Name": "ifanr.com",
+    "Url": "http:\\/\\/www.ifanr.com\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": [
+      "text:\u003cspan\u003e快速关注知晓程序\u003c/span\u003e",
+      "text:\u003cstrong\u003e本文由知晓程序原创出品\u003c/strong\u003e",
+      "text:\u003cstrong\u003e爱范儿旗下专注于小程序生态的公众号\u003c/strong\u003e",
+      "selector:div.entry-header",
+      "selector:div.entry-meta",
+      "selector:a.entry-comment-number",
+      "selector:div.article-header",
+      "selector:div.entry-content__tags",
+      "selector:div.article-info",
+      "selector:div.article-jiong-banner",
+      "selector:div.popup",
+      "selector:div.article-sns-tool",
+      "selector:[src*=zxcx-1]"
+    ]
+  },
+  {
+    "Name": "minapp.com",
+    "Url": "https:\\/\\/minapp.com\\/article\\/",
+    "Title": "selector:h1.article-header-title",
+    "Desc": "",
+    "Include": "selector:div.origin-content",
+    "Exclude": [
+      "text:\u003cstrong\u003e本文由知晓程序\u003c/strong\u003e",
+      "selector:[src*=zxcx_0208]"
+    ]
+  },
+  {
+    "Name": "io.sspai.com",
+    "Url": "https:\\/\\/ios.sspai.com\\/.*.*\\/.*\\/.*",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div#article-content",
+    "Exclude": [
+      "selector:span.ss-app-card",
+      "selector:div.ss-left",
+      "selector:div.ss-right"
+    ]
+  },
+  {
+    "Name": "sspai.com",
+    "Url": "https:\\/\\/sspai.com\\/post\\/",
+    "Title": "pipeline:selector:title|text",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "selector:.articleWidth-content .content",
+    "Exclude": [
+      "selector:img#s1",
+      "selector:hr",
+      "text:\u003cspan\u003e我们主张分享真实的产品体验\u003c/span\u003e",
+      "text:\u003cspan\u003e本文内容仅代表作者本人观点\u003c/span\u003e",
+      "selector:[src*=342459.png]"
+    ]
+  },
+  {
+    "Name": "m.dgtle.com",
+    "Url": "http(s)?:\\/\\/www.dgtle.com\\/portal.php.*",
+    "Title": "selector:h1.cr_h1title",
+    "Desc": "",
+    "Include": "selector:div#view_content",
+    "Exclude": null
+  },
+  {
+    "Name": "dgtle.com",
+    "Url": "http(s)?:\\/\\/www.dgtle.com\\/article-.*.html",
+    "Title": "selector:title",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "pipeline:selector:.view_content|html||selector:#view_content|html||selector:#articleContent|html||selector:.forum-viewthread-article-box|html",
+    "Exclude": [
+      "selector:div#comments_top",
+      "selector:[src*=xxxxxbbs]"
+    ]
+  },
+  {
+    "Name": "bbs.dgtle.com",
+    "Url": "http(s)?:\\/\\/.*.dgtle.com\\/thread-.*.html",
+    "Title": "selector:title",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "selector:div.forum-viewthread-article-box",
+    "Exclude": [
+      "selector:div#comments_top",
+      "selector:[src*=xxxxxbbs]"
+    ]
+  },
+  {
+    "Name": "zhuanlan.zhihu.com",
+    "Url": "https:\\/\\/zhuanlan.zhihu.com\\/p\\/",
+    "Title": "selector:h1.Post-Title",
+    "Desc": "",
+    "Include": "selector:div.RichText.Post-RichText",
+    "Exclude": null
+  },
+  {
+    "Name": "dudu.zhihu.com",
+    "Url": "http:\\/\\/dudu.zhihu.com\\/story\\/",
+    "Title": "selector:h1.headline-title",
+    "Desc": "",
+    "Include": "selector:div.content",
+    "Exclude": null
+  },
+  {
+    "Name": "daily.zhihu.com",
+    "Url": "https:\\/\\/daily.zhihu.com\\/story\\/",
+    "Title": "selector:h1.headline-title",
+    "Desc": "",
+    "Include": "selector:.content",
+    "Exclude": null
+  },
+  {
+    "Name": "question.zhihu.com",
+    "Url": "https:\\/\\/www.zhihu.com\\/question\\/.*.*\\/.*",
+    "Title": "pipeline:selector:.QuestionHeader-main|selector:h1|index|text",
+    "Desc": "",
+    "Include": "pipeline:selector:.RichContent-inner|html",
+    "Exclude": [
+      "selector:i.icon-external"
+    ]
+  },
+  {
+    "Name": "geekpark.net",
+    "Url": "http:\\/\\/www.geekpark.net\\/topics\\/",
+    "Title": "selector:h1.topic-title",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "selector:article.article-body",
+    "Exclude": null
+  },
+  {
+    "Name": "news.geekpark.net",
+    "Url": "https:\\/\\/www.geekpark.net\\/news\\/.*",
+    "Title": "selector:h1.topic-title",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "jianshu.com",
+    "Url": "http:\\/\\/www.jianshu.com\\/p\\/",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div.show-content-free",
+    "Exclude": null
+  },
+  {
+    "Name": "waerfa.com",
+    "Url": "http:\\/\\/www.waerfa.com\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.s-single-article",
+    "Exclude": [
+      "selector:div.u-post-share-wrap"
+    ]
+  },
+  {
+    "Name": "mp.weixin.qq.com",
+    "Url": "http:\\/\\/mp.weixin.qq.com\\/.*",
+    "Title": "pipeline:selector:.rich_media_title_ios|text",
+    "Desc": "",
+    "Include": "selector:div#js_content",
+    "Exclude": null
+  },
+  {
+    "Name": "article.guokr.com",
+    "Url": "http:\\/\\/www.guokr.com\\/article\\/",
+    "Title": "selector:h1#articleTitle",
+    "Desc": "pipeline:selector:meta[name=Description]|attr:content",
+    "Include": "selector:div#articleContent",
+    "Exclude": [
+      "selector:div.article-extend",
+      "selector:p.copyright"
+    ]
+  },
+  {
+    "Name": "post.guokr.com",
+    "Url": "http:\\/\\/www.guokr.com\\/post\\/",
+    "Title": "selector:h1#articleTitle",
+    "Desc": "",
+    "Include": "selector:div#articleContent",
+    "Exclude": null
+  },
+  {
+    "Name": "question.guokr.com",
+    "Url": "http:\\/\\/www.guokr.com\\/question\\/.*",
+    "Title": "selector:h1#articleTitle",
+    "Desc": "",
+    "Include": "pipeline:selector:.gbbcode-content|html",
+    "Exclude": null
+  },
+  {
+    "Name": "zuimeia.com",
+    "Url": "http:\\/\\/zuimeia.com\\/app\\/",
+    "Title": "selector:span.sub-title",
+    "Desc": "selector:div.short-des",
+    "Include": "selector:div#article_content",
+    "Exclude": null
+  },
+  {
+    "Name": "spaces.ac.cn",
+    "Url": "https:\\/\\/spaces.ac.cn\\/archives\\/.*",
+    "Title": "selector:span.sub-title",
+    "Desc": "pipeline:selector:meta[name=Description]|attr:content||selector:meta[name=description]|attr:content",
+    "Include": "selector:div.PostContent",
+    "Exclude": null
+  },
+  {
+    "Name": "huxiu.com",
+    "Url": "https:\\/\\/www.huxiu.com\\/article\\/",
+    "Title": "selector:h1.t-h1",
+    "Desc": "",
+    "Include": "selector:div.article-content-wrap",
+    "Exclude": [
+      "selector:div.neirong-shouquan",
+      "selector:div.neirong-shouquan-public"
+    ]
+  },
+  {
+    "Name": "moment.douban.com",
+    "Url": "https:\\/\\/moment.douban.com\\/post\\/.*\\/",
+    "Title": "selector:h1#title",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "movie.douban.com",
+    "Url": "https:\\\\/\\\\/movie.douban.com\\\\/subject\\\\/\\d+\\\\/?\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#link-report",
+    "Exclude": null
+  },
+  {
+    "Name": "note.douban.com",
+    "Url": "https:\\\\/\\\\/www.douban.com\\\\/note\\\\/\\d+\\\\/?\\/]]",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#link-report",
+    "Exclude": null
+  },
+  {
+    "Name": "m.douban.com",
+    "Url": "https:\\/\\/m.douban.com\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "book.douban.com",
+    "Url": "https:\\/\\/book.douban.com\\/reading\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.book-content",
+    "Exclude": null
+  },
+  {
+    "Name": "people.douban.com",
+    "Url": "https:\\/\\/www.douban.com\\/people\\/.*\\/status\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.status-saying",
+    "Exclude": null
+  },
+  {
+    "Name": "douban.com",
+    "Url": "https:\\/\\/www.douban.com\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#link-report",
+    "Exclude": null
+  },
+  {
+    "Name": "qingmang.me",
+    "Url": "http:\\/\\/qingmang.me\\/magazines\\/.*\\/.*.*\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": [
+      "selector:header"
+    ]
+  },
+  {
+    "Name": "leiphone.com",
+    "Url": "https:\\/\\/www.leiphone.com\\/news\\/.*\\/.*.html",
+    "Title": "selector:h1.headTit",
+    "Desc": "",
+    "Include": "selector:div.lph-article-comView",
+    "Exclude": [
+      "text:\u003cspan\u003e公众号：雷锋网\u003c/span\u003e",
+      "text:\u003cp\u003e未经授权禁止转载\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "m.tmtpost.com",
+    "Url": "http:\\/\\/m.tmtpost.com\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "selector:p.post-abstract",
+    "Include": "selector:article",
+    "Exclude": [
+      "selector:h1",
+      "selector:div.post-info",
+      "selector:p.post-abstract",
+      "selector:div.pro_icon",
+      "selector:div.pro_intro.tc",
+      "text:\u003cstrong\u003e更多精彩内容\u003c/strong\u003e",
+      "text:\u003cstrong\u003e关注钛媒体微信号\u003c/strong\u003e",
+      "selector:[src*=wzny_ewm]"
+    ]
+  },
+  {
+    "Name": "tmtpost.com",
+    "Url": "http:\\/\\/www.tmtpost.com\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "selector:p.post-abstract",
+    "Include": "selector:article",
+    "Exclude": [
+      "selector:h1",
+      "selector:div.post-info",
+      "selector:p.post-abstract",
+      "selector:div.pro_icon",
+      "selector:div.pro_intro.tc",
+      "text:\u003cstrong\u003e更多精彩内容\u003c/strong\u003e",
+      "text:\u003cstrong\u003e关注钛媒体微信号\u003c/strong\u003e",
+      "selector:[src*=wzny_ewm]"
+    ]
+  },
+  {
+    "Name": "songshuhui.net",
+    "Url": "http:\\/\\/songshuhui.net\\/archives\\/",
+    "Title": "selector:span.contenttitle",
+    "Desc": "",
+    "Include": "selector:div.entry",
+    "Exclude": [
+      "selector:div.bshare-custom",
+      "selector:div.my-related-posts-box",
+      "text:\u003cstrong\u003e相关文章\u003c/strong\u003e"
+    ]
+  },
+  {
+    "Name": "infzm.com",
+    "Url": "http:\\/\\/www.infzm.com\\/content\\/",
+    "Title": "selector:h1.articleHeadline",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "selector:section#articleContent",
+    "Exclude": null
+  },
+  {
+    "Name": "nationalgeographic.com.cn",
+    "Url": "http:\\/\\/www.nationalgeographic.com.cn\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:div.title",
+    "Desc": "",
+    "Include": "selector:div#detailMain_box_img",
+    "Exclude": null
+  },
+  {
+    "Name": "appinn.com",
+    "Url": "http(s)?:\\/\\/www.appinn.com\\/.*\\/",
+    "Title": "pipeline:selector:.entry-title|text||selector:.post-title|text",
+    "Desc": "",
+    "Include": "pipeline:selector:.entry-content|html||selector:#content-area|html",
+    "Exclude": [
+      "selector:div.open_social_box",
+      "selector:div.os-share-box",
+      "selector:div.sharing-options",
+      "selector:div.wptouch-custom-showcase",
+      "selector:[src*=ds-logo-1-2-64]",
+      "selector:[src*=down]",
+      "selector:button.simplefavorite-button"
+    ]
+  },
+  {
+    "Name": "free.apprcn.com",
+    "Url": "http(s)?:\\/\\/free.apprcn.com\\/.*",
+    "Title": "selector:h2.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.wumii-hook",
+      "selector:div#wumiiDisplayDiv",
+      "selector:div#wp-share-list-container"
+    ]
+  },
+  {
+    "Name": "apprcn.com",
+    "Url": "http:\\/\\/www.apprcn.com\\/.*.html",
+    "Title": "selector:h2.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.wumii-hook",
+      "selector:div#wumiiDisplayDiv",
+      "selector:div#wp-share-list-container"
+    ]
+  },
+  {
+    "Name": "playpcesor.com",
+    "Url": "http(s)?:\\/\\/www.playpcesor.com\\/.*.*\\/.*.html",
+    "Title": "selector:h3.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": null
+  },
+  {
+    "Name": "steachs.com",
+    "Url": "https:\\/\\/steachs.com\\/archives\\/",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.post-contents",
+    "Exclude": null
+  },
+  {
+    "Name": "azofreeware.com",
+    "Url": "http(s)?:\\/\\/www.azofreeware.com\\/.*.*\\/.*.html",
+    "Title": "selector:h2.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": null
+  },
+  {
+    "Name": "m.weibo.cn",
+    "Url": "http(s)?:\\/\\/m.weibo.cn\\/.*.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.weibo-text",
+    "Exclude": null
+  },
+  {
+    "Name": "weibo.com",
+    "Url": "http(s)?:\\/\\/weibo.com\\/ttarticle\\/p\\/.*",
+    "Title": "pipeline:selector:.main_editor |.title|text",
+    "Desc": "",
+    "Include": "selector:div.WB_editor_iframe",
+    "Exclude": null
+  },
+  {
+    "Name": "leikeji.com",
+    "Url": "http:\\/\\/www.leikeji.com\\/article\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:div.article-body",
+    "Exclude": [
+      "selector:div.signature-qr",
+      "selector:ul.tag-list"
+    ]
+  },
+  {
+    "Name": "xueqiu.com",
+    "Url": "http(s)?:\\/\\/xueqiu.com\\/.*\\/.*",
+    "Title": "selector:h1.article__bd__title",
+    "Desc": "",
+    "Include": "selector:div.article__bd__detail",
+    "Exclude": [
+      "selector:#",
+      "selector:a.ke_img_link"
+    ]
+  },
+  {
+    "Name": "chuansong.me",
+    "Url": "http:\\/\\/chuansong.me\\/n\\/",
+    "Title": "selector:h2#activity-name",
+    "Desc": "",
+    "Include": "selector:div#js_content",
+    "Exclude": null
+  },
+  {
+    "Name": "stream.107cine.cm",
+    "Url": "http:\\/\\/107cine.com\\/stream\\/.*",
+    "Title": "selector:h2",
+    "Desc": "",
+    "Include": "selector:div.flow_content",
+    "Exclude": [
+      "selector:div.postfix",
+      "text:\u003cp\u003e影视工业网不会对原创文章作任何编辑\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "zhuanti.107cine.cm",
+    "Url": "http:\\/\\/107cine.com\\/zhuanti\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.zhuanti",
+    "Exclude": [
+      "selector:div.z-top",
+      "selector:div.datu"
+    ]
+  },
+  {
+    "Name": "jiemi.baike.com",
+    "Url": "http:\\/\\/jiemi.baike.com\\/pa\\/detail?id=.*",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div.jiemi-content",
+    "Exclude": null
+  },
+  {
+    "Name": "wikipedia.org",
+    "Url": "https:\\/\\/.*.wikipedia.org\\/wiki\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.mw-parser-output",
+    "Exclude": [
+      "selector:div#toc",
+      "selector:table.infobox",
+      "selector:span.mw-editsection",
+      "selector:table.navbox",
+      "selector:div.thumb",
+      "selector:div.dablink",
+      "selector:table.metadata",
+      "selector:math"
+    ]
+  },
+  {
+    "Name": "article.pmcaff.com",
+    "Url": "http(s)?:\\/\\/www.pmcaff.com\\/article\\/index\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#editorContent",
+    "Exclude": [
+      "selector:[src*=FlHy2hPIJYsjjeQRRKHhk0yfoLv]",
+      "text:\u003cb\u003e本文由PMCAFF专栏作者\u003c/b\u003e",
+      "text:\u003cstrong\u003e本文由\u003c/strong\u003e",
+      "text:\u003cstrong\u003e版权归原作者所有\u003c/strong\u003e"
+    ]
+  },
+  {
+    "Name": "discuss.pmcaff.com",
+    "Url": "http(s)?:\\/\\/www.pmcaff.com\\/discuss\\/answer\\/.*",
+    "Title": "selector:title",
+    "Desc": "selector:div.discussion-content",
+    "Include": "pipeline:selector:.panel-body|.content|html",
+    "Exclude": null
+  },
+  {
+    "Name": "answer.pmcaff.com",
+    "Url": "http(s)?:\\/\\/www.pmcaff.com\\/discuss\\/index\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#editorContent",
+    "Exclude": null
+  },
+  {
+    "Name": "dxy.cn",
+    "Url": "http:\\/\\/.*.dxy.cn\\/article\\/.*",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": [
+      "selector:div.x_detail_btm"
+    ]
+  },
+  {
+    "Name": "faq.dxy.com",
+    "Url": "https:\\/\\/dxy.com\\/faq\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.editor-style",
+    "Exclude": null
+  },
+  {
+    "Name": "column.dxy.com",
+    "Url": "https:\\/\\/dxy.com\\/column\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.editor-body",
+    "Exclude": null
+  },
+  {
+    "Name": "creative.adquan.com",
+    "Url": "http:\\/\\/creative.adquan.com\\/show\\/.*",
+    "Title": "selector:h2.text_title",
+    "Desc": "",
+    "Include": "selector:div.con_Text",
+    "Exclude": null
+  },
+  {
+    "Name": "post.adquan.com",
+    "Url": "http:\\/\\/www.adquan.com\\/post-.*.html",
+    "Title": "selector:h2.text_title",
+    "Desc": "",
+    "Include": "selector:div.con_Text",
+    "Exclude": null
+  },
+  {
+    "Name": "gonglve.mafengwo.cn",
+    "Url": "http(s)?:\\/\\/www.mafengwo.cn\\/gonglve\\/ziyouxing\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "pipeline:selector:meta[name=description]|attr:content",
+    "Include": "selector:div._j_content",
+    "Exclude": [
+      "selector:section.travelnote",
+      "selector:div.product-box",
+      "selector:div.pro_list"
+    ]
+  },
+  {
+    "Name": "i.mafengwo.cn",
+    "Url": "http(s)?:\\/\\/www.mafengwo.cn\\/i\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.vc_article",
+    "Exclude": [
+      "selector:a._j_anchor",
+      "selector:div#_j_paragraph_1"
+    ]
+  },
+  {
+    "Name": "bohaishibei.com",
+    "Url": "https:\\/\\/bohaishibei.com\\/post\\/.*\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": null
+  },
+  {
+    "Name": "read.bilibili.com",
+    "Url": "https:\\/\\/www.bilibili.com\\/read\\/cv.*",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div.article-holder",
+    "Exclude": null
+  },
+  {
+    "Name": "www.yixieshi.com",
+    "Url": "http(s)?:\\/\\/www.yixieshi.com\\/.*.html",
+    "Title": "selector:h1.post-title",
+    "Desc": "",
+    "Include": "selector:article.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "iplaysoft.com",
+    "Url": "https:\\/\\/www.iplaysoft.com\\/.*.html",
+    "Title": "selector:h1#post-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": null
+  },
+  {
+    "Name": "blog.jobbole.com",
+    "Url": "http:\\/\\/blog.jobbole.com\\/.*\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.entry",
+    "Exclude": [
+      "selector:div.copyright-area",
+      "selector:blockquote.rewards",
+      "selector:div.post-adds",
+      "selector:div#author-bio"
+    ]
+  },
+  {
+    "Name": "android.jobbole.com",
+    "Url": "http:\\/\\/android.jobbole.com\\/.*\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.entry",
+    "Exclude": [
+      "selector:div.copyright-area",
+      "selector:blockquote.rewards",
+      "selector:div.post-adds",
+      "selector:div#author-bio"
+    ]
+  },
+  {
+    "Name": "ios.jobbole.com",
+    "Url": "http:\\/\\/ios.jobbole.com\\/.*\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.entry",
+    "Exclude": [
+      "selector:div.copyright-area",
+      "selector:blockquote.rewards",
+      "selector:div.post-adds",
+      "selector:div#author-bio"
+    ]
+  },
+  {
+    "Name": "python.jobbole.com",
+    "Url": "http:\\/\\/python.jobbole.com\\/.*\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.entry",
+    "Exclude": [
+      "selector:div.copyright-area",
+      "selector:blockquote.rewards",
+      "selector:div.post-adds",
+      "selector:div#author-bio"
+    ]
+  },
+  {
+    "Name": "top.jobbole.com",
+    "Url": "http:\\/\\/top.jobbole.com\\/.*\\/",
+    "Title": "selector:h1.p-tit-single",
+    "Desc": "",
+    "Include": "selector:div.p-entry",
+    "Exclude": [
+      "selector:div.textwidget"
+    ]
+  },
+  {
+    "Name": "cnodejs.org",
+    "Url": "https:\\/\\/cnodejs.org\\/topic\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.topic_content",
+    "Exclude": null
+  },
+  {
+    "Name": "w3cplus.com",
+    "Url": "https:\\/\\/www.w3cplus.com\\/.*.*\\/.*.html",
+    "Title": "selector:h1#page-title",
+    "Desc": "",
+    "Include": "selector:div.body-content",
+    "Exclude": null
+  },
+  {
+    "Name": "w3cways.com",
+    "Url": "https:\\/\\/www.w3cways.com\\/.*.html",
+    "Title": "pipeline:selector:.container|h2 span|text",
+    "Desc": "",
+    "Include": "selector:article.article-content",
+    "Exclude": [
+      "selector:p.post-copyright"
+    ]
+  },
+  {
+    "Name": "div.io",
+    "Url": "http:\\/\\/div.io\\/topic\\/",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.topic-firstfloor-detail",
+    "Exclude": null
+  },
+  {
+    "Name": "news.aotu.io",
+    "Url": "https:\\/\\/news.aotu.io\\/a\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.news-body",
+    "Exclude": [
+      "text:\u003cp\u003e未经许可，禁止转载。\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "aotu.io",
+    "Url": "https:\\/\\/aotu.io\\/notes\\/.*.*\\/.*\\/.*\\/",
+    "Title": "selector:h1.post-tit",
+    "Desc": "",
+    "Include": "selector:div.post-content",
+    "Exclude": [
+      "selector:div.post-revision"
+    ]
+  },
+  {
+    "Name": "ruby-china.org",
+    "Url": "https:\\/\\/ruby-china.org\\/topics\\/",
+    "Title": "selector:h1.media-heading",
+    "Desc": "",
+    "Include": "pipeline:selector:.panel-body|index:0|html",
+    "Exclude": null
+  },
+  {
+    "Name": "infoq.cn",
+    "Url": "http(s)?:\\/\\/www.infoq.cn\\/article\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "infoq.com",
+    "Url": "http:\\/\\/www.infoq.com\\/cn\\/articles\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.text_info_article",
+    "Exclude": [
+      "selector:div.random_links",
+      "selector:div#comment_here",
+      "selector:div.comments",
+      "selector:div.all_comments",
+      "selector:div#overlay_comments",
+      "selector:div#replyPopup",
+      "selector:div#editCommentPopup",
+      "selector:div#messagePopup",
+      "selector:div#responseContent",
+      "selector:div.related",
+      "selector:div.comment_here",
+      "selector:script",
+      "selector:div.all_comments",
+      "selector:div.comments",
+      "text:\u003cp\u003e对本文的审校\u003c/p\u003e",
+      "text:\u003cp\u003e中文站投稿或者参与内容翻译工作\u003c/p\u003e",
+      "text:\u003cb\u003eQCon北京2017\u003c/b\u003e"
+    ]
+  },
+  {
+    "Name": "news.infoq.com",
+    "Url": "http:\\/\\/www.infoq.com\\/cn\\/news\\/.*.*\\/.*",
+    "Title": "selector:h1.general",
+    "Desc": "",
+    "Include": "selector:div.text_info",
+    "Exclude": [
+      "selector:div.random_links",
+      "selector:div.related",
+      "selector:div.comment_here",
+      "selector:script",
+      "selector:div.all_comments",
+      "selector:div.comments"
+    ]
+  },
+  {
+    "Name": "segmentfault.com",
+    "Url": "https:\\/\\/segmentfault.com\\/a\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article__content",
+    "Exclude": null
+  },
+  {
+    "Name": "post.juejin.im",
+    "Url": "http(s)?:\\/\\/juejin.im\\/post\\/.*",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "entry.juejin.im",
+    "Url": "http(s)?:\\/\\/juejin.im\\/entry\\/.*",
+    "Title": "pipeline:selector:.entry-public-view h1|text",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": null
+  },
+  {
+    "Name": "qianduan.net",
+    "Url": "https:\\/\\/www.qianduan.net\\/.*\\/",
+    "Title": "selector:h1.post-title",
+    "Desc": "",
+    "Include": "selector:section.post-content",
+    "Exclude": null
+  },
+  {
+    "Name": "importnew.com",
+    "Url": "http:\\/\\/www.importnew.com\\/.*.html",
+    "Title": "selector:div.entry-header",
+    "Desc": "",
+    "Include": "selector:div.entry",
+    "Exclude": null
+  },
+  {
+    "Name": "solidot.org",
+    "Url": "https:\\/\\/www.solidot.org\\/story?sid=.*",
+    "Title": "selector:div.bg_htit",
+    "Desc": "",
+    "Include": "selector:div.p_mainnew",
+    "Exclude": null
+  },
+  {
+    "Name": "ifeve.com",
+    "Url": "http:\\/\\/ifeve.com\\/.*\\/",
+    "Title": "selector:h3.title",
+    "Desc": "",
+    "Include": "selector:div.post_content",
+    "Exclude": [
+      "selector:div#jiathis_style_32x32",
+      "selector:div.abh_box",
+      "selector:span.wpfp-span",
+      "selector:div.yarpp-related",
+      "text:\u003cp\u003e转载请注明\u003c/p\u003e",
+      "selector:[src*=ifeve500X150]"
+    ]
+  },
+  {
+    "Name": "code.oschina.net",
+    "Url": "https:\\/\\/www.oschina.net\\/code\\/snippet_.*_.*",
+    "Title": "pipeline:selector:.QTitle|h1|text",
+    "Desc": "",
+    "Include": "selector:div.Body",
+    "Exclude": [
+      "selector:div.Title",
+      "selector:div#toolbar_wrapper",
+      "selector:.code_pieces h2",
+      "selector:div.toolbar",
+      "selector:div.QuestionRelations",
+      "selector:div#related_codes",
+      "selector:div.code_comments",
+      "selector:div.CommentForm",
+      "text:\u003cp\u003e开源中国-程序员在线工具\u003c/p\u003e",
+      "selector:i.jump_to_code",
+      "selector:div.code_report"
+    ]
+  },
+  {
+    "Name": "translate.oschina.net",
+    "Url": "https:\\/\\/www.oschina.net\\/translate\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.content",
+    "Exclude": null
+  },
+  {
+    "Name": "project.oschina.net",
+    "Url": "https:\\/\\/www.oschina.net\\/p\\/",
+    "Title": "pipeline:selector:header.box|selector:a|attr:title",
+    "Desc": "",
+    "Include": "selector:div.editor-viewer",
+    "Exclude": null
+  },
+  {
+    "Name": "my.oschina.net",
+    "Url": "https:\\/\\/my.oschina.net\\/.*.*\\/.*\\/blog\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#articleContent",
+    "Exclude": [
+      "selector:[src*=hot3]"
+    ]
+  },
+  {
+    "Name": "oschina.net",
+    "Url": "https:\\/\\/www.oschina.net\\/news\\/.*.*\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#articleContent",
+    "Exclude": [
+      "selector:[src*=hot3]",
+      "selector:div.thumb"
+    ]
+  },
+  {
+    "Name": "question.oschina.net",
+    "Url": "https:\\/\\/www.oschina.net\\/question\\/.*_.*",
+    "Title": "selector:span.question-title-link",
+    "Desc": "",
+    "Include": "selector:header.detail",
+    "Exclude": null
+  },
+  {
+    "Name": "news.iteye.com",
+    "Url": "http(s)?:\\/\\/www.iteye.com\\/news\\/.*",
+    "Title": "selector:h3#h3-title",
+    "Desc": "",
+    "Include": "selector:div#news_content",
+    "Exclude": null
+  },
+  {
+    "Name": "blog.iteye.com",
+    "Url": "http(s)?:\\/\\/.*.iteye.com\\/blog\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.iteye-blog-content-contain",
+    "Exclude": null
+  },
+  {
+    "Name": "geek.csdn.net",
+    "Url": "http(s)?:\\/\\/geek.csdn.net\\/news\\/detail\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.news_description",
+    "Exclude": [
+      "text:\u003cp\u003e欢迎关注CSDN大数据公众号\u003c/p\u003e",
+      "text:\u003cstrong\u003e关注以下公众号\u003c/strong\u003e",
+      "selector:[src*=20170119091646909]",
+      "selector:[src*=20170119152206448]",
+      "selector:[src*=20170120110155787]",
+      "selector:[src*=8tPUexU]"
+    ]
+  },
+  {
+    "Name": "blog.csdn.net",
+    "Url": "http(s)?:\\/\\/blog.csdn.net\\/.*\\/article\\/details\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article_content",
+    "Exclude": [
+      "selector:div.meau-gotop-box",
+      "selector:div.more-toolbox",
+      "selector:div.person-messagebox"
+    ]
+  },
+  {
+    "Name": "lib.csdn.net",
+    "Url": "http(s)?:\\/\\/lib.csdn.net\\/article\\/.*\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.divtexts",
+    "Exclude": null
+  },
+  {
+    "Name": "hacpai.com",
+    "Url": "https:\\/\\/hacpai.com\\/article\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "freebuf.com",
+    "Url": "http(s)?:\\/\\/www.freebuf.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "pipeline:selector:.title h2|text",
+    "Desc": "",
+    "Include": "selector:div#contenttxt",
+    "Exclude": [
+      "text:\u003cb\u003e注明来自\u003c/b\u003e"
+    ]
+  },
+  {
+    "Name": "ruanyifeng.com",
+    "Url": "http:\\/\\/www.ruanyifeng.com\\/blog\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:h1#page-title",
+    "Desc": "",
+    "Include": "selector:div#main-content",
+    "Exclude": [
+      "text:\u003cp\u003e（完）\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "ruanyf.yuque.com",
+    "Url": "https:\\/\\/www.yuque.com\\/ruanyf\\/weekly\\/issue-\\d+\\/",
+    "Title": "selector:h1#page-title",
+    "Desc": "pipeline:selector:meta[name=Description]|attr:content||selector:meta[name=description]|attr:content",
+    "Include": "selector:div[*=content] > div >div",
+    "Exclude": null
+  },
+  {
+    "Name": "v2ex.com",
+    "Url": "https:\\/\\/www.v2ex.com\\/t\\/",
+    "Title": "pipeline:selector:.header h1|text",
+    "Desc": "",
+    "Include": "selector:div.topic_content",
+    "Exclude": null
+  },
+  {
+    "Name": "news.cnblogs.com",
+    "Url": "https:\\/\\/news.cnblogs.com\\/n\\/",
+    "Title": "selector:div#news_title",
+    "Desc": "",
+    "Include": "selector:div#news_body",
+    "Exclude": null
+  },
+  {
+    "Name": "cnblogs.com",
+    "Url": "https:\\/\\/www.cnblogs.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:a#cb_post_title_url",
+    "Desc": "",
+    "Include": "selector:div#cnblogs_post_body",
+    "Exclude": null
+  },
+  {
+    "Name": "tuicool.com",
+    "Url": "http:\\/\\/www.tuicool.com\\/articles\\/",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.article_body",
+    "Exclude": null
+  },
+  {
+    "Name": "w3ctech.com",
+    "Url": "https:\\/\\/www.w3ctech.com\\/topic\\/",
+    "Title": "pipeline:selector:.topic_info |h1|text",
+    "Desc": "",
+    "Include": "selector:div.callout",
+    "Exclude": [
+      "text:\u003ch2\u003e关注我们\u003c/h2\u003e",
+      "text:\u003cp\u003e本文原文\u003c/p\u003e",
+      "text:\u003cp\u003e我们专注于H5技术生态的改善\u003c/p\u003e",
+      "text:\u003cp\u003e欢迎有兴趣的同行一起来玩儿\u003c/p\u003e",
+      "selector:[src*=yufe2015]",
+      "selector:div#wx-qrcode"
+    ]
+  },
+  {
+    "Name": "html-js.com",
+    "Url": "http:\\/\\/www.html-js.com\\/article\\/",
+    "Title": "pipeline:selector:.wrapper |div[rel=bookmark]|text",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.entry-meta"
+    ]
+  },
+  {
+    "Name": "open-open.com",
+    "Url": "http:\\/\\/www.open-open.com\\/lib\\/.*\\/.*.html",
+    "Title": "selector:h1#articleTitle",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": null
+  },
+  {
+    "Name": "colobu.com",
+    "Url": "http:\\/\\/colobu.com\\/.*.*\\/.*\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:div.article-entry",
+    "Exclude": null
+  },
+  {
+    "Name": "liqi.io",
+    "Url": "http:\\/\\/liqi.io\\/.*\\/",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "text:\u003cspan\u003e你也可以分享自己的利器\u003c/span\u003e"
+    ]
+  },
+  {
+    "Name": "daqianduan.com",
+    "Url": "http:\\/\\/www.daqianduan.com\\/.*.html",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:article.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "caibaojian.com",
+    "Url": "http:\\/\\/caibaojian.com\\/.*.html",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.article_index",
+      "text:\u003cspan\u003e原创翻译，未经许可，禁止转载\u003c/span\u003e"
+    ]
+  },
+  {
+    "Name": "hao.caibaojian.com",
+    "Url": "http:\\/\\/hao.caibaojian.com\\/.*.html",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.article_index",
+      "text:\u003cspan\u003e原创翻译，未经许可，禁止转载\u003c/span\u003e"
+    ]
+  },
+  {
+    "Name": "xfenglin.com",
+    "Url": "http:\\/\\/xfenglin.com\\/a\\/",
+    "Title": "pipeline:selector:.t-head|h2|text",
+    "Desc": "",
+    "Include": "selector:div.article__content",
+    "Exclude": null
+  },
+  {
+    "Name": "ibm.com",
+    "Url": "https:\\/\\/www.ibm.com\\/developerworks\\/cn\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:h1#ibm-pagetitle-h1",
+    "Desc": "",
+    "Include": "selector:div.ibm-col-6-4",
+    "Exclude": [
+      "selector:h1#ibm-pagetitle-h1",
+      "selector:div.dw-article-topbar",
+      "selector:div.ibm-alternate-rule",
+      "selector:h4#artrelatedtopics",
+      "selector:ul.ibm-plain-list",
+      "selector:div#dw-article-cmts-top",
+      "selector:div.dw-article-cmts-container",
+      "selector:p.ibm-ind-link",
+      "selector:div.dw-article-sidebar"
+    ]
+  },
+  {
+    "Name": "guanggoo.com",
+    "Url": "http:\\/\\/www.guanggoo.com\\/t\\/",
+    "Title": "selector:h3.title",
+    "Desc": "",
+    "Include": "pipeline:selector:.ui-content|index:0|html",
+    "Exclude": null
+  },
+  {
+    "Name": "ctolib.com",
+    "Url": "http:\\/\\/www.ctolib.com\\/.*.html",
+    "Title": "selector:h3.m-t-xs",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": [
+      "selector:a.anchor"
+    ]
+  },
+  {
+    "Name": "zuojj.com",
+    "Url": "http:\\/\\/www.zuojj.com\\/archives\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:article.article-content",
+    "Exclude": [
+      "selector:div.copyright_con",
+      "selector:div.article-social"
+    ]
+  },
+  {
+    "Name": "wkee.net",
+    "Url": "http:\\/\\/wkee.net\\/post\\/",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div#content0",
+    "Exclude": [
+      "selector:p.author",
+      "selector:div.sharebar"
+    ]
+  },
+  {
+    "Name": "xituqu.com",
+    "Url": "https:\\/\\/xituqu.com\\/.*.html",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div.post-content",
+    "Exclude": [
+      "text:\u003ch2\u003e关注稀土区微信公众号，获取一手资源\u003c/h2\u003e",
+      "selector:[src*=006tNc79gw1f6gzqizciyj3076076aai]"
+    ]
+  },
+  {
+    "Name": "linuxsight.com",
+    "Url": "http:\\/\\/www.linuxsight.com\\/blog\\/",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.single-content",
+    "Exclude": [
+      "selector:div.ad-site"
+    ]
+  },
+  {
+    "Name": "coyee.com",
+    "Url": "https:\\/\\/coyee.com\\/article\\/",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#sections",
+    "Exclude": [
+      "selector:div.section_side_bar"
+    ]
+  },
+  {
+    "Name": "36dsj.com",
+    "Url": "http:\\/\\/www.36dsj.com\\/archives\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:article.article-content",
+    "Exclude": [
+      "text:\u003cp\u003e转载请注明来自\u003c/p\u003e",
+      "text:\u003cp\u003eEnd.\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "cocoachina.com",
+    "Url": "http:\\/\\/www.cocoachina.com\\/.*\\/.*\\/.*.html",
+    "Title": "selector:h2",
+    "Desc": "",
+    "Include": "selector:div#detailbody",
+    "Exclude": [
+      "selector:#"
+    ]
+  },
+  {
+    "Name": "dataunion.org",
+    "Url": "http:\\/\\/dataunion.org\\/.*.html",
+    "Title": "selector:h1.mscctitle",
+    "Desc": "",
+    "Include": "selector:div.content-text",
+    "Exclude": null
+  },
+  {
+    "Name": "linux.cn",
+    "Url": "https:\\/\\/linux.cn\\/article-.*.html",
+    "Title": "selector:h1#article_title",
+    "Desc": "",
+    "Include": "selector:div#article_content",
+    "Exclude": [
+      "text:\u003cp\u003e本文由\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "techug.com",
+    "Url": "http:\\/\\/www.techug.com\\/post\\/",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div#content0",
+    "Exclude": null
+  },
+  {
+    "Name": "article.ituring.com.cn",
+    "Url": "http:\\/\\/www.ituring.com.cn\\/article\\/",
+    "Title": "pipeline:selector:.article-title|h2|text",
+    "Desc": "",
+    "Include": "selector:div.article",
+    "Exclude": [
+      "text:\u003ch2\u003e加入图灵访谈微信\u003c/h2\u003e",
+      "selector:[src*=01YrJhnWRMld]"
+    ]
+  },
+  {
+    "Name": "book.ituring.com.cn",
+    "Url": "http:\\/\\/www.ituring.com.cn\\/book\\/tupubarticle\\/",
+    "Title": "pipeline:selector:.online-book-title|h3|text",
+    "Desc": "",
+    "Include": "selector:div.article-detail",
+    "Exclude": null
+  },
+  {
+    "Name": "issue.github.com",
+    "Url": "https:\\/\\/github.com\\/.*\\/.*\\/issues\\/.*",
+    "Title": "pipeline:selector:h1.gh-header-title .js-issue-title|text",
+    "Desc": "",
+    "Include": "pipeline:selector:#discussion_bucket table td.js-comment-body|html",
+    "Exclude": null
+  },
+  {
+    "Name": "markdown.github.com",
+    "Url": "https:\\/\\/github.com\\/.*.*\\/.*\\/.*.md",
+    "Title": "pipeline:selector:title|text",
+    "Desc": "",
+    "Include": "selector:article.markdown-body",
+    "Exclude": [
+      "selector:a.anchor"
+    ]
+  },
+  {
+    "Name": "msdn.microsoft.com",
+    "Url": "https:\\/\\/msdn.microsoft.com\\/.*.*\\/.*\\/.*.aspx",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": [
+      "selector:div#navigationButtons"
+    ]
+  },
+  {
+    "Name": "docs.microsoft.com",
+    "Url": "https:\\/\\/docs.microsoft.com\\/.*\\/.*\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#main",
+    "Exclude": null
+  },
+  {
+    "Name": "developer.mozilla.org",
+    "Url": "https:\\/\\/developer.mozilla.org\\/.*\\/docs\\/.*\\/.*.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:article#wikiArticle",
+    "Exclude": [
+      "selector:aside#helpful-survey",
+      "selector:a.section-edit"
+    ]
+  },
+  {
+    "Name": "apps.mozilla.org",
+    "Url": "https:\\/\\/developer.mozilla.org\\/.*\\/Apps\\/.*\\/.*.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:article#wikiArticle",
+    "Exclude": [
+      "selector:aside#helpful-survey",
+      "selector:a.section-edit"
+    ]
+  },
+  {
+    "Name": "article.52im.net",
+    "Url": "http:\\/\\/www.52im.net\\/article-.*.html",
+    "Title": "selector:h1.ph",
+    "Desc": "selector:div.js-ptl-atcl-summery",
+    "Include": "selector:#",
+    "Exclude": null
+  },
+  {
+    "Name": "thread.52im.net",
+    "Url": "http:\\/\\/www.52im.net\\/thread-.*.html",
+    "Title": "selector:span#thread_subject",
+    "Desc": "",
+    "Include": "pipeline:selector:td.t_f:first|html",
+    "Exclude": null
+  },
+  {
+    "Name": "edaoe.com",
+    "Url": "http(s)?:\\/\\/www.edaoe.com\\/.*.html",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:article.article-content",
+    "Exclude": [
+      "selector:div.article-social"
+    ]
+  },
+  {
+    "Name": "gallery.edaoe.com",
+    "Url": "http:\\/\\/www.edaoe.com\\/gallery\\/.*.html",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:article.article-content",
+    "Exclude": [
+      "selector:div.article-social"
+    ]
+  },
+  {
+    "Name": "chinabyte.cm",
+    "Url": "http:\\/\\/.*.chinabyte.com\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.art_txt",
+    "Exclude": null
+  },
+  {
+    "Name": "wiki.jikexueyuan.com",
+    "Url": "http:\\/\\/wiki.jikexueyuan.com\\/project\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.markdown-body",
+    "Exclude": [
+      "selector:h1",
+      "selector:a#"
+    ]
+  },
+  {
+    "Name": "ourcoders.com",
+    "Url": "http:\\/\\/ourcoders.com\\/thread\\/show\\/.*\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "pipeline:selector:.threadblock|index:0|html",
+    "Exclude": null
+  },
+  {
+    "Name": "uisdc.com",
+    "Url": "http:\\/\\/www.uisdc.com\\/.*",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.similarity",
+      "selector:div.post-copyright",
+      "selector:[src*=youshege725]"
+    ]
+  },
+  {
+    "Name": "kancloud.cn",
+    "Url": "http(s)?:\\/\\/www.kancloud.cn\\/.*\\/.*\\/.*",
+    "Title": "pipeline:selector:.article-head|h1|text",
+    "Desc": "",
+    "Include": "pipeline:selector:.article-body|index:0|html",
+    "Exclude": [
+      "selector:[src*=5a5e9e309af5e]"
+    ]
+  },
+  {
+    "Name": "index.gitbook.com",
+    "Url": "http(s)?:\\/\\/.*.gitbooks.io\\/.*\\/content\\/",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.page-inner",
+    "Exclude": null
+  },
+  {
+    "Name": "gitbook.com",
+    "Url": "http(s)?:\\/\\/.*.gitbooks.io\\/.*\\/content\\/.*.*\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.page-inner",
+    "Exclude": null
+  },
+  {
+    "Name": "index.developers.weixin.qq.com",
+    "Url": "http(s)?:\\/\\/developers.weixin.qq.com\\/miniprogram\\/dev\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:section.markdown-section",
+    "Exclude": null
+  },
+  {
+    "Name": "developers.weixin.qq.com",
+    "Url": "http(s)?:\\/\\/developers.weixin.qq.com\\/miniprogram\\/dev\\/.*.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:section.markdown-section",
+    "Exclude": null
+  },
+  {
+    "Name": "williamlong.info",
+    "Url": "http(s)?:\\/\\/www.williamlong.info\\/archives\\/.*.html",
+    "Title": "selector:h1.post-title",
+    "Desc": "",
+    "Include": "selector:div#artibody",
+    "Exclude": null
+  },
+  {
+    "Name": "blog.wanqu.co",
+    "Url": "https:\\/\\/wanqu.co\\/b\\/.*\\/.*.html.*",
+    "Title": "pipeline:selector:.blog-post-body h1|text",
+    "Desc": "",
+    "Include": "selector:div.blog-post-body",
+    "Exclude": [
+      "selector:h1"
+    ]
+  },
+  {
+    "Name": "hacknews.codedata.cn",
+    "Url": "http:\\/\\/www.codedata.cn\\/hacknews\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": null
+  },
+  {
+    "Name": "topics.codedata.cn",
+    "Url": "http:\\/\\/www.codedata.cn\\/topics\\/.*",
+    "Title": "selector:h1.media-heading",
+    "Desc": "",
+    "Include": "selector:article",
+    "Exclude": null
+  },
+  {
+    "Name": "teakki.com",
+    "Url": "https:\\/\\/teakki.com\\/p\\/.*",
+    "Title": "selector:h1.content-title",
+    "Desc": "",
+    "Include": "selector:div.content-content",
+    "Exclude": null
+  },
+  {
+    "Name": "cppdaxue.com",
+    "Url": "http:\\/\\/cppdaxue.com\\/.*\\/.*.html",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:#",
+    "Exclude": [
+      "selector:div.article-social"
+    ]
+  },
+  {
+    "Name": "bobao.360.cn",
+    "Url": "http:\\/\\/bobao.360.cn\\/.*\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#article_box",
+    "Exclude": [
+      "selector:h2",
+      "selector:div.article-msg",
+      "selector:hr"
+    ]
+  },
+  {
+    "Name": "thebigdata.cn",
+    "Url": "http:\\/\\/www.thebigdata.cn\\/.*\\/.*.html",
+    "Title": "selector:h1.aTitle",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "blog.codingnow.com",
+    "Url": "https:\\/\\/blog.codingnow.com\\/.*\\/.*\\/.*.html",
+    "Title": "selector:h3.entry-header",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": null
+  },
+  {
+    "Name": "coolshell.cn",
+    "Url": "https:\\/\\/coolshell.cn\\/articles\\/.*.html",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.jiathis_style",
+      "selector:div#wp_rp_first",
+      "selector:div.post-ratings",
+      "selector:footer.entry-footer",
+      "selector:[src*=qrcode_for_gh_dd9d8c843f20_860]",
+      "selector:[src*=100offer_600_200]",
+      "text:\u003cp\u003e微信公众账号可以在手机端搜索文章\u003c/p\u003e",
+      "text:\u003cp\u003e全文完\u003c/p\u003e",
+      "text:\u003cstrong\u003e转载本站文章请注明作者\u003c/strong\u003e",
+      "text:\u003cdiv\u003e——===\u003c/div\u003e",
+      "text:\u003cb\u003e酷壳404页面\u003c/b\u003e"
+    ]
+  },
+  {
+    "Name": "kotlinguides.github.io",
+    "Url": "https:\\/\\/.*.github.io\\/kotlin-guides\\/.*.html",
+    "Title": "selector:h1.post-title",
+    "Desc": "",
+    "Include": "selector:article.post-content",
+    "Exclude": null
+  },
+  {
+    "Name": "readhub.me",
+    "Url": "http(s)?:\\/\\/readhub.me\\/topic\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.summary___1i4y3",
+    "Exclude": null
+  },
+  {
+    "Name": "questions.stackoverflow.com",
+    "Url": "https:\\/\\/stackoverflow.com\\/questions\\/.*.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "pipeline:selector:.post-text|html",
+    "Exclude": null
+  },
+  {
+    "Name": "voidcn.com",
+    "Url": "http:\\/\\/www.voidcn.com\\/blog\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div.post-content",
+    "Exclude": [
+      "selector:div.wumii-hook",
+      "selector:[src*=pixel]"
+    ]
+  },
+  {
+    "Name": "m.thepaper.cn",
+    "Url": "http:\\/\\/m.thepaper.cn\\/newsDetail_.*",
+    "Title": "selector:h1.t_newsinfo",
+    "Desc": "",
+    "Include": "selector:div.news_part_limit",
+    "Exclude": [
+      "selector:div.news_bl",
+      "selector:div#clickForMore",
+      "selector:div.relations_div"
+    ]
+  },
+  {
+    "Name": "thepaper.cn",
+    "Url": "http:\\/\\/www.thepaper.cn\\/newsDetail_.*",
+    "Title": "selector:h1.news_title",
+    "Desc": "",
+    "Include": "selector:div.news_txt",
+    "Exclude": null
+  },
+  {
+    "Name": "vice.cn",
+    "Url": "http:\\/\\/www.vice.cn\\/read\\/",
+    "Title": "selector:h3.article-title",
+    "Desc": "selector:div.article-summary",
+    "Include": "selector:div.article-body",
+    "Exclude": [
+      "selector:div.contributor-list",
+      "selector:span.site-signature-icon",
+      "selector:div.social-share.social-share-btm",
+      "selector:div.article-copyright"
+    ]
+  },
+  {
+    "Name": "jandan.net",
+    "Url": "http:\\/\\/jandan.net\\/.*.*\\/.*\\/.*.html",
+    "Title": "pipeline:selector:.post h1|text",
+    "Desc": "",
+    "Include": "pipeline:selector:.post|index:0|html",
+    "Exclude": [
+      "selector:script",
+      "selector:h3",
+      "selector:div.time_s",
+      "selector:h1",
+      "selector:div.shang",
+      "selector:#",
+      "selector:a.jandan-zan",
+      "selector:span.comment-big"
+    ]
+  },
+  {
+    "Name": "news.smzdm.com",
+    "Url": "http(s)?:\\/\\/news.smzdm.com\\/p\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.news_content",
+    "Exclude": [
+      "selector:h1.item-name",
+      "selector:span.embed-card"
+    ]
+  },
+  {
+    "Name": "post.smzdm.com",
+    "Url": "http(s)?:\\/\\/post.smzdm.com\\/p\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:[id=articleId]",
+    "Exclude": [
+      "selector:h1.item-name",
+      "selector:span.embed-card"
+    ]
+  },
+  {
+    "Name": "news.mydrivers.com",
+    "Url": "http:\\/\\/news.mydrivers.com\\/.*\\/.*\\/.*.htm",
+    "Title": "selector:div#thread_subject",
+    "Desc": "",
+    "Include": "selector:div.news_info",
+    "Exclude": [
+      "selector:div.btnPrev",
+      "selector:div.btnNext",
+      "selector:div.postpage",
+      "selector:div.adggg1",
+      "selector:p.news_bq",
+      "selector:p.jcuo1",
+      "selector:div#weixin",
+      "selector:table"
+    ]
+  },
+  {
+    "Name": "ftchinese.com",
+    "Url": "http:\\/\\/www.ftchinese.com\\/story\\/",
+    "Title": "selector:h1.story-headline",
+    "Desc": "selector:div.story-lead",
+    "Include": "selector:div.story-body",
+    "Exclude": null
+  },
+  {
+    "Name": "young.ifeng.com",
+    "Url": "http:\\/\\/young.ifeng.com\\/a\\/.*\\/.*.shtml",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.ya_main_con",
+    "Exclude": [
+      "selector:p.yamc_zrbj",
+      "selector:p.yamc_sming",
+      "selector:span.ifengLogo",
+      "text:\u003cp\u003e原标题\u003c/p\u003e",
+      "text:\u003cstrong\u003e获取更多有趣又有料的内容\u003c/strong\u003e",
+      "selector:[src*=a76d59f9f93e84b_size52_w700_h236]"
+    ]
+  },
+  {
+    "Name": "news.ifeng.com",
+    "Url": "http:\\/\\/.*.ifeng.com\\/a\\/.*\\/.*.shtml",
+    "Title": "selector:h1#artical_topic",
+    "Desc": "",
+    "Include": "selector:div#artical_real",
+    "Exclude": [
+      "selector:span.ifengLogo",
+      "text:\u003cp\u003e原标题\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "news.mtime.com",
+    "Url": "http:\\/\\/news.mtime.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:h2",
+    "Desc": "selector:div.newsnote",
+    "Include": "selector:div#newsContent",
+    "Exclude": null
+  },
+  {
+    "Name": "feng.com",
+    "Url": "http:\\/\\/.*.feng.com\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "pipeline:selector:.h2|text||selector:h1|text||selector:.h2|text",
+    "Desc": "selector:p.content_title",
+    "Include": "selector:div#article_content",
+    "Exclude": [
+      "selector:p.content_title"
+    ]
+  },
+  {
+    "Name": "caixin.com",
+    "Url": "http:\\/\\/.*.caixin.com\\/.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "selector:div#subhead",
+    "Include": "selector:div#Main_Content_Val",
+    "Exclude": [
+      "selector:[src*=favicon]"
+    ]
+  },
+  {
+    "Name": "news.mittrchina.com",
+    "Url": "http(s)?:\\/\\/www.mittrchina.com\\/news\\/.*",
+    "Title": "selector:div.title",
+    "Desc": "selector:div.description",
+    "Include": "selector:div.content",
+    "Exclude": null
+  },
+  {
+    "Name": "m.ithome.com",
+    "Url": "http(s)?:\\/\\/wap.ithome.com\\/html\\/.*.htm",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#paragraph",
+    "Exclude": null
+  },
+  {
+    "Name": "livesino.net",
+    "Url": "https:\\/\\/livesino.net\\/archives\\/.*.live",
+    "Title": "selector:h1.post-title",
+    "Desc": "",
+    "Include": "selector:div.post-content",
+    "Exclude": null
+  },
+  {
+    "Name": "ithome.com",
+    "Url": "https:\\/\\/www.ithome.com\\/html\\/.*.*\\/.*\\/.*.htm",
+    "Title": "pipeline:selector:.post_title|h1|text",
+    "Desc": "",
+    "Include": "selector:div#paragraph",
+    "Exclude": null
+  },
+  {
+    "Name": "news.sohu.com",
+    "Url": "http(s)?:\\/\\/news.sohu.com\\/.*\\/.*.shtml",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#contentText",
+    "Exclude": [
+      "selector:div.conserve-photo"
+    ]
+  },
+  {
+    "Name": "sohu.com",
+    "Url": "http(s)?:\\/\\/www.sohu.com\\/a\\/.*_.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:article.article",
+    "Exclude": null
+  },
+  {
+    "Name": "news.sina.com.cn",
+    "Url": "http(s)?:\\/\\/news.sina.com.cn\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "selector:h1.main-title",
+    "Desc": "",
+    "Include": "selector:div.article",
+    "Exclude": null
+  },
+  {
+    "Name": "tech.sina.com.cn",
+    "Url": "http(s)?:\\/\\/tech.sina.com.cn\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "selector:h1.main-title",
+    "Desc": "",
+    "Include": "selector:div#artibody",
+    "Exclude": null
+  },
+  {
+    "Name": "finance.sina.com.cn",
+    "Url": "http(s)?:\\/\\/finance.sina.com.cn\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#artibody",
+    "Exclude": [
+      "text:\u003cp\u003e【新浪财经股吧】\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "sports.sina.com.cn",
+    "Url": "http(s)?:\\/\\/sports.sina.com.cn\\/.*.*\\/.*.shtml",
+    "Title": "selector:h1.main-title",
+    "Desc": "",
+    "Include": "selector:div#artibody",
+    "Exclude": null
+  },
+  {
+    "Name": "collection.sina.com.cn",
+    "Url": "http(s)?:\\/\\/collection.sina.com.cn\\/.*.*\\/.*.shtml",
+    "Title": "selector:h1#main_title",
+    "Desc": "",
+    "Include": "selector:div#artibody",
+    "Exclude": null
+  },
+  {
+    "Name": "blog.sina.com.cn",
+    "Url": "http(s)?:\\/\\/blog.sina.com.cn\\/s\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.articalContent",
+    "Exclude": null
+  },
+  {
+    "Name": "news.workercn.cn",
+    "Url": "http:\\/\\/news.workercn.cn\\/.*\\/.*\\/.*.*\\/.*.shtml",
+    "Title": "selector:div.ad_tl_main",
+    "Desc": "",
+    "Include": "selector:div.ad_content",
+    "Exclude": null
+  },
+  {
+    "Name": "news.xinhuanet.com",
+    "Url": "http:\\/\\/news.xinhuanet.com\\/.*.*\\/.*\\/.*.htm",
+    "Title": "selector:div.h-title",
+    "Desc": "",
+    "Include": "selector:div#p-detail",
+    "Exclude": [
+      "selector:div.zan-wap",
+      "selector:div.p-tags",
+      "selector:[src*=129713364_15065013734641n]"
+    ]
+  },
+  {
+    "Name": "news.gold678.com",
+    "Url": "http(s)?:\\/\\/www.gold678.com\\/C\\/.*.*\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.news_inter_area",
+    "Exclude": null
+  },
+  {
+    "Name": "stockstar.com",
+    "Url": "http:\\/\\/.*.stockstar.com\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#container-article",
+    "Exclude": null
+  },
+  {
+    "Name": "takungpao.com",
+    "Url": "http:\\/\\/.*.takungpao.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:h1.tpk_con_tle",
+    "Desc": "",
+    "Include": "selector:div.tpk_text",
+    "Exclude": null
+  },
+  {
+    "Name": "money.jrj.com.cn",
+    "Url": "http:\\/\\/money.jrj.com.cn\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.titimg",
+    "Exclude": null
+  },
+  {
+    "Name": "news.ynet.com",
+    "Url": "http:\\/\\/news.ynet.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#articleAll",
+    "Exclude": [
+      "selector:ul.pageBox",
+      "selector:span.authors",
+      "selector:a.scrollLeft",
+      "selector:a.scrollRight"
+    ]
+  },
+  {
+    "Name": "qianlong.com",
+    "Url": "http:\\/\\/.*.qianlong.com\\/.*\\/.*\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "duozhi.com",
+    "Url": "http(s)?:\\/\\/www.duozhi.com\\/.*.*\\/.*.shtml",
+    "Title": "selector:h1.subject-title",
+    "Desc": "",
+    "Include": "selector:div.subject-content",
+    "Exclude": null
+  },
+  {
+    "Name": "app.myzaker.com",
+    "Url": "http(s)?:\\/\\/app.myzaker.com\\/news\\/article.php.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": [
+      "selector:p#ID_disclaimer"
+    ]
+  },
+  {
+    "Name": "m.kankanews.com",
+    "Url": "http(s)?:\\/\\/m.kankanews.com\\/n\\/.*.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.content",
+    "Exclude": [
+      "selector:p.download"
+    ]
+  },
+  {
+    "Name": "kankanews.com",
+    "Url": "http(s)?:\\/\\/www.kankanews.com\\/a\\/.*.*\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.textBody",
+    "Exclude": [
+      "selector:p#kankan_bq"
+    ]
+  },
+  {
+    "Name": "cbnweek.com",
+    "Url": "https:\\/\\/www.cbnweek.com\\/articles\\/normal\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "user.guancha.cn",
+    "Url": "http:\\/\\/user.guancha.cn\\/main\\/content?id=.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-txt",
+    "Exclude": [
+      "selector:ul.pagination"
+    ]
+  },
+  {
+    "Name": "guancha.cn",
+    "Url": "http:\\/\\/www.guancha.cn\\/.*\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.all-txt",
+    "Exclude": null
+  },
+  {
+    "Name": "article.myzaker.com",
+    "Url": "http(s)?:\\/\\/www.myzaker.com\\/article\\/.*\\/",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.article_content",
+    "Exclude": null
+  },
+  {
+    "Name": "people.com.cn",
+    "Url": "http:\\/\\/.*.people.com.cn\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.box_con",
+    "Exclude": [
+      "selector:div.edit"
+    ]
+  },
+  {
+    "Name": "chinanews.com",
+    "Url": "http:\\/\\/www.chinanews.com\\/.*\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.left_zw",
+    "Exclude": [
+      "selector:table"
+    ]
+  },
+  {
+    "Name": "m.toutiaocdn.com",
+    "Url": "http(s)?:\\/\\/m.toutiaocdn.com\\/.*",
+    "Title": "selector:h1.article__title",
+    "Desc": "",
+    "Include": "selector:div.article__content",
+    "Exclude": null
+  },
+  {
+    "Name": "toutiao.com",
+    "Url": "http(s)?:\\/\\/www.toutiao.com\\/a.*\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "toutiao.com",
+    "Url": "http(s)?:\\/\\/www.toutiao.com\\/i.*\\/",
+    "Title": "selector:h1.article-title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "cwzg.cm",
+    "Url": "http:\\/\\/www.cwzg.cn\\/.*\\/.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "selector:div.article-brief",
+    "Include": "selector:div#article",
+    "Exclude": null
+  },
+  {
+    "Name": "idianzixun.com",
+    "Url": "http:\\/\\/www.yidianzixun.com\\/article\\/.*",
+    "Title": "selector:h2",
+    "Desc": "",
+    "Include": "selector:div.content-bd",
+    "Exclude": [
+      "selector:div.postfix",
+      "selector:p.yidian-wm-copyright-bottom"
+    ]
+  },
+  {
+    "Name": "reader.s-reader.com",
+    "Url": "http:\\/\\/reader.s-reader.com\\/article\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.content",
+    "Exclude": [
+      "selector:h1"
+    ]
+  },
+  {
+    "Name": "news.163.com",
+    "Url": "http(s)?:\\/\\/news.163.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#endText",
+    "Exclude": [
+      "selector:div.ep-source"
+    ]
+  },
+  {
+    "Name": "renjian.163.com",
+    "Url": "http(s)?:\\/\\/renjian.163.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#endText",
+    "Exclude": [
+      "selector:div.ep-source",
+      "selector:div.ep-pages",
+      "selector:p.end"
+    ]
+  },
+  {
+    "Name": "dy.163.com",
+    "Url": "http(s)?:\\/\\/dy.163.com\\/v2\\/article\\/detail\\/.*.html",
+    "Title": "selector:h2",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "tech.163.com",
+    "Url": "http(s)?:\\/\\/.*.163.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "pipeline:selector:.post_content_main|h1|text",
+    "Desc": "",
+    "Include": "selector:div.post_text",
+    "Exclude": [
+      "selector:div.ep-source.cDGray"
+    ]
+  },
+  {
+    "Name": "mi.techweb.com.cn",
+    "Url": "http(s)?:\\/\\/mi.techweb.com.cn\\/tmt\\/.*\\/.*.shtml",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "techweb.com.cn",
+    "Url": "http(s)?:\\/\\/www.techweb.com.cn\\/.*\\/.*\\/.*.shtml",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "donews.com",
+    "Url": "http:\\/\\/www.donews.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "pipeline:selector:.contentbox|selector:h2|index:0|text",
+    "Desc": "",
+    "Include": "pipeline:selector:.article-con|index:0|html",
+    "Exclude": null
+  },
+  {
+    "Name": "flashnews.donews.com",
+    "Url": "http:\\/\\/www.donews.com\\/flashnews\\/detail\\/",
+    "Title": "pipeline:selector:.contentbox|selector:h2|index:0|text",
+    "Desc": "",
+    "Include": "pipeline:selector:.article-con|index:0|html",
+    "Exclude": null
+  },
+  {
+    "Name": "newseed.pedaily.cn",
+    "Url": "http:\\/\\/newseed.pedaily.cn\\/.*\\/.*.shtml",
+    "Title": "selector:h1",
+    "Desc": "selector:div.subject",
+    "Include": "selector:div#news-content",
+    "Exclude": null
+  },
+  {
+    "Name": "news.newseed.cn",
+    "Url": "http(s)?:\\/\\/news.newseed.cn\\/p\\/.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#news-content",
+    "Exclude": null
+  },
+  {
+    "Name": "digi.tech.qq.com",
+    "Url": "http:\\/\\/digi.tech.qq.com\\/a\\/.*\\/.*.htm",
+    "Title": "pipeline:selector:.hd|h1|text",
+    "Desc": "selector:p.titdd-Article",
+    "Include": "selector:div.Cnt-Main-Article-QQ",
+    "Exclude": [
+      "selector:p.titdd-Article",
+      "selector:div.wxdigi",
+      "selector:a#backqqcom"
+    ]
+  },
+  {
+    "Name": "m.qq.com",
+    "Url": "http(s)?:\\/\\/xw.qq.com\\/.*\\/.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article_body",
+    "Exclude": null
+  },
+  {
+    "Name": "qq.com",
+    "Url": "http:\\/\\/.*.qq.com\\/a\\/.*\\/.*.htm",
+    "Title": "pipeline:selector:.hd h1|text",
+    "Desc": "",
+    "Include": "selector:div#Cnt-Main-Article-QQ",
+    "Exclude": null
+  },
+  {
+    "Name": "view.inews.qq.com",
+    "Url": "http:\\/\\/view.inews.qq.com\\/a\\/",
+    "Title": "selector:p.title",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": [
+      "selector:p.title",
+      "selector:div.src"
+    ]
+  },
+  {
+    "Name": "view2.inews.qq.com",
+    "Url": "http:\\/\\/view.news.qq.com\\/original\\/intouchtoday\\/.*.html",
+    "Title": "selector:h2#sharetitle",
+    "Desc": "",
+    "Include": "selector:div#articleContent",
+    "Exclude": null
+  },
+  {
+    "Name": "new.qq.com",
+    "Url": "http(s)?:\\/\\/new.qq.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.content-article",
+    "Exclude": null
+  },
+  {
+    "Name": "news.china.com.cn",
+    "Url": "http:\\/\\/news.china.com.cn\\/.*.*\\/.*\\/.*.htm",
+    "Title": "selector:h1.articleTitle",
+    "Desc": "",
+    "Include": "selector:div#articleBody",
+    "Exclude": null
+  },
+  {
+    "Name": "article.huanqiu.com/",
+    "Url": "http(s)?:\\/\\/.*.huanqiu.com\\/.*\\/.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.la_con",
+    "Exclude": [
+      "selector:div.editorSign",
+      "selector:div.reTopics"
+    ]
+  },
+  {
+    "Name": "news.mindynode.com",
+    "Url": "https:\\/\\/news.mindynode.com\\/zh\\/links\\/.*",
+    "Title": "selector:div#parsed_title",
+    "Desc": "",
+    "Include": "selector:div#parsed_content",
+    "Exclude": [
+      "selector:div.reTopics",
+      "selector:p.read-art-extra-bonus",
+      "selector:div.editorSign"
+    ]
+  },
+  {
+    "Name": "8btc.com",
+    "Url": "http:\\/\\/www.8btc.com\\/.*-.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "pipeline:selector:.article-content|index:0|html",
+    "Exclude": [
+      "selector:div.content-source-info",
+      "selector:div.content-bottom"
+    ]
+  },
+  {
+    "Name": "wiki.8btc.com",
+    "Url": "http:\\/\\/www.8btc.com\\/wiki\\/.*",
+    "Title": "selector:div.page-title",
+    "Desc": "",
+    "Include": "selector:div.col-xs-12",
+    "Exclude": [
+      "selector:div.page-title"
+    ]
+  },
+  {
+    "Name": "vip.qikan.com",
+    "Url": "http:\\/\\/nlc.vip.qikan.com\\/text\\/Article.aspx.*",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.newartbox",
+    "Exclude": null
+  },
+  {
+    "Name": "zhidx.com",
+    "Url": "http:\\/\\/zhidx.com\\/p\\/",
+    "Title": "pipeline:selector:.finTit|h1|text",
+    "Desc": "",
+    "Include": "selector:div.finCnt",
+    "Exclude": [
+      "selector:[src*=ZDX-Card-for-PC-e1466578693228]"
+    ]
+  },
+  {
+    "Name": "iheima.com",
+    "Url": "http:\\/\\/www.iheima.com\\/zixun\\/.*\\/.*\\/.*.shtml",
+    "Title": "selector:div.title",
+    "Desc": "selector:div.outline",
+    "Include": "selector:div.main-content",
+    "Exclude": [
+      "selector:div.title",
+      "selector:div.outline",
+      "selector:div.author",
+      "selector:div.copyright",
+      "selector:div.mesinfo",
+      "selector:div.article-list",
+      "selector:div.mobile-common"
+    ]
+  },
+  {
+    "Name": "pintu360.com",
+    "Url": "http(s)?:\\/\\/www.pintu360.com\\/article\\/",
+    "Title": "selector:h1.title",
+    "Desc": "selector:div.article-note",
+    "Include": "selector:.article-content .text",
+    "Exclude": null
+  },
+  {
+    "Name": "tech2ipo.com",
+    "Url": "http:\\/\\/tech2ipo.com\\/.*",
+    "Title": "pipeline:selector:.title|h1|text",
+    "Desc": "",
+    "Include": "selector:div.content",
+    "Exclude": null
+  },
+  {
+    "Name": "column.iresearch.cn",
+    "Url": "http:\\/\\/column.iresearch.cn\\/b\\/.*\\/.*.shtml",
+    "Title": "pipeline:selector:.title|h1|text",
+    "Desc": "",
+    "Include": "selector:div.m-article",
+    "Exclude": null
+  },
+  {
+    "Name": "news.iresearch.cn",
+    "Url": "http:\\/\\/news.iresearch.cn\\/content\\/.*.*\\/.*\\/.*.shtml",
+    "Title": "pipeline:selector:.title|h1|text",
+    "Desc": "selector:div.review",
+    "Include": "selector:div.m-article",
+    "Exclude": [
+      "selector:div.review"
+    ]
+  },
+  {
+    "Name": "lanjingtmt.com",
+    "Url": "http:\\/\\/www.lanjingtmt.com\\/news\\/detail\\/",
+    "Title": "pipeline:selector:.newsTitle|h1|text",
+    "Desc": "selector:div.dm_zy",
+    "Include": "selector:div#pageTxt",
+    "Exclude": [
+      "selector:div.dm_zy",
+      "selector:[src*=1438828721808210]"
+    ]
+  },
+  {
+    "Name": "timetimetime.net",
+    "Url": "http:\\/\\/www.timetimetime.net\\/.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:.neir",
+    "Exclude": null
+  },
+  {
+    "Name": "mifengtd.cn",
+    "Url": "http:\\/\\/www.mifengtd.cn\\/articles\\/",
+    "Title": "selector:a.p-name",
+    "Desc": "",
+    "Include": "selector:div.e-content",
+    "Exclude": null
+  },
+  {
+    "Name": "vgtime.com",
+    "Url": "http:\\/\\/www.vgtime.com\\/article\\/",
+    "Title": "selector:h1.art_max_width",
+    "Desc": "",
+    "Include": "selector:div.paragraph",
+    "Exclude": null
+  },
+  {
+    "Name": "keke289.com",
+    "Url": "http:\\/\\/www.keke289.com\\/news\\/",
+    "Title": "selector:h2",
+    "Desc": "",
+    "Include": "selector:section.article-bd",
+    "Exclude": [
+      "selector:div.article-annotation",
+      "text:\u003cstrong\u003e关注科客网官方微信kekebat\u003c/strong\u003e"
+    ]
+  },
+  {
+    "Name": "ebrun.com",
+    "Url": "http:\\/\\/www.ebrun.com\\/.*\\/.*.shtml",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div.cmsDiv",
+    "Exclude": [
+      "selector:p.ybfirst_go",
+      "selector:div#corp",
+      "selector:[src*=2017013185214858280529103]",
+      "text:\u003cspan\u003e百人讲新年纳新 588份精华课件免费赠\u003c/span\u003e",
+      "text:\u003cp\u003e【版权提示】亿邦动力网倡导尊重与保护知识产权。\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "cokeji.com",
+    "Url": "http:\\/\\/www.cokeji.com\\/.*.html",
+    "Title": "pipeline:selector:.single-header|h1|text",
+    "Desc": "",
+    "Include": "selector:div.single-main",
+    "Exclude": null
+  },
+  {
+    "Name": "199it.com",
+    "Url": "http:\\/\\/www.199it.com\\/archives\\/",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": null
+  },
+  {
+    "Name": "aliresearch.com",
+    "Url": "http:\\/\\/www.aliresearch.com\\/blog\\/article\\/detail\\/id\\/",
+    "Title": "selector:h2",
+    "Desc": "",
+    "Include": "selector:section#contents",
+    "Exclude": null
+  },
+  {
+    "Name": "cn.engadget.com",
+    "Url": "http(s)?:\\/\\/cn.engadget.com\\/.*\\/.*\\/.*\\/.*\\/",
+    "Title": "pipeline:selector:head|title|text",
+    "Desc": "",
+    "Include": "selector:div.article-text",
+    "Exclude": null
+  },
+  {
+    "Name": "chinaventure.com.cn",
+    "Url": "https:\\/\\/www.chinaventure.com.cn\\/cmsmodel\\/news\\/detail\\/",
+    "Title": "selector:h1.h1_01",
+    "Desc": "",
+    "Include": "selector:div.content_01",
+    "Exclude": null
+  },
+  {
+    "Name": "baijia.baidu.com",
+    "Url": "https:\\/\\/baijia.baidu.com\\/s?id=.*",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:section.news-content",
+    "Exclude": null
+  },
+  {
+    "Name": "jingyan.baidu.com",
+    "Url": "http(s)?:\\/\\/jingyan.baidu.com\\/article\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#format-exp",
+    "Exclude": [
+      "selector:span.exp-album-enter-mask",
+      "selector:span.enter-step-btn",
+      "selector:span.last-item-end",
+      "selector:div.quote-item",
+      "selector:div.list-icon"
+    ]
+  },
+  {
+    "Name": "g-cores.com",
+    "Url": "http:\\/\\/www.g-cores.com\\/articles\\/",
+    "Title": "selector:h1.story_title",
+    "Desc": "selector:p.story_desc",
+    "Include": "selector:div.story",
+    "Exclude": null
+  },
+  {
+    "Name": "tieba.baidu.com",
+    "Url": "http(s)?:\\/\\/tieba.baidu.com\\/p\\/.*",
+    "Title": "pipeline:selector:.core_title_txt|text",
+    "Desc": "",
+    "Include": "pipeline:selector:.p_content|html",
+    "Exclude": [
+      "selector:span.apc_src_wrapper",
+      "selector:div.save_face_bg_2"
+    ]
+  },
+  {
+    "Name": "qgc.qq.com",
+    "Url": "http(s)?:\\/\\/qgc.qq.com\\/.*\\/t\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "pipeline:selector:.pctmessage|html",
+    "Exclude": [
+      "selector:span.apc_src_wrapper",
+      "selector:div.save_face_bg_2"
+    ]
+  },
+  {
+    "Name": "article.chiphell.com",
+    "Url": "https:\\/\\/www.chiphell.com\\/article-.*.html",
+    "Title": "selector:h1.ph",
+    "Desc": "",
+    "Include": "selector:table.vwtb",
+    "Exclude": [
+      "selector:i.pstatus"
+    ]
+  },
+  {
+    "Name": "chiphell.com",
+    "Url": "https:\\/\\/www.chiphell.com\\/thread-.*.html",
+    "Title": "selector:span#thread_subject",
+    "Desc": "",
+    "Include": "pipeline:selector:.t_f|html",
+    "Exclude": [
+      "selector:i.pstatus",
+      "selector:[src*=none.gif]",
+      "selector:div.aimg_tip"
+    ]
+  },
+  {
+    "Name": "worldcup.fifa.com",
+    "Url": "http(s)?:\\/\\/www.fifa.com\\/worldcup\\/news\\/.*",
+    "Title": "selector:h1.d3-o-article__title",
+    "Desc": "",
+    "Include": "selector:div.d3-o-article__body",
+    "Exclude": null
+  },
+  {
+    "Name": "voice.hupu.com",
+    "Url": "http(s)?:\\/\\/voice.hupu.com\\/.*\\/.*.html",
+    "Title": "selector:h1.headline",
+    "Desc": "",
+    "Include": "selector:div.artical-content-read",
+    "Exclude": null
+  },
+  {
+    "Name": "bbs.hupu.com",
+    "Url": "https:\\/\\/bbs.hupu.com\\/.*.html",
+    "Title": "selector:h1#j_data",
+    "Desc": "",
+    "Include": "pipeline:selector:table.case|html",
+    "Exclude": [
+      "selector:div.video-play-1",
+      "selector:div.vote_box"
+    ]
+  },
+  {
+    "Name": "qu.la",
+    "Url": "http:\\/\\/www.qu.la\\/book\\/.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": [
+      "text:\u003ca\u003e章节错误,点此举报\u003c/a\u003e"
+    ]
+  },
+  {
+    "Name": "biquge.com.tw",
+    "Url": "http:\\/\\/www.biquge.com.tw\\/.*.*\\/.*.html",
+    "Title": "pipeline:selector:.bookname|h1|text",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "xxbiquge.com",
+    "Url": "http:\\/\\/www.xxbiquge.com\\/.*.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": [
+      "text:\u003ca\u003e章节错误,点此举报\u003c/a\u003e"
+    ]
+  },
+  {
+    "Name": "biquge5200.com",
+    "Url": "http:\\/\\/www.biquge5200.com\\/.*.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "piaotian.com",
+    "Url": "http:\\/\\/www.piaotian.com\\/html\\/.*.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": [
+      "selector:h1",
+      "selector:div.toplink",
+      "selector:table"
+    ]
+  },
+  {
+    "Name": "zanghaihua.org",
+    "Url": "http:\\/\\/www.zanghaihua.org\\/.*.html",
+    "Title": "pipeline:selector:.chaptertitle|h1|text",
+    "Desc": "",
+    "Include": "selector:div.bookcontent",
+    "Exclude": [
+      "selector:script",
+      "selector:a"
+    ]
+  },
+  {
+    "Name": "read.qidian.com",
+    "Url": "https:\\/\\/read.qidian.com\\/chapter\\/.*.*\\/.*",
+    "Title": "selector:h3.j_chapterName",
+    "Desc": "",
+    "Include": "selector:div.read-content",
+    "Exclude": null
+  },
+  {
+    "Name": "vipreader.qidian.com",
+    "Url": "https:\\/\\/vipreader.qidian.com\\/chapter\\/.*.*\\/.*",
+    "Title": "selector:h3.j_chapterName",
+    "Desc": "",
+    "Include": "selector:div.read-content",
+    "Exclude": null
+  },
+  {
+    "Name": "37zw.net",
+    "Url": "http(s)?:\\/\\/www.37zw.net\\/.*.*\\/.*.html",
+    "Title": "selector:h1",
+    "Desc": "",
+    "Include": "selector:div#content",
+    "Exclude": null
+  },
+  {
+    "Name": "lofter.com",
+    "Url": "http:\\/\\/.*.lofter.com\\/post\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "pipeline:selector:.content|html||selector:.text|html",
+    "Exclude": null
+  },
+  {
+    "Name": "pin-cong.com",
+    "Url": "https:\\/\\/www.pin-cong.com\\/p\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "pipeline:selector:.post-text|html",
+    "Exclude": null
+  },
+  {
+    "Name": "bbs.tianya.cn",
+    "Url": "http:\\/\\/bbs.tianya.cn\\/.*.shtml",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "pipeline:selector:.bbs-content|html",
+    "Exclude": null
+  },
+  {
+    "Name": "applysquare.com",
+    "Url": "https:\\/\\/www.applysquare.com\\/topic-cn\\/.*",
+    "Title": "selector:div.thread-title",
+    "Desc": "",
+    "Include": "pipeline:selector:.qa-html-content|html",
+    "Exclude": [
+      "selector:span.show-content"
+    ]
+  },
+  {
+    "Name": "aktuell.faz.net",
+    "Url": "http(s)?:\\/\\/www.faz.net\\/aktuell\\/.*.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.atc-Text",
+    "Exclude": [
+      "selector:aside.atc-ContainerMore",
+      "selector:div.o-Ratio_Content",
+      "selector:div.ctn-PlaceholderContent",
+      "selector:div.atc-ContainerInfo"
+    ]
+  },
+  {
+    "Name": "cn.nytstyle.com",
+    "Url": "https:\\/\\/cn.nytstyle.com\\/.*\\/.*\\/.*\\/",
+    "Title": "selector:h3.articleHeadline",
+    "Desc": "",
+    "Include": "selector:div.content",
+    "Exclude": [
+      "selector:div.authorIdentification",
+      "selector:div.articleCR",
+      "selector:div.articleTool",
+      "selector:div#disqus_thread",
+      "selector:div#subscribe_cont",
+      "selector:div.articleByside"
+    ]
+  },
+  {
+    "Name": "sueddeutsche.de",
+    "Url": "http:\\/\\/www.sueddeutsche.de\\/.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:section#article-body",
+    "Exclude": null
+  },
+  {
+    "Name": "nytimes.com",
+    "Url": "https:\\/\\/www.nytimes.com\\/.*\\/.*\\/.*\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:section.meteredContent",
+    "Exclude": [
+      "selector:button.css-1vkv6l7"
+    ]
+  },
+  {
+    "Name": "cn.nytimes.com",
+    "Url": "https:\\/\\/cn.nytimes.com\\/.*\\/.*\\/.*\\/",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:section.article-body",
+    "Exclude": [
+      "selector:div.authorIdentification",
+      "selector:div.articleCR",
+      "selector:div.articleTool",
+      "selector:div#disqus_thread",
+      "selector:div#subscribe_cont",
+      "selector:div.articleByside"
+    ]
+  },
+  {
+    "Name": "theverge.com",
+    "Url": "https:\\/\\/www.theverge.com\\/.*.*\\/.*",
+    "Title": "selector:h1.c-page-title",
+    "Desc": "",
+    "Include": "selector:div.c-entry-content",
+    "Exclude": null
+  },
+  {
+    "Name": "medium.com",
+    "Url": "https:\\/\\/medium.com\\/@.*\\/.*.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.section-content",
+    "Exclude": [
+      "selector:h1.graf--title",
+      "selector:img.progressiveMedia-thumbnail",
+      "selector:canvas.progressiveMedia-canvas",
+      "selector:figcaption.imageCaption"
+    ]
+  },
+  {
+    "Name": "news.bbc.com",
+    "Url": "http(s)?:\\/\\/www.bbc.com\\/news\\/.*.*\\/.*",
+    "Title": "selector:h1.story-body__h1",
+    "Desc": "",
+    "Include": "selector:div.story-body__inner",
+    "Exclude": null
+  },
+  {
+    "Name": "simp.bbc.com",
+    "Url": "http(s)?:\\/\\/www.bbc.com\\/zhongwen\\/.*.*\\/.*",
+    "Title": "selector:h1.story-body__h1",
+    "Desc": "",
+    "Include": "selector:div.story-body__inner",
+    "Exclude": null
+  },
+  {
+    "Name": "wsj.com",
+    "Url": "https:\\/\\/www.wsj.com\\/articles\\/.*.*\\/.*",
+    "Title": "selector:h1.wsj-article-headline",
+    "Desc": "",
+    "Include": "selector:div.wsj-snippet-body",
+    "Exclude": null
+  },
+  {
+    "Name": "economist.com",
+    "Url": "https:\\/\\/www.economist.com\\/.*.*\\/.*",
+    "Title": "pipeline:selector:.flytitle-and-title__title:first|text",
+    "Desc": "",
+    "Include": "selector:div.blog-post__text",
+    "Exclude": [
+      "selector:div.newsletter-form--inline"
+    ]
+  },
+  {
+    "Name": "news.zerohedge.com",
+    "Url": "https:\\/\\/www.zerohedge.com\\/news\\/.*.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.node__content",
+    "Exclude": null
+  },
+  {
+    "Name": "theinitium.com",
+    "Url": "https:\\/\\/theinitium.com\\/article\\/.*",
+    "Title": "selector:h1.p-article__title",
+    "Desc": "",
+    "Include": "pipeline:selector:.p-article__content|index:1|html",
+    "Exclude": null
+  },
+  {
+    "Name": "news.cnbc.com",
+    "Url": "https:\\/\\/www.cnbc.com\\/.*\\/.*\\/.*\\/.*.html",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "selector:div#article_body",
+    "Exclude": [
+      "selector:div.inline-player",
+      "selector:twitter-widget",
+      "selector:iframe",
+      "selector:div.embed-container"
+    ]
+  },
+  {
+    "Name": "news.vox.com",
+    "Url": "https:\\/\\/www.vox.com\\/.*\\/.*\\/.*\\/.*.*\\/.*",
+    "Title": "selector:h1.c-page-title",
+    "Desc": "",
+    "Include": "selector:div.c-entry-content.",
+    "Exclude": null
+  },
+  {
+    "Name": "news.theatlantic.com",
+    "Url": "https:\\/\\/www.theatlantic.com\\/.*\\/archive\\/.*.*\\/.*",
+    "Title": "selector:h1.c-article-header__hed",
+    "Desc": "",
+    "Include": "selector:div.l-article__container",
+    "Exclude": [
+      "selector:address",
+      "selector:figcaption.c-lead-media__credit",
+      "selector:span.c-menu__section__icon",
+      "selector:svg"
+    ]
+  },
+  {
+    "Name": "time.com",
+    "Url": "http(s)?:\\/\\/time.com\\/.*\\/.*\\/",
+    "Title": "selector:h1.heading-content",
+    "Desc": "",
+    "Include": "selector:div#article-body",
+    "Exclude": [
+      "selector:div.newsletter-inline"
+    ]
+  },
+  {
+    "Name": "zh.asia.mercurymarine.com",
+    "Url": "https:\\/\\/www.mercurymarine.com\\/zh\\/asia\\/news\\/.*",
+    "Title": "pipeline:selector:.formatted-copy h2|text",
+    "Desc": "",
+    "Include": "selector:div.formatted-copy",
+    "Exclude": [
+      "selector:h2"
+    ]
+  },
+  {
+    "Name": "article.scientificamerican.com",
+    "Url": "https:\\/\\/www.scientificamerican.com\\/article\\/.*",
+    "Title": "selector:h1.article-header__title",
+    "Desc": "",
+    "Include": "selector:div.article-block",
+    "Exclude": [
+      "selector:figure.newsletter-promo"
+    ]
+  },
+  {
+    "Name": "latimes.com",
+    "Url": "http(s)?:\\/\\/www.latimes.com\\/.*.*\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.collection-cards",
+    "Exclude": null
+  },
+  {
+    "Name": "news.abcnews.com",
+    "Url": "https:\\/\\/abcnews.go.com\\/.*\\/.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-copy",
+    "Exclude": null
+  },
+  {
+    "Name": "thehill.com",
+    "Url": "https:\\/\\/thehill.com\\/.*\\/.*.*\\/.*",
+    "Title": "selector:h1.title",
+    "Desc": "",
+    "Include": "pipeline:selector:.field-item.even|html",
+    "Exclude": [
+      "selector:iframe"
+    ]
+  },
+  {
+    "Name": "news.nieman.harvard.edu",
+    "Url": "https:\\/\\/nieman.harvard.edu\\/news\\/.*\\/.*\\/.*",
+    "Title": "selector:h1.blog-h1",
+    "Desc": "",
+    "Include": "selector:div.ui-block-inner",
+    "Exclude": [
+      "selector:div.tags-top",
+      "selector:div.social-tools-bottom"
+    ]
+  },
+  {
+    "Name": "cjr.org",
+    "Url": "https:\\/\\/www.cjr.org\\/.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div#article-content",
+    "Exclude": [
+      "selector:div#mc_embed_signup",
+      "selector:div#post-survey-box",
+      "selector:small"
+    ]
+  },
+  {
+    "Name": "9to5mac.com",
+    "Url": "https:\\/\\/9to5mac.com\\/.*\\/.*\\/.*\\/.*",
+    "Title": "selector:h1.post-title",
+    "Desc": "",
+    "Include": "selector:div.post-body",
+    "Exclude": [
+      "selector:[src*=volta-2.0-cable]",
+      "selector:div.the9ca7210",
+      "text:\u003cp\u003eCheck out 9to5Mac on YouTube\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "9to5google.com",
+    "Url": "https:\\/\\/9to5google.com\\/.*\\/.*\\/.*\\/.*",
+    "Title": "selector:h1.post-title",
+    "Desc": "",
+    "Include": "selector:div.post-body",
+    "Exclude": [
+      "selector:[src*=volta-2.0-cable]",
+      "selector:div.the9ca7210",
+      "text:\u003cp\u003eCheck out 9to5Mac on YouTube\u003c/p\u003e"
+    ]
+  },
+  {
+    "Name": "news.cnet.com",
+    "Url": "http(s)?:\\/\\/www.cnet.com\\/news\\/.*",
+    "Title": "selector:h1.speakableText",
+    "Desc": "",
+    "Include": "selector:article#article-body",
+    "Exclude": [
+      "selector:svg.svg-symbol",
+      "selector:div.shortcode"
+    ]
+  },
+  {
+    "Name": "engadget.com",
+    "Url": "https:\\/\\/www.engadget.com\\/.*\\/.*\\/.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-text",
+    "Exclude": null
+  },
+  {
+    "Name": "gizmodo.com",
+    "Url": "https:\\/\\/gizmodo.com\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.post-content",
+    "Exclude": [
+      "selector:div.meta--pe",
+      "selector:div.instream-native-video",
+      "selector:svg"
+    ]
+  },
+  {
+    "Name": "article.macworld.com",
+    "Url": "https:\\/\\/www.macworld.com\\/article\\/.*\\/.*.html",
+    "Title": "selector:title",
+    "Desc": "pipeline:selector:h3[itemprop=\"description\"]|text",
+    "Include": "selector:div#drr-container",
+    "Exclude": null
+  },
+  {
+    "Name": "article.newscientist.com",
+    "Url": "https:\\/\\/www.newscientist.com\\/article\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.article-content",
+    "Exclude": null
+  },
+  {
+    "Name": "readwrite.com",
+    "Url": "https:\\/\\/readwrite.com\\/.*\\/.*\\/.*\\/.*\\/",
+    "Title": "selector:h1.entry-title",
+    "Desc": "",
+    "Include": "selector:div.entry-content",
+    "Exclude": [
+      "selector:div.clearfix",
+      "selector:div.menu-social-media-container",
+      "selector:div.popular-tags",
+      "selector:div.related_posts",
+      "selector:div.about-author"
+    ]
+  },
+  {
+    "Name": "article.techrepublic.com",
+    "Url": "https:\\/\\/www.techrepublic.com\\/article\\/.*",
+    "Title": "selector:title",
+    "Desc": "pipeline:selector:p[itemprop=\"description\"]|text",
+    "Include": "selector:div.content",
+    "Exclude": [
+      "selector:div.newsletter-shortcode",
+      "selector:div.shortcode"
+    ]
+  },
+  {
+    "Name": "blog.techrepublic.com",
+    "Url": "https:\\/\\/www.techrepublic.com\\/blog\\/.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "pipeline:selector:p[itemprop=\"description\"]|text",
+    "Include": "selector:div.content",
+    "Exclude": [
+      "selector:div.newsletter-shortcode",
+      "selector:div.shortcode"
+    ]
+  },
+  {
+    "Name": "dailydot.com",
+    "Url": "https:\\/\\/www.dailydot.com\\/.*\\/.*",
+    "Title": "selector:h1.dd-article-headline",
+    "Desc": "pipeline:selector:p[itemprop=\"description\"]|text",
+    "Include": "selector:div.dd-content-body-inner",
+    "Exclude": [
+      "selector:div.moviereview"
+    ]
+  },
+  {
+    "Name": "technologyreview.com",
+    "Url": "https:\\/\\/www.technologyreview.com\\/s\\/.*\\/.*",
+    "Title": "selector:title",
+    "Desc": "",
+    "Include": "selector:div.storyContent",
+    "Exclude": [
+      "selector:aside",
+      "selector:svg"
+    ]
+  }
+]

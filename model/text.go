@@ -16,6 +16,7 @@ type TextInfo struct {
 	Indent    uint       // 首先缩进
 	Align     string     // 标题对齐方式
 	MaxLen    int        // 标题最大字数
+	OnlyKF8   string     // 只生成KF8格式: 1是，0否
 	Content   []byte     // 文件内容
 	Sections  []*Section // 章节内容
 	Format    []string   // 格式
@@ -32,6 +33,9 @@ type Section struct {
 
 func (text *TextInfo) SetDefault() {
 	text.ID = uuid.NewV4().String()
+	if text.OnlyKF8 == "" {
+		text.OnlyKF8 = "1"
+	}
 	if text.Author == "" {
 		text.Author = "KAF"
 	}
@@ -54,7 +58,7 @@ func (text *TextInfo) SetDefault() {
 	text.CacheEpub = path.Join(config.CacheDir, "text", fmt.Sprintf("%s.epub", text.ID))
 	text.CacheMobi = path.Join(config.CacheDir, "text", fmt.Sprintf("%s.mobi", text.ID))
 	text.StoreEpub = path.Join(config.StoreDir, "text", fmt.Sprintf("[epub]%s.zip", text.ID))
-	text.StoreMobi = path.Join(config.StoreDir, "text", fmt.Sprintf("[mobi]%s.mobi.mobi", text.ID))
+	text.StoreMobi = path.Join(config.StoreDir, "text", fmt.Sprintf("[mobi]%s.zip", text.ID))
 }
 
 func (text *TextInfo) AddSection(title, content string) {

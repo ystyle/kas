@@ -35,6 +35,7 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		client.WsSend <- core.NewMessage("Error", "参数解析失败")
 		return
 	}
+	model.Statistics(message.DriveID)
 	bookinfo.SetDefault()
 	reg, err := regexp.Compile(bookinfo.Match)
 	if err != nil {

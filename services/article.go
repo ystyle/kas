@@ -23,6 +23,7 @@ func ArticleSubmit(client *core.WsClient, message core.Message) {
 		client.WsSend <- core.NewMessage("Error", "参数解析失败")
 		return
 	}
+	model.Statistics(message.DriveID)
 	book.SetDefault()
 	var wg sync.WaitGroup
 	wg.Add(len(book.UrlList))

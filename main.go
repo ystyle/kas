@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo/middleware"
 	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/core"
+	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/services"
 	"github.com/ystyle/kas/util/config"
 	"github.com/ystyle/kas/util/file"
@@ -41,6 +42,25 @@ func createStoreDir() {
 	}
 }
 
+func PrintStatistics() {
+	wm := core.GetWsManager()
+	timer := time.NewTimer(time.Second * 5)
+	i := 0
+	for {
+		select {
+		case <-timer.C:
+			timer.Reset(time.Second * 60)
+			clients := len(wm.GetClients())
+			count, err := model.DB().Count(&model.Drive{})
+			// 连接有变动时就打印
+			if clients != i && err == nil {
+				fmt.Printf("注册设备: %d, 当前连接数为: %d\n", count, clients)
+			}
+			i = clients
+		}
+	}
+}
+
 func main() {
 	createStoreDir()
 
@@ -62,6 +82,8 @@ func main() {
 	wm.RegisterService("article:submit", services.ArticleSubmit)
 	// ping
 	wm.RegisterService("ping", services.Ping)
+	// 注册设备
+	wm.RegisterService("regsiter", services.Register)
 
 	e := echo.New()
 	e.Use(middleware.Logger())
@@ -77,21 +99,9 @@ func main() {
 	e.GET("/ws", WS)
 	e.GET("/ws#", WS)
 
-	timer := time.NewTimer(time.Second * 5)
-	go func() {
-		i := 0
-		for {
-			select {
-			case <-timer.C:
-				timer.Reset(time.Second * 60)
-				clients := len(wm.GetClients())
-				if clients != i {
-					fmt.Println("连接数为: ", clients)
-				}
-				i = clients
-			}
-		}
-	}()
+	// 打印服务器负载
+	go PrintStatistics()
+
 	if runtime.GOOS == "windows" {
 		dir := path.Dir(os.Args[0])
 		hcomic.Run(dir, "cmd", "/c", "start", "http://127.0.0.1:1323")

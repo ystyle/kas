@@ -25,6 +25,7 @@ func Submit(client *core.WsClient, message core.Message) {
 		client.WsSend <- core.NewMessage("Error", "参数解析失败")
 		return
 	}
+	model.Statistics(message.DriveID)
 	id, err := hcomic.GetComicID(book.Url)
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", "输入的url无效")

@@ -6,9 +6,10 @@ import (
 )
 
 type Message struct {
-	Time time.Time
-	Type string      // messageType
-	Data interface{} // content
+	Time    time.Time
+	Type    string // messageType
+	DriveID string
+	Data    interface{} // content
 }
 
 func NewMessage(Type string, message interface{}) Message {

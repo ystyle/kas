@@ -41,7 +41,7 @@ func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
 			break
 		}
 		msg.Time = time.Now()
-		fn(client, msg)
+		go fn(client, msg)
 	}
 }
 

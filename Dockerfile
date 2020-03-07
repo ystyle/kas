@@ -16,5 +16,7 @@ COPY --from=build-env /go/src/app/kas /app/kas
 COPY --from=build-env /go/src/app/kindlegen /bin/kindlegen
 WORKDIR /app
 VOLUME ["/app/storage"]
+HEALTHCHECK --interval=1m --timeout=10s \
+  CMD curl -f http://localhost:1323/ || exit 1
 EXPOSE 1323
 cmd ./kas

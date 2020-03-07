@@ -21,5 +21,5 @@ func Register(client *core.WsClient, message core.Message) {
 		client.WsSend <- core.NewMessage("register:faild", fmt.Errorf("注册失败%w", err).Error())
 		return
 	}
-	client.WsSend <- core.NewMessage("register:success", "注册成功")
+	client.WsSend <- core.NewMessage("register:success", uid)
 }

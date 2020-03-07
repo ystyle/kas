@@ -14,7 +14,7 @@ type Drive struct {
 
 func Statistics(driveid string) {
 	if driveid == "" {
-		return
+		driveid = "unknow"
 	}
 	var drive Drive
 	err := store.One("ID", driveid, &drive)

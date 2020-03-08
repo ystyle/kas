@@ -14,6 +14,7 @@ FROM alpine
 COPY --from=build-env /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY --from=build-env /go/src/app/kas /app/kas
 COPY --from=build-env /go/src/app/kindlegen /bin/kindlegen
+RUN apk --update add --no-cache curl
 WORKDIR /app
 VOLUME ["/app/storage"]
 HEALTHCHECK --interval=1m --timeout=10s \

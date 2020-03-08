@@ -17,3 +17,9 @@ docker run -d --name hcc \
  -v /mnt/kas/storage:/app/storage \
   ystyle/kas
 ```
+
+### KAF自定义服务器地址
+- 默认服务器为: `ws://140.143.205.67:1323/ws`
+  - 如果在自己服务器启动则把ip改为自己服务器ip
+  - 如果在自己电脑启动则填自己内网地址
+    - windows的话在连接的wifi上，点属性，查看ipv4地址

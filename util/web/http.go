@@ -29,7 +29,7 @@ func getResponse(url string) (*http.Response, error) {
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Arch Linux kernel 4.6.5) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.0 Chrome/39.0.2146.0 Safari/537.36")
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36")
 	req.Header.Set("Set-Cookie", "r18=ok")
 	req.Header.Set("Sec-Fetch-Dest", "document")
 	req.Header.Set("Upgrade-Insecure-Requests", "1")

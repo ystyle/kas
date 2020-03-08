@@ -25,14 +25,19 @@ func ArticleSubmit(client *core.WsClient, message core.Message) {
 	}
 	model.Statistics(message.DriveID)
 	book.SetDefault()
+	client.WsSend <- core.NewMessage("article:bookid", book.ID)
+
+	client.WsSend <- core.NewMessage("info", "开始解析文章内容")
 	var wg sync.WaitGroup
 	wg.Add(len(book.UrlList))
 	for _, item := range book.UrlList {
+		client.WsSend <- core.NewMessage("info", fmt.Sprintf("解析文章: %s", item.Title))
 		getPage(&wg, item)
 	}
 	wg.Wait()
+	client.WsSend <- core.NewMessage("info", "全部文章解析完成, 正在生成epub")
 	e := epub.NewEpub(book.Title)
-
+	e.SetAuthor("KAF")
 	for _, item := range book.UrlList {
 		for key, img := range item.Images {
 			placeholder := fmt.Sprintf("{{ %s }}", key)
@@ -51,21 +56,24 @@ func ArticleSubmit(client *core.WsClient, message core.Message) {
 		client.WsSend <- core.NewMessage("Error", "生成epub失败")
 		return
 	}
+	client.WsSend <- core.NewMessage("info", "epub制作完成，正在转为mobi")
 	err = kindlegen.Conver(book.EpubFile, path.Base(book.MobiFile), false)
 	if err != nil {
+		fmt.Println(err)
 		client.WsSend <- core.NewMessage("Error", "生成mobi失败")
 		return
 	}
 	file.CheckDir(path.Dir(book.ZipFile))
+	client.WsSend <- core.NewMessage("info", "mobi转换完成，正在压缩文件")
 	err = file.CompressZipToFile(book.MobiFile, book.ZipFile)
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", "压缩mobi失败")
 		return
 	}
+	client.WsSend <- core.NewMessage("info", "压缩完成，准备下载")
 	articleDownload(client, book)
 	os.Remove(book.EpubFile)
 	os.Remove(book.MobiFile)
-	os.Remove(book.ZipFile)
 }
 
 func getPage(wg *sync.WaitGroup, item *model.ArticleItem) {
@@ -86,5 +94,5 @@ func articleDownload(client *core.WsClient, book model.ArticleInfo) {
 		return
 	}
 	client.WsSend <- core.NewMessage("info", fmt.Sprintf("正在下载: %s， 文件大小: %s", filename, file.FormatBytesLength(len(buff))))
-	client.WsSend <- core.NewMessage("text:download", buff)
+	client.WsSend <- core.NewMessage("article:download", buff)
 }

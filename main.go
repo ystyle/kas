@@ -13,6 +13,7 @@ import (
 	"github.com/ystyle/kas/util/config"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/hcomic"
+	"github.com/ystyle/kas/util/site"
 	"net/http"
 	"os"
 	"path"
@@ -93,6 +94,8 @@ func main() {
 
 	box := rice.MustFindBox("public")
 	assetHandler := http.FileServer(box.HTTPBox())
+	site.Init(box)
+
 	e.GET("/*", echo.WrapHandler(assetHandler))
 	e.GET("/asset/*", echo.WrapHandler(assetHandler))
 	e.Static("/download", "storage")

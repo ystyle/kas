@@ -26,7 +26,7 @@
   },
   {
     "Name": "qdaily.com",
-    "Url": "http:\\/\\/www.qdaily.com\\/articles\\/",
+    "Url": "http(s)?:\\/\\/www.qdaily.com\\/articles\\/",
     "Title": "selector:h2.title",
     "Desc": "selector:p.excerpt",
     "Include": "selector:div.article-detail-bd",
@@ -95,7 +95,7 @@
   },
   {
     "Name": "jiemian.com",
-    "Url": "http:\\/\\/www.jiemian.com\\/article\\/",
+    "Url": "http(s)?:\\/\\/www.jiemian.com\\/article\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.article-main",
@@ -109,7 +109,7 @@
   },
   {
     "Name": "news.ifanr.com",
-    "Url": "http:\\/\\/www.ifanr.com\\/news\\/",
+    "Url": "http(s)?:\\/\\/www.ifanr.com\\/news\\/",
     "Title": "selector:h1.c-single-normal__title",
     "Desc": "",
     "Include": "selector:article",
@@ -125,7 +125,7 @@
   },
   {
     "Name": "minapp.ifanr.com",
-    "Url": "http:\\/\\/www.ifanr.com\\/minapp\\/",
+    "Url": "http(s)?:\\/\\/www.ifanr.com\\/minapp\\/",
     "Title": "selector:h1.c-single-normal__title",
     "Desc": "",
     "Include": "selector:article",
@@ -144,7 +144,7 @@
   },
   {
     "Name": "app.ifanr.com",
-    "Url": "http:\\/\\/www.ifanr.com\\/app\\/",
+    "Url": "http(s)?:\\/\\/www.ifanr.com\\/app\\/",
     "Title": "selector:title",
     "Desc": "pipeline:selector:meta[name=description]|attr:content",
     "Include": "selector:article",
@@ -165,7 +165,7 @@
   },
   {
     "Name": "dasheng.ifanr.com",
-    "Url": "http:\\/\\/www.ifanr.com\\/dasheng\\/",
+    "Url": "http(s)?:\\/\\/www.ifanr.com\\/dasheng\\/",
     "Title": "selector:p.c-single-dasheng__content",
     "Desc": "",
     "Include": "selector:article",
@@ -173,7 +173,7 @@
   },
   {
     "Name": "data.ifanr.com",
-    "Url": "http:\\/\\/www.ifanr.com\\/data\\/",
+    "Url": "http(s)?:\\/\\/www.ifanr.com\\/data\\/",
     "Title": "selector:p.c-single-data__desc",
     "Desc": "",
     "Include": "selector:article",
@@ -181,7 +181,7 @@
   },
   {
     "Name": "weizhizao.ifanr.com",
-    "Url": "http:\\/\\/www.ifanr.com\\/weizhizao\\/",
+    "Url": "http(s)?:\\/\\/www.ifanr.com\\/weizhizao\\/",
     "Title": "selector:h1.c-single-normal__title",
     "Desc": "",
     "Include": "selector:article",
@@ -189,7 +189,7 @@
   },
   {
     "Name": "ifanr.com",
-    "Url": "http:\\/\\/www.ifanr.com\\/",
+    "Url": "http(s)?:\\/\\/www.ifanr.com\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:article",
@@ -286,7 +286,7 @@
   },
   {
     "Name": "dudu.zhihu.com",
-    "Url": "http:\\/\\/dudu.zhihu.com\\/story\\/",
+    "Url": "http(s)?:\\/\\/dudu.zhihu.com\\/story\\/",
     "Title": "selector:h1.headline-title",
     "Desc": "",
     "Include": "selector:div.content",
@@ -312,7 +312,7 @@
   },
   {
     "Name": "geekpark.net",
-    "Url": "http:\\/\\/www.geekpark.net\\/topics\\/",
+    "Url": "http(s)?:\\/\\/www.geekpark.net\\/topics\\/",
     "Title": "selector:h1.topic-title",
     "Desc": "pipeline:selector:meta[name=description]|attr:content",
     "Include": "selector:article.article-body",
@@ -328,15 +328,15 @@
   },
   {
     "Name": "jianshu.com",
-    "Url": "http:\\/\\/www.jianshu.com\\/p\\/",
+    "Url": "http(s)?:\\/\\/www.jianshu.com\\/p\\/",
     "Title": "selector:h1.title",
     "Desc": "",
-    "Include": "selector:div.show-content-free",
+    "Include": "selector:article",
     "Exclude": null
   },
   {
     "Name": "waerfa.com",
-    "Url": "http:\\/\\/www.waerfa.com\\/",
+    "Url": "http(s)?:\\/\\/www.waerfa.com\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.s-single-article",
@@ -346,7 +346,7 @@
   },
   {
     "Name": "mp.weixin.qq.com",
-    "Url": "http:\\/\\/mp.weixin.qq.com\\/.*",
+    "Url": "http(s)?:\\/\\/mp.weixin.qq.com\\/.*",
     "Title": "pipeline:selector:.rich_media_title_ios|text",
     "Desc": "",
     "Include": "selector:div#js_content",
@@ -354,7 +354,7 @@
   },
   {
     "Name": "article.guokr.com",
-    "Url": "http:\\/\\/www.guokr.com\\/article\\/",
+    "Url": "http(s)?:\\/\\/www.guokr.com\\/article\\/",
     "Title": "selector:h1#articleTitle",
     "Desc": "pipeline:selector:meta[name=Description]|attr:content",
     "Include": "selector:div#articleContent",
@@ -365,7 +365,7 @@
   },
   {
     "Name": "post.guokr.com",
-    "Url": "http:\\/\\/www.guokr.com\\/post\\/",
+    "Url": "http(s)?:\\/\\/www.guokr.com\\/post\\/",
     "Title": "selector:h1#articleTitle",
     "Desc": "",
     "Include": "selector:div#articleContent",
@@ -373,7 +373,7 @@
   },
   {
     "Name": "question.guokr.com",
-    "Url": "http:\\/\\/www.guokr.com\\/question\\/.*",
+    "Url": "http(s)?:\\/\\/www.guokr.com\\/question\\/.*",
     "Title": "selector:h1#articleTitle",
     "Desc": "",
     "Include": "pipeline:selector:.gbbcode-content|html",
@@ -381,7 +381,7 @@
   },
   {
     "Name": "zuimeia.com",
-    "Url": "http:\\/\\/zuimeia.com\\/app\\/",
+    "Url": "http(s)?:\\/\\/zuimeia.com\\/app\\/",
     "Title": "selector:span.sub-title",
     "Desc": "selector:div.short-des",
     "Include": "selector:div#article_content",
@@ -464,7 +464,7 @@
   },
   {
     "Name": "qingmang.me",
-    "Url": "http:\\/\\/qingmang.me\\/magazines\\/.*\\/.*.*\\/.*",
+    "Url": "http(s)?:\\/\\/qingmang.me\\/magazines\\/.*\\/.*.*\\/.*",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:article",
@@ -485,7 +485,7 @@
   },
   {
     "Name": "m.tmtpost.com",
-    "Url": "http:\\/\\/m.tmtpost.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/m.tmtpost.com\\/.*.html",
     "Title": "selector:h1",
     "Desc": "selector:p.post-abstract",
     "Include": "selector:article",
@@ -502,7 +502,7 @@
   },
   {
     "Name": "tmtpost.com",
-    "Url": "http:\\/\\/www.tmtpost.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.tmtpost.com\\/.*.html",
     "Title": "selector:h1",
     "Desc": "selector:p.post-abstract",
     "Include": "selector:article",
@@ -519,7 +519,7 @@
   },
   {
     "Name": "songshuhui.net",
-    "Url": "http:\\/\\/songshuhui.net\\/archives\\/",
+    "Url": "http(s)?:\\/\\/songshuhui.net\\/archives\\/",
     "Title": "selector:span.contenttitle",
     "Desc": "",
     "Include": "selector:div.entry",
@@ -531,7 +531,7 @@
   },
   {
     "Name": "infzm.com",
-    "Url": "http:\\/\\/www.infzm.com\\/content\\/",
+    "Url": "http(s)?:\\/\\/www.infzm.com\\/content\\/",
     "Title": "selector:h1.articleHeadline",
     "Desc": "pipeline:selector:meta[name=description]|attr:content",
     "Include": "selector:section#articleContent",
@@ -539,7 +539,7 @@
   },
   {
     "Name": "nationalgeographic.com.cn",
-    "Url": "http:\\/\\/www.nationalgeographic.com.cn\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.nationalgeographic.com.cn\\/.*.*\\/.*\\/.*.html",
     "Title": "selector:div.title",
     "Desc": "",
     "Include": "selector:div#detailMain_box_img",
@@ -575,7 +575,7 @@
   },
   {
     "Name": "apprcn.com",
-    "Url": "http:\\/\\/www.apprcn.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.apprcn.com\\/.*.html",
     "Title": "selector:h2.entry-title",
     "Desc": "",
     "Include": "selector:div.entry-content",
@@ -627,7 +627,7 @@
   },
   {
     "Name": "leikeji.com",
-    "Url": "http:\\/\\/www.leikeji.com\\/article\\/",
+    "Url": "http(s)?:\\/\\/www.leikeji.com\\/article\\/",
     "Title": "selector:h1.article-title",
     "Desc": "",
     "Include": "selector:div.article-body",
@@ -649,7 +649,7 @@
   },
   {
     "Name": "chuansong.me",
-    "Url": "http:\\/\\/chuansong.me\\/n\\/",
+    "Url": "http(s)?:\\/\\/chuansong.me\\/n\\/",
     "Title": "selector:h2#activity-name",
     "Desc": "",
     "Include": "selector:div#js_content",
@@ -657,7 +657,7 @@
   },
   {
     "Name": "stream.107cine.cm",
-    "Url": "http:\\/\\/107cine.com\\/stream\\/.*",
+    "Url": "http(s)?:\\/\\/107cine.com\\/stream\\/.*",
     "Title": "selector:h2",
     "Desc": "",
     "Include": "selector:div.flow_content",
@@ -668,7 +668,7 @@
   },
   {
     "Name": "zhuanti.107cine.cm",
-    "Url": "http:\\/\\/107cine.com\\/zhuanti\\/.*",
+    "Url": "http(s)?:\\/\\/107cine.com\\/zhuanti\\/.*",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div.zhuanti",
@@ -679,7 +679,7 @@
   },
   {
     "Name": "jiemi.baike.com",
-    "Url": "http:\\/\\/jiemi.baike.com\\/pa\\/detail?id=.*",
+    "Url": "http(s)?:\\/\\/jiemi.baike.com\\/pa\\/detail?id=.*",
     "Title": "selector:h1.title",
     "Desc": "",
     "Include": "selector:div.jiemi-content",
@@ -733,7 +733,7 @@
   },
   {
     "Name": "dxy.cn",
-    "Url": "http:\\/\\/.*.dxy.cn\\/article\\/.*",
+    "Url": "http(s)?:\\/\\/.*.dxy.cn\\/article\\/.*",
     "Title": "selector:h1.title",
     "Desc": "",
     "Include": "selector:div#content",
@@ -759,7 +759,7 @@
   },
   {
     "Name": "creative.adquan.com",
-    "Url": "http:\\/\\/creative.adquan.com\\/show\\/.*",
+    "Url": "http(s)?:\\/\\/creative.adquan.com\\/show\\/.*",
     "Title": "selector:h2.text_title",
     "Desc": "",
     "Include": "selector:div.con_Text",
@@ -767,7 +767,7 @@
   },
   {
     "Name": "post.adquan.com",
-    "Url": "http:\\/\\/www.adquan.com\\/post-.*.html",
+    "Url": "http(s)?:\\/\\/www.adquan.com\\/post-.*.html",
     "Title": "selector:h2.text_title",
     "Desc": "",
     "Include": "selector:div.con_Text",
@@ -830,7 +830,7 @@
   },
   {
     "Name": "blog.jobbole.com",
-    "Url": "http:\\/\\/blog.jobbole.com\\/.*\\/",
+    "Url": "http(s)?:\\/\\/blog.jobbole.com\\/.*\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.entry",
@@ -843,7 +843,7 @@
   },
   {
     "Name": "android.jobbole.com",
-    "Url": "http:\\/\\/android.jobbole.com\\/.*\\/",
+    "Url": "http(s)?:\\/\\/android.jobbole.com\\/.*\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.entry",
@@ -856,7 +856,7 @@
   },
   {
     "Name": "ios.jobbole.com",
-    "Url": "http:\\/\\/ios.jobbole.com\\/.*\\/",
+    "Url": "http(s)?:\\/\\/ios.jobbole.com\\/.*\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.entry",
@@ -869,7 +869,7 @@
   },
   {
     "Name": "python.jobbole.com",
-    "Url": "http:\\/\\/python.jobbole.com\\/.*\\/",
+    "Url": "http(s)?:\\/\\/python.jobbole.com\\/.*\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.entry",
@@ -882,7 +882,7 @@
   },
   {
     "Name": "top.jobbole.com",
-    "Url": "http:\\/\\/top.jobbole.com\\/.*\\/",
+    "Url": "http(s)?:\\/\\/top.jobbole.com\\/.*\\/",
     "Title": "selector:h1.p-tit-single",
     "Desc": "",
     "Include": "selector:div.p-entry",
@@ -918,7 +918,7 @@
   },
   {
     "Name": "div.io",
-    "Url": "http:\\/\\/div.io\\/topic\\/",
+    "Url": "http(s)?:\\/\\/div.io\\/topic\\/",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div.topic-firstfloor-detail",
@@ -962,7 +962,7 @@
   },
   {
     "Name": "infoq.com",
-    "Url": "http:\\/\\/www.infoq.com\\/cn\\/articles\\/",
+    "Url": "http(s)?:\\/\\/www.infoq.com\\/cn\\/articles\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.text_info_article",
@@ -988,7 +988,7 @@
   },
   {
     "Name": "news.infoq.com",
-    "Url": "http:\\/\\/www.infoq.com\\/cn\\/news\\/.*.*\\/.*",
+    "Url": "http(s)?:\\/\\/www.infoq.com\\/cn\\/news\\/.*.*\\/.*",
     "Title": "selector:h1.general",
     "Desc": "",
     "Include": "selector:div.text_info",
@@ -1035,7 +1035,7 @@
   },
   {
     "Name": "importnew.com",
-    "Url": "http:\\/\\/www.importnew.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.importnew.com\\/.*.html",
     "Title": "selector:div.entry-header",
     "Desc": "",
     "Include": "selector:div.entry",
@@ -1051,7 +1051,7 @@
   },
   {
     "Name": "ifeve.com",
-    "Url": "http:\\/\\/ifeve.com\\/.*\\/",
+    "Url": "http(s)?:\\/\\/ifeve.com\\/.*\\/",
     "Title": "selector:h3.title",
     "Desc": "",
     "Include": "selector:div.post_content",
@@ -1200,7 +1200,7 @@
   },
   {
     "Name": "ruanyifeng.com",
-    "Url": "http:\\/\\/www.ruanyifeng.com\\/blog\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.ruanyifeng.com\\/blog\\/.*.*\\/.*\\/.*.html",
     "Title": "selector:h1#page-title",
     "Desc": "",
     "Include": "selector:div#main-content",
@@ -1242,7 +1242,7 @@
   },
   {
     "Name": "tuicool.com",
-    "Url": "http:\\/\\/www.tuicool.com\\/articles\\/",
+    "Url": "http(s)?:\\/\\/www.tuicool.com\\/articles\\/",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div.article_body",
@@ -1265,7 +1265,7 @@
   },
   {
     "Name": "html-js.com",
-    "Url": "http:\\/\\/www.html-js.com\\/article\\/",
+    "Url": "http(s)?:\\/\\/www.html-js.com\\/article\\/",
     "Title": "pipeline:selector:.wrapper |div[rel=bookmark]|text",
     "Desc": "",
     "Include": "selector:div.entry-content",
@@ -1275,7 +1275,7 @@
   },
   {
     "Name": "open-open.com",
-    "Url": "http:\\/\\/www.open-open.com\\/lib\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.open-open.com\\/lib\\/.*\\/.*.html",
     "Title": "selector:h1#articleTitle",
     "Desc": "",
     "Include": "selector:article",
@@ -1283,7 +1283,7 @@
   },
   {
     "Name": "colobu.com",
-    "Url": "http:\\/\\/colobu.com\\/.*.*\\/.*\\/",
+    "Url": "http(s)?:\\/\\/colobu.com\\/.*.*\\/.*\\/",
     "Title": "selector:h1.article-title",
     "Desc": "",
     "Include": "selector:div.article-entry",
@@ -1291,7 +1291,7 @@
   },
   {
     "Name": "liqi.io",
-    "Url": "http:\\/\\/liqi.io\\/.*\\/",
+    "Url": "http(s)?:\\/\\/liqi.io\\/.*\\/",
     "Title": "selector:h1.entry-title",
     "Desc": "",
     "Include": "selector:div.entry-content",
@@ -1301,7 +1301,7 @@
   },
   {
     "Name": "daqianduan.com",
-    "Url": "http:\\/\\/www.daqianduan.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.daqianduan.com\\/.*.html",
     "Title": "selector:h1.article-title",
     "Desc": "",
     "Include": "selector:article.article-content",
@@ -1309,7 +1309,7 @@
   },
   {
     "Name": "caibaojian.com",
-    "Url": "http:\\/\\/caibaojian.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/caibaojian.com\\/.*.html",
     "Title": "selector:h1.entry-title",
     "Desc": "",
     "Include": "selector:div.entry-content",
@@ -1320,7 +1320,7 @@
   },
   {
     "Name": "hao.caibaojian.com",
-    "Url": "http:\\/\\/hao.caibaojian.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/hao.caibaojian.com\\/.*.html",
     "Title": "selector:h1.entry-title",
     "Desc": "",
     "Include": "selector:div.entry-content",
@@ -1331,7 +1331,7 @@
   },
   {
     "Name": "xfenglin.com",
-    "Url": "http:\\/\\/xfenglin.com\\/a\\/",
+    "Url": "http(s)?:\\/\\/xfenglin.com\\/a\\/",
     "Title": "pipeline:selector:.t-head|h2|text",
     "Desc": "",
     "Include": "selector:div.article__content",
@@ -1357,7 +1357,7 @@
   },
   {
     "Name": "guanggoo.com",
-    "Url": "http:\\/\\/www.guanggoo.com\\/t\\/",
+    "Url": "http(s)?:\\/\\/www.guanggoo.com\\/t\\/",
     "Title": "selector:h3.title",
     "Desc": "",
     "Include": "pipeline:selector:.ui-content|index:0|html",
@@ -1365,7 +1365,7 @@
   },
   {
     "Name": "ctolib.com",
-    "Url": "http:\\/\\/www.ctolib.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.ctolib.com\\/.*.html",
     "Title": "selector:h3.m-t-xs",
     "Desc": "",
     "Include": "selector:article",
@@ -1375,7 +1375,7 @@
   },
   {
     "Name": "zuojj.com",
-    "Url": "http:\\/\\/www.zuojj.com\\/archives\\/",
+    "Url": "http(s)?:\\/\\/www.zuojj.com\\/archives\\/",
     "Title": "selector:h1.article-title",
     "Desc": "",
     "Include": "selector:article.article-content",
@@ -1386,7 +1386,7 @@
   },
   {
     "Name": "wkee.net",
-    "Url": "http:\\/\\/wkee.net\\/post\\/",
+    "Url": "http(s)?:\\/\\/wkee.net\\/post\\/",
     "Title": "selector:h1.title",
     "Desc": "",
     "Include": "selector:div#content0",
@@ -1408,7 +1408,7 @@
   },
   {
     "Name": "linuxsight.com",
-    "Url": "http:\\/\\/www.linuxsight.com\\/blog\\/",
+    "Url": "http(s)?:\\/\\/www.linuxsight.com\\/blog\\/",
     "Title": "selector:h1.entry-title",
     "Desc": "",
     "Include": "selector:div.single-content",
@@ -1428,7 +1428,7 @@
   },
   {
     "Name": "36dsj.com",
-    "Url": "http:\\/\\/www.36dsj.com\\/archives\\/",
+    "Url": "http(s)?:\\/\\/www.36dsj.com\\/archives\\/",
     "Title": "selector:h1.article-title",
     "Desc": "",
     "Include": "selector:article.article-content",
@@ -1439,7 +1439,7 @@
   },
   {
     "Name": "cocoachina.com",
-    "Url": "http:\\/\\/www.cocoachina.com\\/.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.cocoachina.com\\/.*\\/.*\\/.*.html",
     "Title": "selector:h2",
     "Desc": "",
     "Include": "selector:div#detailbody",
@@ -1449,7 +1449,7 @@
   },
   {
     "Name": "dataunion.org",
-    "Url": "http:\\/\\/dataunion.org\\/.*.html",
+    "Url": "http(s)?:\\/\\/dataunion.org\\/.*.html",
     "Title": "selector:h1.mscctitle",
     "Desc": "",
     "Include": "selector:div.content-text",
@@ -1467,7 +1467,7 @@
   },
   {
     "Name": "techug.com",
-    "Url": "http:\\/\\/www.techug.com\\/post\\/",
+    "Url": "http(s)?:\\/\\/www.techug.com\\/post\\/",
     "Title": "selector:h1.entry-title",
     "Desc": "",
     "Include": "selector:div#content0",
@@ -1475,7 +1475,7 @@
   },
   {
     "Name": "article.ituring.com.cn",
-    "Url": "http:\\/\\/www.ituring.com.cn\\/article\\/",
+    "Url": "http(s)?:\\/\\/www.ituring.com.cn\\/article\\/",
     "Title": "pipeline:selector:.article-title|h2|text",
     "Desc": "",
     "Include": "selector:div.article",
@@ -1486,7 +1486,7 @@
   },
   {
     "Name": "book.ituring.com.cn",
-    "Url": "http:\\/\\/www.ituring.com.cn\\/book\\/tupubarticle\\/",
+    "Url": "http(s)?:\\/\\/www.ituring.com.cn\\/book\\/tupubarticle\\/",
     "Title": "pipeline:selector:.online-book-title|h3|text",
     "Desc": "",
     "Include": "selector:div.article-detail",
@@ -1552,7 +1552,7 @@
   },
   {
     "Name": "article.52im.net",
-    "Url": "http:\\/\\/www.52im.net\\/article-.*.html",
+    "Url": "http(s)?:\\/\\/www.52im.net\\/article-.*.html",
     "Title": "selector:h1.ph",
     "Desc": "selector:div.js-ptl-atcl-summery",
     "Include": "selector:#",
@@ -1560,7 +1560,7 @@
   },
   {
     "Name": "thread.52im.net",
-    "Url": "http:\\/\\/www.52im.net\\/thread-.*.html",
+    "Url": "http(s)?:\\/\\/www.52im.net\\/thread-.*.html",
     "Title": "selector:span#thread_subject",
     "Desc": "",
     "Include": "pipeline:selector:td.t_f:first|html",
@@ -1578,7 +1578,7 @@
   },
   {
     "Name": "gallery.edaoe.com",
-    "Url": "http:\\/\\/www.edaoe.com\\/gallery\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.edaoe.com\\/gallery\\/.*.html",
     "Title": "selector:h1.article-title",
     "Desc": "",
     "Include": "selector:article.article-content",
@@ -1588,7 +1588,7 @@
   },
   {
     "Name": "chinabyte.cm",
-    "Url": "http:\\/\\/.*.chinabyte.com\\/.*.*\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/.*.chinabyte.com\\/.*.*\\/.*\\/.*.shtml",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.art_txt",
@@ -1596,7 +1596,7 @@
   },
   {
     "Name": "wiki.jikexueyuan.com",
-    "Url": "http:\\/\\/wiki.jikexueyuan.com\\/project\\/.*",
+    "Url": "http(s)?:\\/\\/wiki.jikexueyuan.com\\/project\\/.*",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.markdown-body",
@@ -1607,7 +1607,7 @@
   },
   {
     "Name": "ourcoders.com",
-    "Url": "http:\\/\\/ourcoders.com\\/thread\\/show\\/.*\\/",
+    "Url": "http(s)?:\\/\\/ourcoders.com\\/thread\\/show\\/.*\\/",
     "Title": "selector:title",
     "Desc": "",
     "Include": "pipeline:selector:.threadblock|index:0|html",
@@ -1615,7 +1615,7 @@
   },
   {
     "Name": "uisdc.com",
-    "Url": "http:\\/\\/www.uisdc.com\\/.*",
+    "Url": "http(s)?:\\/\\/www.uisdc.com\\/.*",
     "Title": "selector:h1.entry-title",
     "Desc": "",
     "Include": "selector:div.entry-content",
@@ -1687,7 +1687,7 @@
   },
   {
     "Name": "hacknews.codedata.cn",
-    "Url": "http:\\/\\/www.codedata.cn\\/hacknews\\/.*",
+    "Url": "http(s)?:\\/\\/www.codedata.cn\\/hacknews\\/.*",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:article",
@@ -1695,7 +1695,7 @@
   },
   {
     "Name": "topics.codedata.cn",
-    "Url": "http:\\/\\/www.codedata.cn\\/topics\\/.*",
+    "Url": "http(s)?:\\/\\/www.codedata.cn\\/topics\\/.*",
     "Title": "selector:h1.media-heading",
     "Desc": "",
     "Include": "selector:article",
@@ -1711,7 +1711,7 @@
   },
   {
     "Name": "cppdaxue.com",
-    "Url": "http:\\/\\/cppdaxue.com\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/cppdaxue.com\\/.*\\/.*.html",
     "Title": "selector:h1.article-title",
     "Desc": "",
     "Include": "selector:#",
@@ -1721,7 +1721,7 @@
   },
   {
     "Name": "bobao.360.cn",
-    "Url": "http:\\/\\/bobao.360.cn\\/.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/bobao.360.cn\\/.*\\/.*\\/.*.html",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div#article_box",
@@ -1733,7 +1733,7 @@
   },
   {
     "Name": "thebigdata.cn",
-    "Url": "http:\\/\\/www.thebigdata.cn\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.thebigdata.cn\\/.*\\/.*.html",
     "Title": "selector:h1.aTitle",
     "Desc": "",
     "Include": "selector:div#content",
@@ -1793,7 +1793,7 @@
   },
   {
     "Name": "voidcn.com",
-    "Url": "http:\\/\\/www.voidcn.com\\/blog\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.voidcn.com\\/blog\\/.*.*\\/.*\\/.*.html",
     "Title": "selector:h1.title",
     "Desc": "",
     "Include": "selector:div.post-content",
@@ -1804,7 +1804,7 @@
   },
   {
     "Name": "m.thepaper.cn",
-    "Url": "http:\\/\\/m.thepaper.cn\\/newsDetail_.*",
+    "Url": "http(s)?:\\/\\/m.thepaper.cn\\/newsDetail_.*",
     "Title": "selector:h1.t_newsinfo",
     "Desc": "",
     "Include": "selector:div.news_part_limit",
@@ -1816,7 +1816,7 @@
   },
   {
     "Name": "thepaper.cn",
-    "Url": "http:\\/\\/www.thepaper.cn\\/newsDetail_.*",
+    "Url": "http(s)?:\\/\\/www.thepaper.cn\\/newsDetail_.*",
     "Title": "selector:h1.news_title",
     "Desc": "",
     "Include": "selector:div.news_txt",
@@ -1824,7 +1824,7 @@
   },
   {
     "Name": "vice.cn",
-    "Url": "http:\\/\\/www.vice.cn\\/read\\/",
+    "Url": "http(s)?:\\/\\/www.vice.cn\\/read\\/",
     "Title": "selector:h3.article-title",
     "Desc": "selector:div.article-summary",
     "Include": "selector:div.article-body",
@@ -1837,7 +1837,7 @@
   },
   {
     "Name": "jandan.net",
-    "Url": "http:\\/\\/jandan.net\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/jandan.net\\/.*.*\\/.*\\/.*.html",
     "Title": "pipeline:selector:.post h1|text",
     "Desc": "",
     "Include": "pipeline:selector:.post|index:0|html",
@@ -1876,7 +1876,7 @@
   },
   {
     "Name": "news.mydrivers.com",
-    "Url": "http:\\/\\/news.mydrivers.com\\/.*\\/.*\\/.*.htm",
+    "Url": "http(s)?:\\/\\/news.mydrivers.com\\/.*\\/.*\\/.*.htm",
     "Title": "selector:div#thread_subject",
     "Desc": "",
     "Include": "selector:div.news_info",
@@ -1893,7 +1893,7 @@
   },
   {
     "Name": "ftchinese.com",
-    "Url": "http:\\/\\/www.ftchinese.com\\/story\\/",
+    "Url": "http(s)?:\\/\\/www.ftchinese.com\\/story\\/",
     "Title": "selector:h1.story-headline",
     "Desc": "selector:div.story-lead",
     "Include": "selector:div.story-body",
@@ -1901,7 +1901,7 @@
   },
   {
     "Name": "young.ifeng.com",
-    "Url": "http:\\/\\/young.ifeng.com\\/a\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/young.ifeng.com\\/a\\/.*\\/.*.shtml",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div.ya_main_con",
@@ -1916,7 +1916,7 @@
   },
   {
     "Name": "news.ifeng.com",
-    "Url": "http:\\/\\/.*.ifeng.com\\/a\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/.*.ifeng.com\\/a\\/.*\\/.*.shtml",
     "Title": "selector:h1#artical_topic",
     "Desc": "",
     "Include": "selector:div#artical_real",
@@ -1927,7 +1927,7 @@
   },
   {
     "Name": "news.mtime.com",
-    "Url": "http:\\/\\/news.mtime.com\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/news.mtime.com\\/.*.*\\/.*\\/.*.html",
     "Title": "selector:h2",
     "Desc": "selector:div.newsnote",
     "Include": "selector:div#newsContent",
@@ -1935,7 +1935,7 @@
   },
   {
     "Name": "feng.com",
-    "Url": "http:\\/\\/.*.feng.com\\/.*.*\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/.*.feng.com\\/.*.*\\/.*\\/.*.shtml",
     "Title": "pipeline:selector:.h2|text||selector:h1|text||selector:.h2|text",
     "Desc": "selector:p.content_title",
     "Include": "selector:div#article_content",
@@ -1945,7 +1945,7 @@
   },
   {
     "Name": "caixin.com",
-    "Url": "http:\\/\\/.*.caixin.com\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/.*.caixin.com\\/.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "selector:div#subhead",
     "Include": "selector:div#Main_Content_Val",
@@ -2055,7 +2055,7 @@
   },
   {
     "Name": "news.workercn.cn",
-    "Url": "http:\\/\\/news.workercn.cn\\/.*\\/.*\\/.*.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/news.workercn.cn\\/.*\\/.*\\/.*.*\\/.*.shtml",
     "Title": "selector:div.ad_tl_main",
     "Desc": "",
     "Include": "selector:div.ad_content",
@@ -2063,7 +2063,7 @@
   },
   {
     "Name": "news.xinhuanet.com",
-    "Url": "http:\\/\\/news.xinhuanet.com\\/.*.*\\/.*\\/.*.htm",
+    "Url": "http(s)?:\\/\\/news.xinhuanet.com\\/.*.*\\/.*\\/.*.htm",
     "Title": "selector:div.h-title",
     "Desc": "",
     "Include": "selector:div#p-detail",
@@ -2083,7 +2083,7 @@
   },
   {
     "Name": "stockstar.com",
-    "Url": "http:\\/\\/.*.stockstar.com\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/.*.stockstar.com\\/.*.shtml",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div#container-article",
@@ -2091,7 +2091,7 @@
   },
   {
     "Name": "takungpao.com",
-    "Url": "http:\\/\\/.*.takungpao.com\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/.*.takungpao.com\\/.*.*\\/.*\\/.*.html",
     "Title": "selector:h1.tpk_con_tle",
     "Desc": "",
     "Include": "selector:div.tpk_text",
@@ -2099,7 +2099,7 @@
   },
   {
     "Name": "money.jrj.com.cn",
-    "Url": "http:\\/\\/money.jrj.com.cn\\/.*.*\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/money.jrj.com.cn\\/.*.*\\/.*\\/.*.shtml",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.titimg",
@@ -2107,7 +2107,7 @@
   },
   {
     "Name": "news.ynet.com",
-    "Url": "http:\\/\\/news.ynet.com\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/news.ynet.com\\/.*.*\\/.*\\/.*.html",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div#articleAll",
@@ -2120,7 +2120,7 @@
   },
   {
     "Name": "qianlong.com",
-    "Url": "http:\\/\\/.*.qianlong.com\\/.*\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/.*.qianlong.com\\/.*\\/.*\\/.*.shtml",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.article-content",
@@ -2174,7 +2174,7 @@
   },
   {
     "Name": "user.guancha.cn",
-    "Url": "http:\\/\\/user.guancha.cn\\/main\\/content?id=.*",
+    "Url": "http(s)?:\\/\\/user.guancha.cn\\/main\\/content?id=.*",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.article-txt",
@@ -2184,7 +2184,7 @@
   },
   {
     "Name": "guancha.cn",
-    "Url": "http:\\/\\/www.guancha.cn\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/www.guancha.cn\\/.*\\/.*.shtml",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.all-txt",
@@ -2200,7 +2200,7 @@
   },
   {
     "Name": "people.com.cn",
-    "Url": "http:\\/\\/.*.people.com.cn\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/.*.people.com.cn\\/.*.*\\/.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div.box_con",
@@ -2210,7 +2210,7 @@
   },
   {
     "Name": "chinanews.com",
-    "Url": "http:\\/\\/www.chinanews.com\\/.*\\/.*.*\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/www.chinanews.com\\/.*\\/.*.*\\/.*\\/.*.shtml",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.left_zw",
@@ -2244,7 +2244,7 @@
   },
   {
     "Name": "cwzg.cm",
-    "Url": "http:\\/\\/www.cwzg.cn\\/.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.cwzg.cn\\/.*\\/.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "selector:div.article-brief",
     "Include": "selector:div#article",
@@ -2252,7 +2252,7 @@
   },
   {
     "Name": "idianzixun.com",
-    "Url": "http:\\/\\/www.yidianzixun.com\\/article\\/.*",
+    "Url": "http(s)?:\\/\\/www.yidianzixun.com\\/article\\/.*",
     "Title": "selector:h2",
     "Desc": "",
     "Include": "selector:div.content-bd",
@@ -2263,7 +2263,7 @@
   },
   {
     "Name": "reader.s-reader.com",
-    "Url": "http:\\/\\/reader.s-reader.com\\/article\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/reader.s-reader.com\\/article\\/.*\\/.*.html",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:div.content",
@@ -2329,7 +2329,7 @@
   },
   {
     "Name": "donews.com",
-    "Url": "http:\\/\\/www.donews.com\\/.*.*\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.donews.com\\/.*.*\\/.*\\/.*.html",
     "Title": "pipeline:selector:.contentbox|selector:h2|index:0|text",
     "Desc": "",
     "Include": "pipeline:selector:.article-con|index:0|html",
@@ -2337,7 +2337,7 @@
   },
   {
     "Name": "flashnews.donews.com",
-    "Url": "http:\\/\\/www.donews.com\\/flashnews\\/detail\\/",
+    "Url": "http(s)?:\\/\\/www.donews.com\\/flashnews\\/detail\\/",
     "Title": "pipeline:selector:.contentbox|selector:h2|index:0|text",
     "Desc": "",
     "Include": "pipeline:selector:.article-con|index:0|html",
@@ -2345,7 +2345,7 @@
   },
   {
     "Name": "newseed.pedaily.cn",
-    "Url": "http:\\/\\/newseed.pedaily.cn\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/newseed.pedaily.cn\\/.*\\/.*.shtml",
     "Title": "selector:h1",
     "Desc": "selector:div.subject",
     "Include": "selector:div#news-content",
@@ -2361,7 +2361,7 @@
   },
   {
     "Name": "digi.tech.qq.com",
-    "Url": "http:\\/\\/digi.tech.qq.com\\/a\\/.*\\/.*.htm",
+    "Url": "http(s)?:\\/\\/digi.tech.qq.com\\/a\\/.*\\/.*.htm",
     "Title": "pipeline:selector:.hd|h1|text",
     "Desc": "selector:p.titdd-Article",
     "Include": "selector:div.Cnt-Main-Article-QQ",
@@ -2381,7 +2381,7 @@
   },
   {
     "Name": "qq.com",
-    "Url": "http:\\/\\/.*.qq.com\\/a\\/.*\\/.*.htm",
+    "Url": "http(s)?:\\/\\/.*.qq.com\\/a\\/.*\\/.*.htm",
     "Title": "pipeline:selector:.hd h1|text",
     "Desc": "",
     "Include": "selector:div#Cnt-Main-Article-QQ",
@@ -2389,7 +2389,7 @@
   },
   {
     "Name": "view.inews.qq.com",
-    "Url": "http:\\/\\/view.inews.qq.com\\/a\\/",
+    "Url": "http(s)?:\\/\\/view.inews.qq.com\\/a\\/",
     "Title": "selector:p.title",
     "Desc": "",
     "Include": "selector:div#content",
@@ -2400,7 +2400,7 @@
   },
   {
     "Name": "view2.inews.qq.com",
-    "Url": "http:\\/\\/view.news.qq.com\\/original\\/intouchtoday\\/.*.html",
+    "Url": "http(s)?:\\/\\/view.news.qq.com\\/original\\/intouchtoday\\/.*.html",
     "Title": "selector:h2#sharetitle",
     "Desc": "",
     "Include": "selector:div#articleContent",
@@ -2416,7 +2416,7 @@
   },
   {
     "Name": "news.china.com.cn",
-    "Url": "http:\\/\\/news.china.com.cn\\/.*.*\\/.*\\/.*.htm",
+    "Url": "http(s)?:\\/\\/news.china.com.cn\\/.*.*\\/.*\\/.*.htm",
     "Title": "selector:h1.articleTitle",
     "Desc": "",
     "Include": "selector:div#articleBody",
@@ -2447,7 +2447,7 @@
   },
   {
     "Name": "8btc.com",
-    "Url": "http:\\/\\/www.8btc.com\\/.*-.*",
+    "Url": "http(s)?:\\/\\/www.8btc.com\\/.*-.*",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "pipeline:selector:.article-content|index:0|html",
@@ -2458,7 +2458,7 @@
   },
   {
     "Name": "wiki.8btc.com",
-    "Url": "http:\\/\\/www.8btc.com\\/wiki\\/.*",
+    "Url": "http(s)?:\\/\\/www.8btc.com\\/wiki\\/.*",
     "Title": "selector:div.page-title",
     "Desc": "",
     "Include": "selector:div.col-xs-12",
@@ -2468,7 +2468,7 @@
   },
   {
     "Name": "vip.qikan.com",
-    "Url": "http:\\/\\/nlc.vip.qikan.com\\/text\\/Article.aspx.*",
+    "Url": "http(s)?:\\/\\/nlc.vip.qikan.com\\/text\\/Article.aspx.*",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div.newartbox",
@@ -2476,7 +2476,7 @@
   },
   {
     "Name": "zhidx.com",
-    "Url": "http:\\/\\/zhidx.com\\/p\\/",
+    "Url": "http(s)?:\\/\\/zhidx.com\\/p\\/",
     "Title": "pipeline:selector:.finTit|h1|text",
     "Desc": "",
     "Include": "selector:div.finCnt",
@@ -2486,7 +2486,7 @@
   },
   {
     "Name": "iheima.com",
-    "Url": "http:\\/\\/www.iheima.com\\/zixun\\/.*\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/www.iheima.com\\/zixun\\/.*\\/.*\\/.*.shtml",
     "Title": "selector:div.title",
     "Desc": "selector:div.outline",
     "Include": "selector:div.main-content",
@@ -2510,7 +2510,7 @@
   },
   {
     "Name": "tech2ipo.com",
-    "Url": "http:\\/\\/tech2ipo.com\\/.*",
+    "Url": "http(s)?:\\/\\/tech2ipo.com\\/.*",
     "Title": "pipeline:selector:.title|h1|text",
     "Desc": "",
     "Include": "selector:div.content",
@@ -2518,7 +2518,7 @@
   },
   {
     "Name": "column.iresearch.cn",
-    "Url": "http:\\/\\/column.iresearch.cn\\/b\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/column.iresearch.cn\\/b\\/.*\\/.*.shtml",
     "Title": "pipeline:selector:.title|h1|text",
     "Desc": "",
     "Include": "selector:div.m-article",
@@ -2526,7 +2526,7 @@
   },
   {
     "Name": "news.iresearch.cn",
-    "Url": "http:\\/\\/news.iresearch.cn\\/content\\/.*.*\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/news.iresearch.cn\\/content\\/.*.*\\/.*\\/.*.shtml",
     "Title": "pipeline:selector:.title|h1|text",
     "Desc": "selector:div.review",
     "Include": "selector:div.m-article",
@@ -2536,7 +2536,7 @@
   },
   {
     "Name": "lanjingtmt.com",
-    "Url": "http:\\/\\/www.lanjingtmt.com\\/news\\/detail\\/",
+    "Url": "http(s)?:\\/\\/www.lanjingtmt.com\\/news\\/detail\\/",
     "Title": "pipeline:selector:.newsTitle|h1|text",
     "Desc": "selector:div.dm_zy",
     "Include": "selector:div#pageTxt",
@@ -2547,7 +2547,7 @@
   },
   {
     "Name": "timetimetime.net",
-    "Url": "http:\\/\\/www.timetimetime.net\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.timetimetime.net\\/.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:.neir",
@@ -2555,7 +2555,7 @@
   },
   {
     "Name": "mifengtd.cn",
-    "Url": "http:\\/\\/www.mifengtd.cn\\/articles\\/",
+    "Url": "http(s)?:\\/\\/www.mifengtd.cn\\/articles\\/",
     "Title": "selector:a.p-name",
     "Desc": "",
     "Include": "selector:div.e-content",
@@ -2563,7 +2563,7 @@
   },
   {
     "Name": "vgtime.com",
-    "Url": "http:\\/\\/www.vgtime.com\\/article\\/",
+    "Url": "http(s)?:\\/\\/www.vgtime.com\\/article\\/",
     "Title": "selector:h1.art_max_width",
     "Desc": "",
     "Include": "selector:div.paragraph",
@@ -2571,7 +2571,7 @@
   },
   {
     "Name": "keke289.com",
-    "Url": "http:\\/\\/www.keke289.com\\/news\\/",
+    "Url": "http(s)?:\\/\\/www.keke289.com\\/news\\/",
     "Title": "selector:h2",
     "Desc": "",
     "Include": "selector:section.article-bd",
@@ -2582,7 +2582,7 @@
   },
   {
     "Name": "ebrun.com",
-    "Url": "http:\\/\\/www.ebrun.com\\/.*\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/www.ebrun.com\\/.*\\/.*.shtml",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div.cmsDiv",
@@ -2596,7 +2596,7 @@
   },
   {
     "Name": "cokeji.com",
-    "Url": "http:\\/\\/www.cokeji.com\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.cokeji.com\\/.*.html",
     "Title": "pipeline:selector:.single-header|h1|text",
     "Desc": "",
     "Include": "selector:div.single-main",
@@ -2604,7 +2604,7 @@
   },
   {
     "Name": "199it.com",
-    "Url": "http:\\/\\/www.199it.com\\/archives\\/",
+    "Url": "http(s)?:\\/\\/www.199it.com\\/archives\\/",
     "Title": "selector:h1.entry-title",
     "Desc": "",
     "Include": "selector:div.entry-content",
@@ -2612,7 +2612,7 @@
   },
   {
     "Name": "aliresearch.com",
-    "Url": "http:\\/\\/www.aliresearch.com\\/blog\\/article\\/detail\\/id\\/",
+    "Url": "http(s)?:\\/\\/www.aliresearch.com\\/blog\\/article\\/detail\\/id\\/",
     "Title": "selector:h2",
     "Desc": "",
     "Include": "selector:section#contents",
@@ -2658,7 +2658,7 @@
   },
   {
     "Name": "g-cores.com",
-    "Url": "http:\\/\\/www.g-cores.com\\/articles\\/",
+    "Url": "http(s)?:\\/\\/www.g-cores.com\\/articles\\/",
     "Title": "selector:h1.story_title",
     "Desc": "selector:p.story_desc",
     "Include": "selector:div.story",
@@ -2737,7 +2737,7 @@
   },
   {
     "Name": "qu.la",
-    "Url": "http:\\/\\/www.qu.la\\/book\\/.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.qu.la\\/book\\/.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div#content",
@@ -2747,7 +2747,7 @@
   },
   {
     "Name": "biquge.com.tw",
-    "Url": "http:\\/\\/www.biquge.com.tw\\/.*.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.biquge.com.tw\\/.*.*\\/.*.html",
     "Title": "pipeline:selector:.bookname|h1|text",
     "Desc": "",
     "Include": "selector:div#content",
@@ -2755,7 +2755,7 @@
   },
   {
     "Name": "xxbiquge.com",
-    "Url": "http:\\/\\/www.xxbiquge.com\\/.*.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.xxbiquge.com\\/.*.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div#content",
@@ -2765,7 +2765,7 @@
   },
   {
     "Name": "biquge5200.com",
-    "Url": "http:\\/\\/www.biquge5200.com\\/.*.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.biquge5200.com\\/.*.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div#content",
@@ -2773,7 +2773,7 @@
   },
   {
     "Name": "piaotian.com",
-    "Url": "http:\\/\\/www.piaotian.com\\/html\\/.*.*\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.piaotian.com\\/html\\/.*.*\\/.*.html",
     "Title": "selector:h1",
     "Desc": "",
     "Include": "selector:div#content",
@@ -2785,7 +2785,7 @@
   },
   {
     "Name": "zanghaihua.org",
-    "Url": "http:\\/\\/www.zanghaihua.org\\/.*.html",
+    "Url": "http(s)?:\\/\\/www.zanghaihua.org\\/.*.html",
     "Title": "pipeline:selector:.chaptertitle|h1|text",
     "Desc": "",
     "Include": "selector:div.bookcontent",
@@ -2820,7 +2820,7 @@
   },
   {
     "Name": "lofter.com",
-    "Url": "http:\\/\\/.*.lofter.com\\/post\\/.*",
+    "Url": "http(s)?:\\/\\/.*.lofter.com\\/post\\/.*",
     "Title": "selector:title",
     "Desc": "",
     "Include": "pipeline:selector:.content|html||selector:.text|html",
@@ -2836,7 +2836,7 @@
   },
   {
     "Name": "bbs.tianya.cn",
-    "Url": "http:\\/\\/bbs.tianya.cn\\/.*.shtml",
+    "Url": "http(s)?:\\/\\/bbs.tianya.cn\\/.*.shtml",
     "Title": "selector:title",
     "Desc": "",
     "Include": "pipeline:selector:.bbs-content|html",
@@ -2882,7 +2882,7 @@
   },
   {
     "Name": "sueddeutsche.de",
-    "Url": "http:\\/\\/www.sueddeutsche.de\\/.*\\/.*",
+    "Url": "http(s)?:\\/\\/www.sueddeutsche.de\\/.*\\/.*",
     "Title": "selector:title",
     "Desc": "",
     "Include": "selector:section#article-body",

@@ -8,7 +8,6 @@ import (
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/array"
-	"github.com/ystyle/kas/util/character"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/kindlegen"
 	"github.com/ystyle/kas/util/zlib"
@@ -28,6 +27,9 @@ const (
 	htmlPEnd       = "</p>"
 	htmlTitleStart = `<h3 style="text-align:%s">`
 	htmlTitleEnd   = "</h3>"
+	Tutorial       = `本书由KAF生成: <br/>
+制作教程: <a href='https://ystyle.top/2019/12/31/txt-converto-epub-and-mobi/'>https://ystyle.top/2019/12/31/txt-converto-epub-and-mobi</a>
+`
 )
 
 func TextUpload(client *core.WsClient, message core.Message) {
@@ -62,13 +64,11 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		line, err := buff.ReadString('\n')
 		if err != nil {
 			if err == io.EOF {
+				bookinfo.AddSection(title, content.String())
 				break
 			}
 			client.WsSend <- core.NewMessage("Error", "参数解析失败")
 			return
-		}
-		if !character.IsUtf8([]byte(line)) {
-			line = character.ToUTF8(line)
 		}
 		line = strings.TrimSpace(line)
 		// 空行直接跳过
@@ -99,6 +99,7 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		content.WriteString(line)
 		content.WriteString(htmlPEnd)
 	}
+	bookinfo.AddSection("制作说明", Tutorial)
 	client.Caches[bookinfo.ID] = bookinfo
 	client.WsSend <- core.NewMessage("info", "解析完成")
 	client.WsSend <- core.NewMessage("text:uploaded", bookinfo.ID)

@@ -12,6 +12,8 @@ import (
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/kindlegen"
 	"github.com/ystyle/kas/util/zlib"
+	"golang.org/x/net/html/charset"
+	"golang.org/x/text/transform"
 	"io"
 	"io/ioutil"
 	"os"
@@ -43,10 +45,16 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		client.WsSend <- core.NewMessage("Error", errmsg)
 		return
 	}
-
 	out, err := zlib.Decode(bookinfo.Content)
 	var buff bytes.Buffer
-	buff.Write(out)
+	encodig, encodename, _ := charset.DetermineEncoding(out[:1024], "text/plain")
+	if encodename != "utf-8" {
+		bs, _, _ := transform.Bytes(encodig.NewDecoder(), out)
+		buff.Write(bs)
+	} else {
+		buff.Write(out)
+	}
+
 	var title string
 	var content bytes.Buffer
 

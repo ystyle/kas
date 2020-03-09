@@ -40,7 +40,7 @@ func (text *TextInfo) SetDefault() {
 		text.Author = "KAF"
 	}
 	if text.Match == "" {
-		text.Match = "^.{0,8}(第.{1,20}(章|节)|(S|s)ection.{1,20}|(C|c)hapter.{1,20})"
+		text.Match = "^.{0,8}(第.{1,20}(章|节)|(S|s)ection.{1,20}|(C|c)hapter.{1,20}|(P|p)age.{1,20}|引子|楔子)"
 	}
 	if text.Indent == 0 {
 		text.Indent = 2

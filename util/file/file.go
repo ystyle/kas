@@ -1,6 +1,7 @@
 package file
 
 import (
+	"fmt"
 	"github.com/ystyle/kas/util/config"
 	"os"
 )
@@ -18,6 +19,7 @@ func IsExists(path string) (bool, error) {
 
 func CheckDir(dir string) {
 	if ok, _ := IsExists(dir); !ok {
-		os.MkdirAll(dir, config.Perm)
+		err := os.MkdirAll(dir, config.Perm)
+		fmt.Println(err)
 	}
 }

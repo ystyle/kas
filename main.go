@@ -33,14 +33,12 @@ func WS(c echo.Context) error {
 	return nil
 }
 
+func init() {
+	createStoreDir()
+}
+
 func createStoreDir() {
-	if ok, _ := file.IsExists(path.Join(config.StoreDir)); !ok {
-		err := os.MkdirAll(path.Join(config.StoreDir), config.Perm)
-		if err != nil {
-			log.Fatal("服务启动失败: 没有写入权限")
-			return
-		}
-	}
+	file.CheckDir(config.StoreDir)
 }
 
 func PrintStatistics() {
@@ -63,14 +61,11 @@ func PrintStatistics() {
 }
 
 func main() {
-	createStoreDir()
-
 	log.EnableColor()
 	if os.Getenv("MODE") == "DEBUG" {
 		log.SetLevel(log.DEBUG)
 		log.Info("log level: Debug")
 	}
-
 	wm := core.GetWsManager()
 	// hcomic
 	wm.RegisterService("hcomic:submit", services.Submit)

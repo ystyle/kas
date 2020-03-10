@@ -5,6 +5,7 @@ import (
 	"github.com/bmaupin/go-epub"
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
+	"github.com/ystyle/kas/util/env"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/kindlegen"
 	"github.com/ystyle/kas/util/site"
@@ -74,6 +75,9 @@ func ArticleSubmit(client *core.WsClient, message core.Message) {
 	articleDownload(client, book)
 	os.Remove(book.EpubFile)
 	os.Remove(book.MobiFile)
+	if env.GetBool("DISABLED_STORAGE", false) {
+		os.Remove(book.ZipFile)
+	}
 }
 
 func getPage(wg *sync.WaitGroup, item *model.ArticleItem) {

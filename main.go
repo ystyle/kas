@@ -48,12 +48,21 @@ func PrintStatistics() {
 	for {
 		select {
 		case <-timer.C:
-			timer.Reset(time.Second * 60)
+			timer.Reset(time.Second * 5)
 			clients := len(wm.GetClients())
-			count, err := model.DB().Count(&model.Drive{})
+			var drives []model.Drive
+			err := model.DB().All(&drives)
+			if err != nil {
+				log.Error(err)
+				continue
+			}
+			var count uint
+			for _, drive := range drives {
+				count += drive.Count
+			}
 			// 连接有变动时就打印
 			if clients != i && err == nil {
-				fmt.Printf("注册设备: %d, 当前连接数为: %d\n", count, clients)
+				fmt.Printf("注册设备: %d, 总计转换次数为: %d 当前连接数为: %d\n", len(drives), count, clients)
 			}
 			i = clients
 		}

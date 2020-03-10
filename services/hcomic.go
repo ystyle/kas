@@ -6,6 +6,7 @@ import (
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/config"
+	"github.com/ystyle/kas/util/env"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/hcomic"
 	"github.com/ystyle/kas/util/kindlegen"
@@ -101,6 +102,10 @@ func Submit(client *core.WsClient, message core.Message) {
 	}
 	// 下载zip
 	DownloadZip(client, book.ZipFile)
+	// 删除下载目录
+	if env.GetBool("DISABLED_STORAGE", false) {
+		os.RemoveAll(book.WorkDir)
+	}
 }
 
 func download(wg *sync.WaitGroup, client *core.WsClient, section *model.HcomicSection) {

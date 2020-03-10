@@ -8,6 +8,7 @@ import (
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/array"
+	"github.com/ystyle/kas/util/env"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/kindlegen"
 	"github.com/ystyle/kas/util/zlib"
@@ -104,6 +105,13 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		content.WriteString(line)
 		content.WriteString(htmlPEnd)
 	}
+	// 没识别到章节又没识别到 EOF 时，把所有的内容写到最后一章
+	if content.Len() != 0 {
+		if title == "" {
+			title = "章节正文"
+		}
+		bookinfo.AddSection(title, content.String())
+	}
 	bookinfo.AddSection("制作说明", Tutorial)
 	client.Caches[bookinfo.ID] = bookinfo
 	client.WsSend <- core.NewMessage("info", "解析完成")
@@ -175,6 +183,12 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	}
 	// 下载mobi文件
 	bookDownload(client, book, "mobi")
+	os.Remove(book.CacheEpub)
+	os.Remove(book.CacheMobi)
+	if env.GetBool("DISABLED_STORAGE", false) {
+		os.Remove(book.StoreEpub)
+		os.Remove(book.StoreMobi)
+	}
 }
 
 func TextCompressZip(client *core.WsClient, book model.TextInfo, format string) error {
@@ -193,7 +207,6 @@ func TextCompressZip(client *core.WsClient, book model.TextInfo, format string) 
 		client.WsSend <- core.NewMessage("Error", "服务错误: 压缩文件失败")
 		return err
 	}
-	os.Remove(ebookFile)
 	client.WsSend <- core.NewMessage("info", "压缩完成！")
 	return err
 }

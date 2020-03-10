@@ -1,6 +1,7 @@
 package model
 
 import (
+	"github.com/asdine/storm/v3"
 	"github.com/labstack/gommon/log"
 	"time"
 )
@@ -18,7 +19,7 @@ func Statistics(driveid string) {
 	}
 	var drive Drive
 	err := store.One("ID", driveid, &drive)
-	if err != nil {
+	if err != nil && err != storm.ErrNotFound {
 		log.Error(err)
 		return
 	}

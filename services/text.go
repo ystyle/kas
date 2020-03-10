@@ -175,10 +175,6 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	}
 	// 下载mobi文件
 	bookDownload(client, book, "mobi")
-	os.Remove(book.CacheEpub)
-	os.Remove(book.CacheMobi)
-	os.Remove(book.StoreEpub)
-	os.Remove(book.StoreMobi)
 }
 
 func TextCompressZip(client *core.WsClient, book model.TextInfo, format string) error {
@@ -197,6 +193,7 @@ func TextCompressZip(client *core.WsClient, book model.TextInfo, format string) 
 		client.WsSend <- core.NewMessage("Error", "服务错误: 压缩文件失败")
 		return err
 	}
+	os.Remove(ebookFile)
 	client.WsSend <- core.NewMessage("info", "压缩完成！")
 	return err
 }

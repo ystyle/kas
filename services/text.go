@@ -12,6 +12,7 @@ import (
 	"github.com/ystyle/kas/util/kindlegen"
 	"github.com/ystyle/kas/util/zlib"
 	"golang.org/x/net/html/charset"
+	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 	"io"
 	"io/ioutil"
@@ -51,7 +52,11 @@ func TextUpload(client *core.WsClient, message core.Message) {
 	var buff bytes.Buffer
 	encodig, encodename, _ := charset.DetermineEncoding(out[:1024], "text/plain")
 	if encodename != "utf-8" {
-		bs, _, _ := transform.Bytes(encodig.NewDecoder(), out)
+		decoder := encodig.NewDecoder()
+		if encodename == "windows-1252" {
+			decoder = simplifiedchinese.GB18030.NewDecoder()
+		}
+		bs, _, _ := transform.Bytes(decoder, out)
 		buff.Write(bs)
 	} else {
 		buff.Write(out)

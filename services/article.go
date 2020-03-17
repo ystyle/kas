@@ -3,6 +3,7 @@ package services
 import (
 	"fmt"
 	"github.com/bmaupin/go-epub"
+	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/env"
@@ -60,7 +61,7 @@ func ArticleSubmit(client *core.WsClient, message core.Message) {
 	client.WsSend <- core.NewMessage("info", "epub制作完成，正在转为mobi")
 	err = kindlegen.Conver(book.EpubFile, path.Base(book.MobiFile), false)
 	if err != nil {
-		fmt.Println(err)
+		log.Error(err)
 		client.WsSend <- core.NewMessage("Error", "生成mobi失败")
 		return
 	}

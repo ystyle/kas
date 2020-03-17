@@ -48,6 +48,7 @@ func main() {
 		log.Info("log level: Debug")
 	}
 	wm := core.GetWsManager()
+	go wm.Run()
 	// hcomic
 	wm.RegisterService("hcomic:submit", services.Submit)
 	// text to epub / mobi
@@ -95,7 +96,7 @@ func WS(c echo.Context) error {
 		return err
 	}
 	wm := core.GetWsManager()
-	wm.Add(core.NewWsClient(ws, c.Request()))
+	wm.Register <- core.NewWsClient(ws, c.Request())
 	return nil
 }
 

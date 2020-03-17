@@ -4,7 +4,6 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/labstack/gommon/log"
 	"net/http"
-	"strings"
 	"time"
 )
 
@@ -30,14 +29,22 @@ func (client *WsClient) GetWSKey() string {
 }
 
 func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
+	defer func() {
+		client.wsManager.Unregister <- client
+		client.WsConn.Close()
+	}()
+	client.WsConn.SetReadDeadline(time.Now().Add(60 * time.Second))
+	client.WsConn.SetPongHandler(func(string) error {
+		client.WsConn.SetReadDeadline(time.Now().Add(60 * time.Second))
+		return nil
+	})
 	for {
 		var msg Message
 		err := client.WsConn.ReadJSON(&msg)
 		if err != nil {
-			if !strings.Contains(err.Error(), "EOF") {
+			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway) {
 				log.Error(err)
 			}
-			client.wsManager.Remove(client)
 			break
 		}
 		msg.Time = time.Now()
@@ -50,6 +57,12 @@ func (client *WsClient) Remove(fn func(c *WsClient)) {
 }
 
 func (client *WsClient) WriteMsg() {
+	ticker := time.NewTicker(30 * time.Minute)
+	defer func() {
+		ticker.Stop()
+		client.WsConn.Close()
+	}()
+
 	for {
 		select {
 		case msg, ok := <-client.WsSend:
@@ -60,6 +73,11 @@ func (client *WsClient) WriteMsg() {
 			}
 			msg.Time = time.Now()
 			client.WsConn.WriteJSON(msg)
+		case <-ticker.C:
+			client.WsConn.SetWriteDeadline(time.Now().Add(30 * time.Minute))
+			if err := client.WsConn.WriteMessage(websocket.PingMessage, nil); err != nil {
+				return
+			}
 		}
 	}
 }

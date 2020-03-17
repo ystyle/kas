@@ -18,6 +18,6 @@ RUN apk --update add --no-cache curl
 WORKDIR /app
 VOLUME ["/app/storage"]
 HEALTHCHECK --interval=1m --timeout=10s \
-  CMD curl -f http://localhost:1323/ || exit 1
+  CMD curl -f http://localhost:1323/ping || exit 1
 EXPOSE 1323
 cmd ./kas

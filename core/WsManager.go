@@ -10,13 +10,18 @@ import (
 type Service func(client *WsClient, message Message)
 
 type WsManager struct {
-	clients    []*WsClient
 	MaxConnect int
+	clients    map[*WsClient]bool
 	services   map[string]Service
+	Register   chan *WsClient
+	Unregister chan *WsClient
 }
 
 var wm = &WsManager{
-	services: make(map[string]Service),
+	services:   make(map[string]Service),
+	Register:   make(chan *WsClient),
+	Unregister: make(chan *WsClient),
+	clients:    make(map[*WsClient]bool),
 }
 
 func init() {
@@ -29,17 +34,32 @@ func GetWsManager() *WsManager {
 	return wm
 }
 
-func (m *WsManager) Add(client *WsClient) {
+func (m *WsManager) Run() {
+	for {
+		select {
+		case client := <-m.Register:
+			client.wsManager = m
+			m.clients[client] = true
+			process(client)
+		case client := <-m.Unregister:
+			if _, ok := m.clients[client]; ok {
+				delete(m.clients, client)
+				close(client.WsSend)
+			}
+		}
+	}
+}
+
+func process(client *WsClient) {
 	log.Info("WSClient key: ", client.GetWSKey())
-	if len(m.clients) >= m.MaxConnect {
+	if len(client.wsManager.clients) >= client.wsManager.MaxConnect {
 		client.WsSend <- NewMessage("Error", "MaxConnect")
 		return
 	}
-	client.wsManager = m
-	m.clients = append(m.clients, client)
 	go client.WriteMsg()
-	client.ReadMsg(func(c *WsClient, message Message) {
-		if service, ok := m.services[message.Type]; ok {
+	go client.ReadMsg(func(c *WsClient, message Message) {
+		services := client.wsManager.services
+		if service, ok := services[message.Type]; ok {
 			service(c, message)
 		} else {
 			log.Warn("Message type: %s not have any service", message.Type)
@@ -47,17 +67,8 @@ func (m *WsManager) Add(client *WsClient) {
 	})
 }
 
-func (m *WsManager) GetClients() []*WsClient {
+func (m *WsManager) GetClients() map[*WsClient]bool {
 	return m.clients
-}
-
-func (m *WsManager) Remove(client *WsClient) {
-	for i, wsClient := range m.clients {
-		if wsClient == client {
-			m.clients = append(m.clients[:i], m.clients[i+1:]...)
-			break
-		}
-	}
 }
 
 func (m *WsManager) RegisterService(messageType string, service Service) {

@@ -1,7 +1,7 @@
 package file
 
 import (
-	"fmt"
+	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/util/config"
 	"os"
 )
@@ -20,6 +20,8 @@ func IsExists(path string) (bool, error) {
 func CheckDir(dir string) {
 	if ok, _ := IsExists(dir); !ok {
 		err := os.MkdirAll(dir, config.Perm)
-		fmt.Println(err)
+		if err != nil {
+			log.Error(err)
+		}
 	}
 }

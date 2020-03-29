@@ -1,10 +1,16 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/gommon/log"
 	"net/http"
 	"time"
+)
+
+const (
+	readTimeOut  = 30 * time.Minute
+	writeTimeOut = 30 * time.Minute
 )
 
 type WsClient struct {
@@ -33,9 +39,9 @@ func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
 		client.wsManager.Unregister <- client
 		client.WsConn.Close()
 	}()
-	client.WsConn.SetReadDeadline(time.Now().Add(60 * time.Second))
+	client.WsConn.SetReadDeadline(time.Now().Add(readTimeOut))
 	client.WsConn.SetPongHandler(func(string) error {
-		client.WsConn.SetReadDeadline(time.Now().Add(60 * time.Second))
+		client.WsConn.SetReadDeadline(time.Now().Add(readTimeOut))
 		return nil
 	})
 	for {
@@ -44,6 +50,9 @@ func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway) {
 				log.Error(err)
+			} else if _, ok := err.(*json.SyntaxError); ok {
+				client.WsConn.PingHandler()
+				continue
 			}
 			break
 		}
@@ -57,7 +66,7 @@ func (client *WsClient) Remove(fn func(c *WsClient)) {
 }
 
 func (client *WsClient) WriteMsg() {
-	ticker := time.NewTicker(30 * time.Minute)
+	ticker := time.NewTicker(writeTimeOut)
 	defer func() {
 		ticker.Stop()
 		client.WsConn.Close()
@@ -74,7 +83,7 @@ func (client *WsClient) WriteMsg() {
 			msg.Time = time.Now()
 			client.WsConn.WriteJSON(msg)
 		case <-ticker.C:
-			client.WsConn.SetWriteDeadline(time.Now().Add(30 * time.Minute))
+			client.WsConn.SetWriteDeadline(time.Now().Add(writeTimeOut))
 			if err := client.WsConn.WriteMessage(websocket.PingMessage, nil); err != nil {
 				return
 			}

@@ -5,6 +5,7 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"github.com/ystyle/kas/util/array"
 	"github.com/ystyle/kas/util/config"
+	"os"
 	"path"
 )
 
@@ -22,6 +23,7 @@ type TextInfo struct {
 	Format    []string   // 格式
 	CacheEpub string     // epub 缓存目录
 	CacheMobi string     // mobi 缓存目录
+	CacheCSS  string     // CSS保存目录
 	StoreEpub string     // epub保存目录
 	StoreMobi string     // mobi保存目录
 }
@@ -55,6 +57,7 @@ func (text *TextInfo) SetDefault() {
 	if !array.IncludesString(Aligns, text.Align) {
 		text.Align = "center"
 	}
+	text.CacheCSS = path.Join(config.CacheDir, "text", fmt.Sprintf("%s.css", text.ID))
 	text.CacheEpub = path.Join(config.CacheDir, "text", fmt.Sprintf("%s.epub", text.ID))
 	text.CacheMobi = path.Join(config.CacheDir, "text", fmt.Sprintf("%s.mobi", text.ID))
 	text.StoreEpub = path.Join(config.StoreDir, "text", fmt.Sprintf("[epub]%s.zip", text.ID))
@@ -66,4 +69,10 @@ func (text *TextInfo) AddSection(title, content string) {
 		Title:   title,
 		Content: content,
 	})
+}
+
+func (text *TextInfo) ClearCache() {
+	os.Remove(text.CacheEpub)
+	os.Remove(text.CacheMobi)
+	os.Remove(text.CacheCSS)
 }

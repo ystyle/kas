@@ -8,6 +8,7 @@ import (
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/array"
+	"github.com/ystyle/kas/util/config"
 	"github.com/ystyle/kas/util/env"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/kindlegen"
@@ -25,12 +26,16 @@ import (
 )
 
 const (
-	htmlPStart     = `<p  style="text-indent: %dem">`
+	htmlPStart     = `<p class="content">`
 	htmlPEnd       = "</p>"
-	htmlTitleStart = `<h3 style="text-align:%s">`
+	htmlTitleStart = `<h3 class="title">`
 	htmlTitleEnd   = "</h3>"
 	Tutorial       = `本书由KAF生成: <br/>
 制作教程: <a href='https://ystyle.top/2019/12/31/txt-converto-epub-and-mobi/'>https://ystyle.top/2019/12/31/txt-converto-epub-and-mobi</a>
+`
+	cssContent = `
+.title {text-align:%s}
+.content {text-indent: %dem}
 `
 )
 
@@ -63,6 +68,14 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		buff.Write(out)
 	}
 
+	// 写入样式
+	bookcss := fmt.Sprintf(cssContent, bookinfo.Align, bookinfo.Indent)
+	err = ioutil.WriteFile(bookinfo.CacheCSS, []byte(bookcss), config.Perm)
+	if err != nil {
+		panic(fmt.Sprintf("无法写入样式文件: %s", err))
+	}
+
+	// 转换小说
 	var title string
 	var content bytes.Buffer
 
@@ -70,6 +83,11 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		line, err := buff.ReadString('\n')
 		if err != nil {
 			if err == io.EOF {
+				if line != "" {
+					if line = strings.TrimSpace(line); line != "" {
+						AddPart(&content, line)
+					}
+				}
 				bookinfo.AddSection(title, content.String())
 				break
 			}
@@ -85,25 +103,17 @@ func TextUpload(client *core.WsClient, message core.Message) {
 		if utf8.RuneCountInString(line) <= bookinfo.MaxLen && reg.MatchString(line) {
 			if title == "" {
 				title = "说明"
+				AddPart(&content, Tutorial)
 			}
 			bookinfo.AddSection(title, content.String())
 			title = line
 			content.Reset()
-			content.WriteString(fmt.Sprintf(htmlTitleStart, bookinfo.Align))
+			content.WriteString(htmlTitleStart)
 			content.WriteString(title)
 			content.WriteString(htmlTitleEnd)
 			continue
 		}
-		if strings.HasSuffix(line, "==") ||
-			strings.HasSuffix(line, "**") ||
-			strings.HasSuffix(line, "--") ||
-			strings.HasSuffix(line, "//") {
-			content.WriteString(line)
-			continue
-		}
-		content.WriteString(fmt.Sprintf(htmlPStart, bookinfo.Indent))
-		content.WriteString(line)
-		content.WriteString(htmlPEnd)
+		AddPart(&content, line)
 	}
 	// 没识别到章节又没识别到 EOF 时，把所有的内容写到最后一章
 	if content.Len() != 0 {
@@ -116,6 +126,19 @@ func TextUpload(client *core.WsClient, message core.Message) {
 	client.Caches[bookinfo.ID] = bookinfo
 	client.WsSend <- core.NewMessage("info", "解析完成")
 	client.WsSend <- core.NewMessage("text:uploaded", bookinfo.ID)
+}
+
+func AddPart(buff *bytes.Buffer, content string) {
+	if strings.HasSuffix(content, "==") ||
+		strings.HasSuffix(content, "**") ||
+		strings.HasSuffix(content, "--") ||
+		strings.HasSuffix(content, "//") {
+		buff.WriteString(content)
+		return
+	}
+	buff.WriteString(htmlPStart)
+	buff.WriteString(content)
+	buff.WriteString(htmlPEnd)
 }
 
 func TextPreView(client *core.WsClient, message core.Message) {
@@ -146,11 +169,16 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	client.WsSend <- core.NewMessage("info", "正在生成生成epub文件...")
 	e := epub.NewEpub(book.BookName)
 	e.SetAuthor(book.Author)
+	css, err := e.AddCSS(book.CacheCSS, "")
+	if err != nil {
+		client.WsSend <- core.NewMessage("Error", "写入CSS文件失败")
+		return
+	}
 	for _, section := range book.Sections {
-		e.AddSection(section.Content, section.Title, "", "")
+		e.AddSection(section.Content, section.Title, "", css)
 	}
 	file.CheckDir(path.Dir(book.CacheEpub))
-	err := e.Write(book.CacheEpub)
+	err = e.Write(book.CacheEpub)
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", "生成epub文件错误")
 		return
@@ -183,8 +211,7 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	}
 	// 下载mobi文件
 	bookDownload(client, book, "mobi")
-	os.Remove(book.CacheEpub)
-	os.Remove(book.CacheMobi)
+	book.ClearCache()
 	if env.GetBool("DISABLED_STORAGE", false) {
 		os.Remove(book.StoreEpub)
 		os.Remove(book.StoreMobi)

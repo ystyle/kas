@@ -1,6 +1,7 @@
 package kindlegen
 
 import (
+	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/util/file"
 	"os"
 	"os/exec"
@@ -16,6 +17,7 @@ func Run(command string, args ...string) error {
 }
 
 func Conver(source string, bookname string, onlyKF8 bool) error {
+	log.Info("转换文件名: ", source)
 	command := "kindlegen"
 	if runtime.GOOS == "windows" {
 		command = "kindlegen.exe"

@@ -69,6 +69,7 @@ func TextUpload(client *core.WsClient, message core.Message) {
 	}
 
 	// 写入样式
+	file.CheckDir(path.Dir(bookinfo.CacheCSS))
 	bookcss := fmt.Sprintf(cssContent, bookinfo.Align, bookinfo.Indent)
 	err = ioutil.WriteFile(bookinfo.CacheCSS, []byte(bookcss), config.Perm)
 	if err != nil {

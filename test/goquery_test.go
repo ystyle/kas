@@ -6,9 +6,12 @@ import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/ystyle/kas/model"
+	"github.com/ystyle/kas/util/config"
 	"github.com/ystyle/kas/util/site"
+	"github.com/ystyle/kas/util/web"
 	"io/ioutil"
 	"net/url"
+	"path"
 	"regexp"
 	"strings"
 	"testing"
@@ -97,4 +100,33 @@ func TestGoquery(t *testing.T) {
 	fmt.Println(images)
 	//div := node.Find("<div class='summary'>")
 	fmt.Println(div.Html())
+}
+
+func TestHcomic(t *testing.T) {
+	html, err := web.GetHtmlNode("https://bhmog.com/s/70622/")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	meta := html.Find("meta[name=\"applicable-device\"]")
+	if attr, has := meta.Attr("content"); has && attr == "pc,mobile" {
+		imgs := html.Find(".container .gallery img")
+		for i := range imgs.Nodes {
+			img := imgs.Eq(i)
+			src, _ := img.Attr("data-src")
+			fmt.Println(src)
+		}
+	}
+	fmt.Println()
+	fmt.Println(html.Html())
+}
+
+func TestDownload(t *testing.T) {
+	dir := path.Join(config.CacheDir, "19.jpg")
+	fmt.Println(dir)
+	// https://aa.hcomics.club/uploads/1615779/2.jpg
+	err := web.Download("https://aa.hcomics.club/uploads/1615779/3.jpg", "2.jpg")
+	if err != nil {
+		fmt.Println(err)
+	}
 }

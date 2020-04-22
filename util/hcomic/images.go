@@ -1,6 +1,7 @@
 package hcomic
 
 import (
+	"fmt"
 	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/web"
 	"net/url"
@@ -13,16 +14,29 @@ func GetAllImages(book *model.HcomicInfo) error {
 	if err != nil {
 		return err
 	}
-	lis := html.Find(".img_list li")
-	if book.BookName == "" {
-		book.BookName = html.Find(".page_tit .tit").Text()
-	}
-	for i := range lis.Nodes {
-		li := lis.Eq(i)
-		url, _ := li.Find("img").First().Attr("src")
-		title := li.Find("label").Text()
-		if url != "" {
-			book.AddSection(title, GetHDImage(url))
+	meta := html.Find("meta[name=\"applicable-device\"]")
+	if attr, has := meta.Attr("content"); has && attr == "pc,mobile" {
+		if book.BookName == "" {
+			book.BookName = html.Find("#info-block #info h1").Text()
+		}
+		imgs := html.Find(".container .gallery img")
+		for i := range imgs.Nodes {
+			img := imgs.Eq(i)
+			src, _ := img.Attr("data-src")
+			book.AddSection(fmt.Sprintf("#%d", i+1), fmt.Sprintf("https://aa.hcomics.club%s", src))
+		}
+	} else {
+		lis := html.Find(".img_list li")
+		if book.BookName == "" {
+			book.BookName = html.Find(".page_tit .tit").Text()
+		}
+		for i := range lis.Nodes {
+			li := lis.Eq(i)
+			url, _ := li.Find("img").First().Attr("src")
+			title := li.Find("label").Text()
+			if url != "" {
+				book.AddSection(title, GetHDImage(url))
+			}
 		}
 	}
 	return nil
@@ -34,7 +48,7 @@ func GetHDImage(url string) string {
 	// 高清图
 	// https://img.comicstatic.icu/img/cn/1570141/1.jpg
 	if strings.Contains(url, "pic.") {
-		return strings.ReplaceAll(url, "pic.", "img.")
+		return strings.ReplaceAll(url, "pic.comicstatic.icu", "img.comicstatic.icu")
 	}
 	// 没有匹配到则用预览图
 	return url

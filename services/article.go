@@ -100,4 +100,5 @@ func articleDownload(client *core.WsClient, book model.ArticleInfo) {
 	}
 	client.WsSend <- core.NewMessage("info", fmt.Sprintf("正在下载: %s， 文件大小: %s", filename, file.FormatBytesLength(len(buff))))
 	client.WsSend <- core.NewMessage("article:download", buff)
+	delete(client.Caches, book.ID)
 }

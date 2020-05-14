@@ -7,6 +7,7 @@ import (
 	"github.com/ystyle/kas/util/config"
 	"os"
 	"path"
+	"strings"
 )
 
 type TextInfo struct {
@@ -18,6 +19,7 @@ type TextInfo struct {
 	Align     string     // 标题对齐方式
 	MaxLen    int        // 标题最大字数
 	OnlyKF8   string     // 只生成KF8格式: 1是，0否
+	Lang      string     // 语言
 	Content   []byte     // 文件内容
 	Sections  []*Section // 章节内容
 	Format    []string   // 格式
@@ -50,6 +52,11 @@ func (text *TextInfo) SetDefault() {
 	if text.MaxLen == 0 {
 		text.MaxLen = 35
 	}
+	if text.Lang == "" {
+		text.Lang = "zh"
+	} else {
+		text.Lang = parseLang(text.Lang)
+	}
 	if text.Format == nil {
 		text.Format = append(text.Format, "mobi")
 	}
@@ -75,4 +82,12 @@ func (text *TextInfo) ClearCache() {
 	os.Remove(text.CacheEpub)
 	os.Remove(text.CacheMobi)
 	os.Remove(text.CacheCSS)
+}
+
+func parseLang(lang string) string {
+	var langs = "en,de,fr,it,es,zh,ja,pt,ru,nl"
+	if strings.Contains(langs, lang) {
+		return lang
+	}
+	return "en"
 }

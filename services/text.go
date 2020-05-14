@@ -170,6 +170,7 @@ func TextConvert(client *core.WsClient, message core.Message) {
 	client.WsSend <- core.NewMessage("info", "正在生成生成epub文件...")
 	e := epub.NewEpub(book.BookName)
 	e.SetAuthor(book.Author)
+	e.SetLang(book.Lang)
 	css, err := e.AddCSS(book.CacheCSS, "")
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", "写入CSS文件失败")
@@ -269,4 +270,5 @@ func bookDownload(client *core.WsClient, book model.TextInfo, format string) {
 	}
 	client.WsSend <- core.NewMessage("info", fmt.Sprintf("正在下载: %s， 文件大小: %s", path.Base(filename), file.FormatBytesLength(len(buff))))
 	client.WsSend <- core.NewMessage("text:download", buff)
+	delete(client.Caches, book.ID)
 }

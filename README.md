@@ -18,6 +18,9 @@ docker run -d --name hcc \
   ystyle/kas
 ```
 
+### KAF 安卓APP
+ - 下载地址: https://ystyle.top/2019/12/31/txt-converto-epub-and-mobi/
+
 ### KAF自定义服务器地址
 - 默认服务器为: `ws://140.143.205.67:1323/ws`
   - 如果在自己服务器启动则把ip改为自己服务器ip

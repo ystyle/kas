@@ -20,17 +20,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get dependencies
-        env:
-          GO111MODULE: off
-        run: |
-          go get -v -t -d ./...
-          if [ -f Gopkg.toml ]; then
-              curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-              dep ensure
-          fi
-          go get github.com/GeertJohan/go.rice
-          go get github.com/GeertJohan/go.rice/rice
-          curl http://kindlegen.s3.amazonaws.com/kindlegen_win32_v2_9.zip | tar -zx
+run: |
+                                 export GO111MODULE=off
+                                 go get github.com/GeertJohan/go.rice
+                                 go get github.com/GeertJohan/go.rice/rice
+                                 curl http://kindlegen.s3.amazonaws.com/kindlegen_win32_v2_9.zip | tar -zx
+                                 export GO111MODULE=on
 
       - name: Build-windows
         env:

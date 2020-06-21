@@ -19,11 +19,11 @@ func GetAllImages(book *model.HcomicInfo) error {
 		if book.BookName == "" {
 			book.BookName = html.Find("#info-block #info h1").Text()
 		}
-		imgs := html.Find(".container .gallery img")
+		imgs := html.Find(".container .thumb-container .gallerythumb img")
 		for i := range imgs.Nodes {
 			img := imgs.Eq(i)
 			src, _ := img.Attr("data-src")
-			book.AddSection(fmt.Sprintf("#%d", i+1), fmt.Sprintf("https://aa.hcomics.club%s", src))
+			book.AddSection(fmt.Sprintf("#%d", i+1), GetHDImage(src))
 		}
 	} else {
 		lis := html.Find(".img_list li")
@@ -49,6 +49,9 @@ func GetHDImage(url string) string {
 	// https://img.comicstatic.icu/img/cn/1570141/1.jpg
 	if strings.Contains(url, "pic.") {
 		return strings.ReplaceAll(url, "pic.comicstatic.icu", "img.comicstatic.icu")
+	} else if strings.Contains(url, "mt.404cdn.com") {
+		u := strings.ReplaceAll(url, "mt.404cdn.com", "mi.404cdn.com")
+		return strings.ReplaceAll(u, "t.", ".")
 	}
 	// 没有匹配到则用预览图
 	return url

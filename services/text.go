@@ -90,6 +90,7 @@ func TextUpload(client *core.WsClient, message core.Message) {
 					}
 				}
 				bookinfo.AddSection(title, content.String())
+				content.Reset()
 				break
 			}
 			client.WsSend <- core.NewMessage("Error", "参数解析失败")
@@ -105,6 +106,9 @@ func TextUpload(client *core.WsClient, message core.Message) {
 			if title == "" {
 				title = "说明"
 				AddPart(&content, Tutorial)
+			}
+			if content.Len() == 0 {
+				continue
 			}
 			bookinfo.AddSection(title, content.String())
 			title = line

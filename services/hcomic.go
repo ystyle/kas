@@ -14,7 +14,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
-	"strings"
 	"sync"
 	"time"
 )

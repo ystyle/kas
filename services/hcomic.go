@@ -14,6 +14,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
+	"strings"
 	"sync"
 	"time"
 )
@@ -110,7 +111,11 @@ func Submit(client *core.WsClient, message core.Message) {
 
 func download(wg *sync.WaitGroup, client *core.WsClient, section *model.HcomicSection) {
 	defer wg.Done()
-	_ = web.Download(section.Url, section.ImgFile)
+	err := web.Download(section.Url, section.ImgFile)
+	if err != nil && section.BackupUrl != "" {
+		section.ResetToBackupURL()
+		_ = web.Download(section.BackupUrl, section.ImgFile)
+	}
 	client.WsSend <- core.NewMessage("info", fmt.Sprintf("下载完成: %s", section.Url))
 }
 

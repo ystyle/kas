@@ -29,6 +29,7 @@ type HcomicSection struct {
 	Index      int    // 顺序
 	Title      string // 标题
 	Url        string // 地址
+	BackupUrl  string // 备选地址
 	ImgFile    string // 图片缓存路径
 	HtmlFile   string // html 缓存路径
 	InnerHtml  string // html 内部目录
@@ -51,16 +52,25 @@ func (hcomic *HcomicInfo) SetDefault() {
 	hcomic.ZipFile = path.Join(config.StoreDir, "hcomic", fmt.Sprintf("%s.zip", hcomic.ID))
 }
 
-func (hcomic *HcomicInfo) AddSection(title, url string) {
+func (hcomic *HcomicInfo) AddSection(title, url, backupURL string) {
 	index := len(hcomic.Sections)
 	imageFilename := path.Base(url)
 	hcomic.Sections = append(hcomic.Sections, &HcomicSection{
 		Index:      index,
 		Title:      title,
 		Url:        url,
+		BackupUrl:  backupURL,
 		ImgFile:    path.Join(hcomic.ScaledImagesDir, imageFilename),
 		HtmlFile:   path.Join(hcomic.HtmlDir, fmt.Sprintf("Page-%d.html", index)),
 		InnerHtml:  fmt.Sprintf("html/Page-%d.html", index),
 		InnerImage: fmt.Sprintf("scaled-images/%s", imageFilename),
 	})
+}
+
+func (hs *HcomicSection) ResetToBackupURL() {
+	// 重置文件名， 在预览图和高清图格式不一致时用
+	imageFilename := path.Base(hs.BackupUrl)
+	ScaledImagesDir := path.Dir(hs.ImgFile)
+	hs.ImgFile = path.Join(ScaledImagesDir, imageFilename)
+	hs.InnerImage = fmt.Sprintf("scaled-images/%s", imageFilename)
 }

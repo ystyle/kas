@@ -6,6 +6,7 @@ import (
 	"github.com/ystyle/kas/util/web"
 	"net/url"
 	"path"
+	"regexp"
 	"strings"
 )
 
@@ -14,6 +15,7 @@ func GetAllImages(book *model.HcomicInfo) error {
 	if err != nil {
 		return err
 	}
+	reg, _ := regexp.Compile(`this.src='(.*)';`)
 	meta := html.Find("meta[name=\"applicable-device\"]")
 	if attr, has := meta.Attr("content"); has && attr == "pc,mobile" {
 		if book.BookName == "" {
@@ -23,7 +25,13 @@ func GetAllImages(book *model.HcomicInfo) error {
 		for i := range imgs.Nodes {
 			img := imgs.Eq(i)
 			src, _ := img.Attr("data-src")
-			book.AddSection(fmt.Sprintf("#%d", i+1), GetHDImage(src))
+			jstext, _ := img.Attr("onerror")
+			group := reg.FindStringSubmatch(jstext)
+			backurl := ""
+			if len(group) > 0 {
+				backurl = group[1]
+			}
+			book.AddSection(fmt.Sprintf("#%d", i+1), GetHDImage(src), GetHDImage(backurl))
 		}
 	} else {
 		lis := html.Find(".img_list li")
@@ -35,7 +43,7 @@ func GetAllImages(book *model.HcomicInfo) error {
 			url, _ := li.Find("img").First().Attr("src")
 			title := li.Find("label").Text()
 			if url != "" {
-				book.AddSection(title, GetHDImage(url))
+				book.AddSection(title, GetHDImage(url), "")
 			}
 		}
 	}

@@ -59,6 +59,9 @@ func Download(url string, dir string) error {
 	if err != nil {
 		return fmt.Errorf("目标网站无法连接: %w", err)
 	}
+	if res.StatusCode >= 400 {
+		return fmt.Errorf("目标网站不存在: %w", err)
+	}
 	f, err := os.Create(dir)
 	if err != nil {
 		return fmt.Errorf("服务器错误: 无法创建文件")

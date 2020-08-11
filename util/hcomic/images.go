@@ -56,10 +56,16 @@ func GetHDImage(url string) string {
 	// 高清图
 	// https://img.comicstatic.icu/img/cn/1570141/1.jpg
 	if strings.Contains(url, "pic.") {
-		return strings.ReplaceAll(url, "pic.comicstatic.icu", "img.comicstatic.icu")
-	} else if strings.Contains(url, "mt.404cdn.com") {
-		u := strings.ReplaceAll(url, "mt.404cdn.com", "mi.404cdn.com")
-		return strings.ReplaceAll(u, "t.", ".")
+		url = strings.ReplaceAll(url, "pic.comicstatic.icu", "img.comicstatic.icu")
+	}
+	if strings.Contains(url, "mt.404cdn.com") {
+		url = strings.ReplaceAll(url, "mt.404cdn.com", "mi.404cdn.com")
+	}
+	if strings.Contains(url, "t.") {
+		url = strings.ReplaceAll(url, "t.", ".")
+	}
+	if strings.Contains(url, "t1.nyacdn.com") {
+		url = strings.ReplaceAll(url, "t1.nyacdn.com", "i0.nyacdn.com")
 	}
 	// 没有匹配到则用预览图
 	return url

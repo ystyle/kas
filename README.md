@@ -2,7 +2,7 @@
 
 漫画生成器. 输入地址直接生成kindle的mobi漫画格式
 
-[![](public/asset/screenshot.png)](https://kas.ystyle.top)
+[![](public/asset/screenshot.png)](http://hcc.ystyle.top)
 
 ### 使用方法
 - [下载最新版本的kas.zip](https://github.com/ystyle/kas/releases/latest)

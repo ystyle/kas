@@ -1,4 +1,4 @@
-### [Hcomic Creator](https://kas.ystyle.top)
+### [Hcomic Creator](http://hcc.ystyle.top)
 
 漫画生成器. 输入地址直接生成kindle的mobi漫画格式
 

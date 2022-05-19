@@ -32,6 +32,10 @@ require (
 	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324 // indirect
 )
 
-replace golang.org/x/text v0.3.7 => github.com/golang/text v0.3.7
-
-replace golang.org/x/net v0.0.0-20220517181318-183a9ca12b87 => github.com/golang/net v0.0.0-20220517181318-183a9ca12b87
+replace (
+	golang.org/x/crypto v0.0.0-20220518034528-6f7dac969898 => github.com/golang/crypto v0.0.0-20220518034528-6f7dac969898
+	golang.org/x/net v0.0.0-20220517181318-183a9ca12b87 => github.com/golang/net v0.0.0-20220517181318-183a9ca12b87
+	golang.org/x/sys v0.0.0-20220519141025-dcacdad47464 => github.com/golang/sys v0.0.0-20220519141025-dcacdad47464
+	golang.org/x/text v0.3.7 => github.com/golang/text v0.3.7
+	golang.org/x/time v0.0.0-20220411224347-583f2d630306 => github.com/golang/time v0.0.0-20220411224347-583f2d630306
+)

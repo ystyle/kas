@@ -8,7 +8,7 @@ RUN apk --update add git curl tzdata && \
     go get github.com/GeertJohan/go.rice && \
     go get github.com/GeertJohan/go.rice/rice && \
     rice append --exec kas && \
-    curl http://kindlegen.s3.amazonaws.com/kindlegen_linux_2.6_i386_v2_9.tar.gz | tar -zx
+    curl https://archive.org/download/kindlegen2.9/kindlegen_linux_2.6_i386_v2_9.tar.gz | tar -zx
 
 FROM alpine
 COPY --from=build-env /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

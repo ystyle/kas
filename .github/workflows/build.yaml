@@ -32,7 +32,6 @@ jobs:
           hash=`git rev-list --tags --max-count=1`
           version=`git describe --tags $hash`
           flag="-s -w -X main.secret=${{ secrets.API_SECRET }} -X main.measurement=${{ secrets.MEASUREMENT }} -X main.version=$version"
-          go mod tidy
           GOOS=linux   GOARCH=amd64   go build -ldflags "$flag" -o build/linux-amd64/kas       main.go
           GOOS=linux   GOARCH=arm64   go build -ldflags "$flag" -o build/linux-arm64/kas       main.go
           GOOS=linux   GOARCH=loong64 go build -ldflags "$flag" -o build/linux-loong64/kas     main.go

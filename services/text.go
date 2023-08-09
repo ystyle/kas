@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/core"
 	"github.com/ystyle/kas/model"
+	"github.com/ystyle/kas/util/analytics"
 	"github.com/ystyle/kas/util/array"
 	"github.com/ystyle/kas/util/config"
 	"github.com/ystyle/kas/util/env"
@@ -16,8 +17,7 @@ import (
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
-	"io"
-	"io/ioutil"
+	io "io"
 	"os"
 	"path"
 	"regexp"
@@ -71,7 +71,7 @@ func TextUpload(client *core.WsClient, message core.Message) {
 	// 写入样式
 	file.CheckDir(path.Dir(bookinfo.CacheCSS))
 	bookcss := fmt.Sprintf(cssContent, bookinfo.Align, bookinfo.Indent)
-	err = ioutil.WriteFile(bookinfo.CacheCSS, []byte(bookcss), config.Perm)
+	err = os.WriteFile(bookinfo.CacheCSS, []byte(bookcss), config.Perm)
 	if err != nil {
 		panic(fmt.Sprintf("无法写入样式文件: %s", err))
 	}
@@ -131,6 +131,8 @@ func TextUpload(client *core.WsClient, message core.Message) {
 	client.Caches[bookinfo.ID] = bookinfo
 	client.WsSend <- core.NewMessage("info", "解析完成")
 	client.WsSend <- core.NewMessage("text:uploaded", bookinfo.ID)
+
+	analytics.Analytics(client.GetWSKey(), bookinfo.Format[0])
 }
 
 func AddPart(buff *bytes.Buffer, content string) {
@@ -231,6 +233,7 @@ func TextCompressZip(client *core.WsClient, book model.TextInfo, format string) 
 		zipFile = book.StoreMobi
 		ebookFile = book.CacheMobi
 	}
+
 	client.WsSend <- core.NewMessage("info", "正在压缩zip文件...")
 	dir := path.Dir(book.StoreEpub)
 	file.CheckDir(dir)
@@ -266,7 +269,7 @@ func bookDownload(client *core.WsClient, book model.TextInfo, format string) {
 	if format == "epub" {
 		filename = book.StoreEpub
 	}
-	buff, err := ioutil.ReadFile(filename)
+	buff, err := os.ReadFile(filename)
 	readErr := fmt.Sprintf("读取文件失败: %s", path.Base(filename))
 	if err != nil {
 		client.WsSend <- core.NewMessage("Error", readErr)

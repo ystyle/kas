@@ -5,6 +5,7 @@ import (
 	"github.com/labstack/gommon/log"
 	"github.com/ystyle/kas/util"
 	"github.com/ystyle/kas/util/env"
+	"golang.org/x/net/context"
 )
 
 type Service func(client *WsClient, message Message)
@@ -15,6 +16,7 @@ type WsManager struct {
 	services   map[string]Service
 	Register   chan *WsClient
 	Unregister chan *WsClient
+	ctx        context.Context
 }
 
 var wm = &WsManager{
@@ -43,6 +45,7 @@ func (m *WsManager) Run() {
 			process(client)
 		case client := <-m.Unregister:
 			if _, ok := m.clients[client]; ok {
+				client.cancel()
 				delete(m.clients, client)
 				close(client.WsSend)
 			}

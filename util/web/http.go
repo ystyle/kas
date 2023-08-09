@@ -5,7 +5,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/labstack/gommon/log"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
@@ -50,7 +49,7 @@ func GetContent(url string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("目标网站无法连接: %w", err)
 	}
-	buff, err := ioutil.ReadAll(res.Body)
+	buff, err := io.ReadAll(res.Body)
 	return string(buff), err
 }
 

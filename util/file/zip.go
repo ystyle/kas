@@ -4,12 +4,12 @@ import (
 	"archive/zip"
 	"bytes"
 	"github.com/ystyle/kas/util/config"
-	"io/ioutil"
+	"os"
 	"path"
 )
 
 func CompressZip(filename string) ([]byte, error) {
-	bs, err := ioutil.ReadFile(filename)
+	bs, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
@@ -39,6 +39,6 @@ func CompressZipToFile(source, zipfiename string) error {
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(zipfiename, buff, config.Perm)
+	err = os.WriteFile(zipfiename, buff, config.Perm)
 	return err
 }

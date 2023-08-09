@@ -1,8 +1,9 @@
 package main
 
 import (
+	"context"
+	"embed"
 	"fmt"
-	"github.com/GeertJohan/go.rice"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -13,7 +14,6 @@ import (
 	"github.com/ystyle/kas/util/config"
 	"github.com/ystyle/kas/util/file"
 	"github.com/ystyle/kas/util/hcomic"
-	"github.com/ystyle/kas/util/site"
 	"net/http"
 	"os"
 	"path"
@@ -41,6 +41,9 @@ func init() {
 	file.CheckDir(config.StoreDir)
 }
 
+//go:embed public
+var fs embed.FS
+
 func main() {
 	log.EnableColor()
 	if os.Getenv("MODE") == "DEBUG" {
@@ -56,8 +59,6 @@ func main() {
 	wm.RegisterService("text:preview", services.TextPreView)
 	wm.RegisterService("text:convert", services.TextConvert)
 	wm.RegisterService("text:download", services.TextDownload)
-	// aricle
-	wm.RegisterService("article:submit", services.ArticleSubmit)
 	// ping
 	wm.RegisterService("ping", services.Ping)
 	// 注册设备
@@ -69,12 +70,12 @@ func main() {
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Gzip())
 
-	box := rice.MustFindBox("public")
-	assetHandler := http.FileServer(box.HTTPBox())
-	site.Init(box)
-
-	e.GET("/*", echo.WrapHandler(assetHandler))
-	e.GET("/asset/*", echo.WrapHandler(assetHandler))
+	assetHandler := http.FileServer(http.FS(fs))
+	contentRewrite := middleware.Rewrite(map[string]string{
+		"/*": "/public/$1",
+	})
+	e.GET("/*", echo.WrapHandler(assetHandler), contentRewrite)
+	e.GET("/asset/*", echo.WrapHandler(assetHandler), contentRewrite)
 	e.Static("/download", "storage")
 	e.GET("/ws", WS)
 	e.GET("/ws#", WS)
@@ -96,7 +97,7 @@ func WS(c echo.Context) error {
 		return err
 	}
 	wm := core.GetWsManager()
-	wm.Register <- core.NewWsClient(ws, c.Request())
+	wm.Register <- core.NewWsClient(context.Background(), ws, c.Request())
 	return nil
 }
 

@@ -2,18 +2,13 @@ package test
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"github.com/ystyle/kas/model"
 	"github.com/ystyle/kas/util/config"
-	"github.com/ystyle/kas/util/site"
 	"github.com/ystyle/kas/util/web"
-	"io/ioutil"
 	"net/url"
 	"path"
 	"regexp"
-	"strings"
 	"testing"
 )
 
@@ -33,45 +28,6 @@ func TestReg(t *testing.T) {
 			}
 		}
 	}
-}
-func TestNewElement(t *testing.T) {
-	fmt.Println(site.ToJquerySelector("<title>"))
-}
-
-func TestWebSites(t *testing.T) {
-	bs, err := ioutil.ReadFile("website_list.json")
-	if err != nil {
-		t.Error(err)
-	}
-	var siteList []*model.SiteInfo
-	err = json.Unmarshal(bs, &siteList)
-	if err != nil {
-		t.Error(err)
-	}
-	for _, info := range siteList {
-		if info.Name == "appinn.com" {
-			fmt.Println(info.Name)
-		}
-		info.Url = strings.ReplaceAll(info.Url, "*", ".*")
-		info.Url = strings.ReplaceAll(info.Url, "/", "\\/")
-		info.Title = site.ToJquerySelector(info.Title)
-		info.Desc = site.ToJquerySelector(info.Desc)
-		info.Include = site.ToJquerySelector(info.Include)
-		var exclude []string
-		for _, s := range info.Exclude {
-			if s == "" {
-				continue
-			}
-			exclude = append(exclude, site.ToJquerySelector(s))
-		}
-		info.Exclude = exclude
-	}
-
-	bs, err = json.Marshal(siteList)
-	if err != nil {
-		t.Error(err)
-	}
-	ioutil.WriteFile("website_list_2.json", bs, 0666)
 }
 
 func TestGoquery(t *testing.T) {

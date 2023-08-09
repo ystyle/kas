@@ -1,6 +1,7 @@
 package core
 
 import (
+	"context"
 	"encoding/json"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/gommon/log"
@@ -15,14 +16,19 @@ const (
 
 type WsClient struct {
 	WsConn      *websocket.Conn
+	ctx         context.Context
+	cancel      context.CancelFunc
 	HttpRequest *http.Request
 	wsManager   *WsManager
 	WsSend      chan Message
 	Caches      map[string]interface{}
 }
 
-func NewWsClient(wsConn *websocket.Conn, resp *http.Request) *WsClient {
+func NewWsClient(ctx context.Context, wsConn *websocket.Conn, resp *http.Request) *WsClient {
+	ctx1, cancel := context.WithTimeout(ctx, readTimeOut)
 	return &WsClient{
+		ctx:         ctx1,
+		cancel:      cancel,
 		WsConn:      wsConn,
 		HttpRequest: resp,
 		WsSend:      make(chan Message, 10),
@@ -37,7 +43,6 @@ func (client *WsClient) GetWSKey() string {
 func (client *WsClient) ReadMsg(fn func(c *WsClient, message Message)) {
 	defer func() {
 		client.wsManager.Unregister <- client
-		client.WsConn.Close()
 	}()
 	client.WsConn.SetReadDeadline(time.Now().Add(readTimeOut))
 	client.WsConn.SetPongHandler(func(string) error {
@@ -82,6 +87,8 @@ func (client *WsClient) WriteMsg() {
 			}
 			msg.Time = time.Now()
 			client.WsConn.WriteJSON(msg)
+		case <-client.ctx.Done():
+			return
 		case <-ticker.C:
 			client.WsConn.SetWriteDeadline(time.Now().Add(writeTimeOut))
 			if err := client.WsConn.WriteMessage(websocket.PingMessage, nil); err != nil {

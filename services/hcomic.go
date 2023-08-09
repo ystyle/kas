@@ -11,7 +11,6 @@ import (
 	"github.com/ystyle/kas/util/hcomic"
 	"github.com/ystyle/kas/util/kindlegen"
 	"github.com/ystyle/kas/util/web"
-	"io/ioutil"
 	"os"
 	"path"
 	"sync"
@@ -133,7 +132,7 @@ func CompressZip(client *core.WsClient, book model.HcomicInfo) error {
 }
 
 func DownloadZip(client *core.WsClient, filename string) {
-	buff, err := ioutil.ReadFile(filename)
+	buff, err := os.ReadFile(filename)
 	if err != nil {
 		log.Error(err)
 		client.WsSend <- core.NewMessage("Error", "服务错误: 读取zip失败")

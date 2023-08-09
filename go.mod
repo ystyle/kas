@@ -11,18 +11,15 @@ require (
 	github.com/labstack/gommon v0.3.1
 	github.com/satori/go.uuid v1.2.0
 	github.com/ystyle/google-analytics v0.0.0-20210425064301-a7f754dd0649
-	github.com/ystyle/kaf-cli v1.3.5
 	golang.org/x/net v0.7.0
 	golang.org/x/text v0.7.0
 )
 
 require (
-	github.com/766b/mobi v0.0.0-20200528201125-c87aa9e3c890 // indirect
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.3.1 // indirect
 	github.com/gofrs/uuid v3.1.0+incompatible // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
-	github.com/leotaku/mobi v0.0.0-20220405163106-82e29bde7964 // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect

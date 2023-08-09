@@ -5,8 +5,6 @@ WORKDIR /go/src/app
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk --update add git curl tzdata && \
     go build -v -o /go/src/app/kas main.go && \
-    find / -name "rice" && \
-    rice append --exec kas && \
     curl https://archive.org/download/kindlegen2.9/kindlegen_linux_2.6_i386_v2_9.tar.gz | tar -zx
 
 FROM alpine

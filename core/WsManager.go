@@ -61,6 +61,9 @@ func process(client *WsClient) {
 	}
 	go client.WriteMsg()
 	go client.ReadMsg(func(c *WsClient, message Message) {
+		defer func() {
+			recover()
+		}()
 		services := client.wsManager.services
 		if service, ok := services[message.Type]; ok {
 			service(c, message)

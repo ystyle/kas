@@ -23,7 +23,11 @@ import (
 )
 
 var (
-	upgrader     = websocket.Upgrader{}
+	upgrader = websocket.Upgrader{
+		CheckOrigin: func(r *http.Request) bool {
+			return true
+		},
+	}
 	loggerConfig = middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Skipper: func(c echo.Context) bool {
 			if c.Path() == "/ping" {

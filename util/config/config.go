@@ -2,4 +2,5 @@ package config
 
 const CacheDir = "cache"
 const StoreDir = "storage"
-const Perm = 0700
+const FilePerm = 0644
+const DirPerm = 0755

@@ -71,7 +71,7 @@ func TextUpload(client *core.WsClient, message core.Message) {
 	// 写入样式
 	file.CheckDir(path.Dir(bookinfo.CacheCSS))
 	bookcss := fmt.Sprintf(cssContent, bookinfo.Align, bookinfo.Indent)
-	err = os.WriteFile(bookinfo.CacheCSS, []byte(bookcss), config.Perm)
+	err = os.WriteFile(bookinfo.CacheCSS, []byte(bookcss), config.FilePerm)
 	if err != nil {
 		panic(fmt.Sprintf("无法写入样式文件: %s", err))
 	}

@@ -17,7 +17,7 @@ func DB() *storm.DB {
 	once.Do(func() {
 		filename := path.Join(config.StoreDir, env.GetString("DB_NAME", "kaf.db"))
 		file.CheckDir(path.Dir(filename))
-		db, err := storm.Open(filename, storm.BoltOptions(config.Perm, nil))
+		db, err := storm.Open(filename, storm.BoltOptions(config.FilePerm, nil))
 		if err != nil {
 			log.Fatal(err)
 		}

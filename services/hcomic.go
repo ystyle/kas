@@ -55,7 +55,7 @@ func Submit(client *core.WsClient, message core.Message) {
 	// 生成工作目录
 	client.WsSend <- core.NewMessage("info", "创建缓存目录...")
 	err1 := os.RemoveAll(book.WorkDir)
-	err2 := os.MkdirAll(book.ScaledImagesDir, config.Perm)
+	err2 := os.MkdirAll(book.ScaledImagesDir, config.DirPerm)
 	if err1 != nil || err2 != nil {
 		client.WsSend <- core.NewMessage("Error", "服务错误: 生成缓存目录失败!")
 		return

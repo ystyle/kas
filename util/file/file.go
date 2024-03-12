@@ -19,7 +19,7 @@ func IsExists(path string) (bool, error) {
 
 func CheckDir(dir string) {
 	if ok, _ := IsExists(dir); !ok {
-		err := os.MkdirAll(dir, config.Perm)
+		err := os.MkdirAll(dir, config.DirPerm)
 		if err != nil {
 			log.Error(err)
 		}

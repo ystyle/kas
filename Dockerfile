@@ -1,11 +1,12 @@
 FROM golang:1.18-alpine AS build-env
 ENV GOPROXY=goproxy.cn,direct
+
 ADD . /go/src/app
 WORKDIR /go/src/app
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk --update add git curl tzdata && \
-    go build -v -o /go/src/app/kas main.go && \
-    curl https://archive.org/download/kindlegen2.9/kindlegen_linux_2.6_i386_v2_9.tar.gz | tar -zx
+    export FLAG="-s -w -X github.com/ystyle/kas/util/analytics.secret=xfWpCVwLRvyy7dMhQ-pZMg -X github.com/ystyle/kas/util/analytics.measurement=G-GEP9WQXH3R -X github.com/ystyle/kas/util/analytics.version=v1.0.29" && \
+    go build -ldflags "$FLAG" -v -o /go/src/app/kas main.go
 
 FROM alpine
 COPY --from=build-env /usr/share/zoneinfo/Asia/Shanghai /etc/localtime

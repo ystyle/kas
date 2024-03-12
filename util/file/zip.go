@@ -39,6 +39,6 @@ func CompressZipToFile(source, zipfiename string) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile(zipfiename, buff, config.Perm)
+	err = os.WriteFile(zipfiename, buff, config.FilePerm)
 	return err
 }

@@ -3,6 +3,7 @@ package analytics
 import (
 	fmt "fmt"
 	"github.com/ystyle/google-analytics"
+	config2 "github.com/ystyle/kas/util/config"
 	"math/rand"
 	"os"
 	"runtime"
@@ -51,11 +52,11 @@ func getClientID() string {
 		}
 		clientID = string(bs)
 	} else {
-		err := os.MkdirAll(fmt.Sprintf("%s/kas", config), 0700)
+		err := os.MkdirAll(fmt.Sprintf("%s/kas", config), config2.DirPerm)
 		if err != nil {
 			return clientID
 		}
-		_ = os.WriteFile(filepath, []byte(clientID), 0700)
+		_ = os.WriteFile(filepath, []byte(clientID), config2.FilePerm)
 	}
 	return clientID
 }
